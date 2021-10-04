@@ -25,6 +25,8 @@ public class ManipNombresInt_PLAYOUST_VAZQUEZ {
         entier1=sc.nextInt();
         entier2=sc.nextInt();
         System.out.println(entier1 + " " +entier2);
+        System.out.println("La somme de ces deux entiers est " +(entier1+entier2));
+        
     }
     
 }
