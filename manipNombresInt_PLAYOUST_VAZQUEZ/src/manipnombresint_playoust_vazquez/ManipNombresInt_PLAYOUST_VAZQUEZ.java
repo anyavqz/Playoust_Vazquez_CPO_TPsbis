@@ -2,7 +2,7 @@
 Vazquez Anya - Prosper Playoust
 TDB-2
 27/09/2021
-TP1
+TP1 - Exercie 1: Saisie et manipulation de nombres
  */
 package manipnombresint_playoust_vazquez;
 
@@ -36,7 +36,6 @@ public class ManipNombresInt_PLAYOUST_VAZQUEZ {
         int reste=entier1%entier2;
         System.out.println("le quotient du premier entier par le deuxieme vaut "+quotient+"\nle reste vaut "+ reste);
         
-        // 2 - UN CONVERTISSEUR DE TEMPERATURES
     }
     
 }
