@@ -29,7 +29,19 @@ public class TP1_convertisseur_PLAYOUST_VAZQUEZ {
         double valeurK=Valeur+273.15;
         System.out.println("La température en kelvin est de "+valeurK);
         
-        
+    double Celcius=sc.nextDouble();
+    System.out.println(CelciusVersKelvin(Celcius));
+    System.out.println(CelciusVersFarenheit(Celcius));
+    
+    double Farenheit=sc.nextDouble();
+    System.out.println(FarenheitVersCelcius(Farenheit));
+    System.out.println(FarenheitVersKelvin(Farenheit));
+    
+    double Kelvin=sc.nextDouble();
+    System.out.println(KelvinVersCelcius(Kelvin));
+    System.out.println(KelvinVersFarenheit(Kelvin));
+    
+
         
     }
     
@@ -38,10 +50,31 @@ public class TP1_convertisseur_PLAYOUST_VAZQUEZ {
         return Kelvin=Celcius+273.15;
     }
     
-    Scanner sc;
-    double Celcius=sc.nextDouble();
-   // System.out.println(CelciusVersKelvin(Celcius));
+    public static double KelvinVersCelcius(double Kelvin) {
+        double Celcius;
+        return Celcius=Kelvin-273.15;
+         
+    }
     
+    public static double FarenheitVersCelcius(double Farenheit) {
+        double Celcius;
+        return Celcius=(Farenheit-32)/1.8;
+    }
     
+    public static double CelciusVersFarenheit(double Celcius) {
+        double Farenheit;
+        return Farenheit=Celcius*1.8+32;
+    }
     
+    public static double KelvinVersFarenheit(double Kelvin) {
+        double Farenheit;
+        double Celcius=KelvinVersCelcius(Kelvin);
+        return Farenheit=CelciusVersFarenheit(Celcius);
+    }
+    
+    public static double FarenheitVersKelvin(double Farenheit) {
+        double Kelvin;
+        double Celcius=FarenheitVersCelcius(Farenheit);
+        return Kelvin=CelciusVersKelvin(Celcius);
+    }
 }
