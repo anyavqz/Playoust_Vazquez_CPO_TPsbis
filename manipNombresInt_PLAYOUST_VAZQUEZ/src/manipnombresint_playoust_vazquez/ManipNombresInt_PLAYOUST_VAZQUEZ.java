@@ -35,7 +35,7 @@ public class ManipNombresInt_PLAYOUST_VAZQUEZ {
         int quotient=entier1/entier2;
         int reste=entier1%entier2;
         System.out.println("le quotient du premier entier par le deuxieme vaut "+quotient+"\nle reste vaut "+ reste);
-        efef
+        
     }
     
 }
