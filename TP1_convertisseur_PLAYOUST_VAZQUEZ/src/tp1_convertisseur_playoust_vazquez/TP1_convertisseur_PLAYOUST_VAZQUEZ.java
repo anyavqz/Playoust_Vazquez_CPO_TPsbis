@@ -29,20 +29,48 @@ public class TP1_convertisseur_PLAYOUST_VAZQUEZ {
         double valeurK=Valeur+273.15;
         System.out.println("La température en kelvin est de "+valeurK);
         
-    double Celcius=sc.nextDouble();
+    double Celcius=sc.nextDouble(); //On teste la conversion des Celcius vers les autres mesures
     System.out.println(CelciusVersKelvin(Celcius));
     System.out.println(CelciusVersFarenheit(Celcius));
     
-    double Farenheit=sc.nextDouble();
+    double Farenheit=sc.nextDouble();//On teste la conversion des Farenheit vers les autres mesures
     System.out.println(FarenheitVersCelcius(Farenheit));
     System.out.println(FarenheitVersKelvin(Farenheit));
     
-    double Kelvin=sc.nextDouble();
+    double Kelvin=sc.nextDouble();//On teste la conversion des Kelvin vers les autres mesures
     System.out.println(KelvinVersCelcius(Kelvin));
     System.out.println(KelvinVersFarenheit(Kelvin));
     
 
-        
+    System.out.print("Bonjour veuillez saisir une valeur");
+    double Temperature=sc.nextDouble();
+    double Temperaturebis;
+    System.out.println("Saisissez la conversion que vous souhaitez effectuer\n1) De Celcius vers Kelvin \n 2) De Kelvin vers Celcius\3)De Celcius vers Farenheit\n4) De Farenheit vers Kelvin\n5) De Farenheit vers Celcius\n6) De Kelvin vers Farenheit");
+    int Choix=sc.nextInt();
+    if (Choix==1) {
+        Temperaturebis=CelciusVersKelvin(Temperature);
+        System.out.println(Temperature+" degré Celcius est égal à "+Temperaturebis+" degrés Kelvin");
+    }
+    if (Choix==2) {
+        Temperaturebis=KelvinVersCelcius(Temperature);
+        System.out.println(Temperature+" degré Celcius est égal à "+Temperaturebis+" degrés Kelvin");
+    } // A modifier !!!!
+    if (Choix==3) {
+        Temperaturebis=CelciusVersFarenheit(Temperature);
+        System.out.println(Temperature+" degré Celcius est égal à "+Temperaturebis+" degrés Kelvin");
+    }
+    if (Choix==4) {
+        Temperaturebis=FarenheitVersKelvin(Temperature);
+        System.out.println(Temperature+" degré Celcius est égal à "+Temperaturebis+" degrés Kelvin");
+    }
+    if (Choix==5) {
+        Temperaturebis=FarenheitVersCelcius(Temperature);
+        System.out.println(Temperature+" degré Celcius est égal à "+Temperaturebis+" degrés Kelvin");
+    }
+    if (Choix==6) {
+        Temperaturebis=KelvinVersFarenheit(Temperature);
+        System.out.println(Temperature+" degré Celcius est égal à "+Temperaturebis+" degrés Kelvin");
+    }
     }
     
     public static double CelciusVersKelvin(double Celcius) {
