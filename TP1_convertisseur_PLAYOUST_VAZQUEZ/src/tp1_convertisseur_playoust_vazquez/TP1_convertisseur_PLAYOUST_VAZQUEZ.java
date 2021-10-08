@@ -2,7 +2,7 @@
 Vazquez Anya - Prosper Playoust
 TDB-2
 27/09/2021
-TP0 - exo2
+TP1 - exo2
  */
 package tp1_convertisseur_playoust_vazquez;
 
