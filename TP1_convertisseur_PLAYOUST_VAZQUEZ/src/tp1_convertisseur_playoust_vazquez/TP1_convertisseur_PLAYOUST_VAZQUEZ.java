@@ -26,7 +26,7 @@ public class TP1_convertisseur_PLAYOUST_VAZQUEZ {
         Valeur=sc.nextDouble();
         System.out.println(Valeur);
         
-        double valeurK=Valeur+273.15;
+        double valeurK=Valeur+273.15; //On convertit notre valeur en Celcius en Kelvin
         System.out.println("La température en kelvin est de "+valeurK);
         
     double Celcius=sc.nextDouble(); //On teste la conversion des Celcius vers les autres mesures
@@ -44,7 +44,7 @@ public class TP1_convertisseur_PLAYOUST_VAZQUEZ {
 
     System.out.print("Bonjour veuillez saisir une valeur");
     double Temperature=sc.nextDouble();
-    double Temperaturebis;
+    double Temperaturebis; // On créé une variable bis pour ne pas supprimer la premiere
     System.out.println("Saisissez la conversion que vous souhaitez effectuer\n1) De Celcius vers Kelvin \n 2) De Kelvin vers Celcius\3)De Celcius vers Farenheit\n4) De Farenheit vers Kelvin\n5) De Farenheit vers Celcius\n6) De Kelvin vers Farenheit");
     int Choix=sc.nextInt();
     if (Choix==1) {
@@ -73,12 +73,12 @@ public class TP1_convertisseur_PLAYOUST_VAZQUEZ {
     }
     }
     
-    public static double CelciusVersKelvin(double Celcius) {
+    public static double CelciusVersKelvin(double Celcius) { // On créé notre démarche. Elle prend en entrée une valeur en Celcius et retourne sa pendante en Kelvin
         double Kelvin;
         return Kelvin=Celcius+273.15;
     }
     
-    public static double KelvinVersCelcius(double Kelvin) {
+    public static double KelvinVersCelcius(double Kelvin) { // Meme principe
         double Celcius;
         return Celcius=Kelvin-273.15;
          
@@ -94,13 +94,13 @@ public class TP1_convertisseur_PLAYOUST_VAZQUEZ {
         return Farenheit=Celcius*1.8+32;
     }
     
-    public static double KelvinVersFarenheit(double Kelvin) {
+    public static double KelvinVersFarenheit(double Kelvin) { // Pour cette demarche, on décide de faire appel à une autre démarche deja créée
         double Farenheit;
         double Celcius=KelvinVersCelcius(Kelvin);
         return Farenheit=CelciusVersFarenheit(Celcius);
     }
     
-    public static double FarenheitVersKelvin(double Farenheit) {
+    public static double FarenheitVersKelvin(double Farenheit) { // Meme chose
         double Kelvin;
         double Celcius=FarenheitVersCelcius(Farenheit);
         return Kelvin=CelciusVersKelvin(Celcius);
