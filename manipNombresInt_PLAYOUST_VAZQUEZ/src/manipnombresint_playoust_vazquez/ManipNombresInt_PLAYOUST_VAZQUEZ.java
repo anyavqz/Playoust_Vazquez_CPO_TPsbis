@@ -22,7 +22,7 @@ public class ManipNombresInt_PLAYOUST_VAZQUEZ {
         // 1 - SAISIE ET MANIPULATION DE NOMBRES
         int entier1;
         int entier2;
-        System.out.println("Saisir deux entiers");
+        System.out.println("Saisir deux entiers"); //Salut
         Scanner sc = new Scanner(System.in);
         entier1=sc.nextInt();
         entier2=sc.nextInt();
