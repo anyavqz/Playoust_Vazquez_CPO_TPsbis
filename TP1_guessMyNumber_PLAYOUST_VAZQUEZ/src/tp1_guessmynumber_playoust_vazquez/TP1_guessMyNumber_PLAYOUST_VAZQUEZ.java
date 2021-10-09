@@ -76,10 +76,14 @@ public class TP1_guessMyNumber_PLAYOUST_VAZQUEZ {
         }    
         if (Diff==3) {
             NbAl=generateurAleat.nextInt(150);
-            while (NbUt!=NbAl) {
+            while (compteur<=10) {
                 System.out.println("Veuillez saisir un nombre");
                 NbUt=sc.nextInt();
                 compteur+=1;
+                if (NbUt==NbAl) {
+                    System.out.println("Gagné");
+                    break;
+                }
                 
                 if (NbUt>NbAl) {
                     System.out.println("Trop grand");
@@ -89,12 +93,13 @@ public class TP1_guessMyNumber_PLAYOUST_VAZQUEZ {
                     System.out.println("Trop petit");
                 }
                 if (compteur==10) {
+                    System.out.println("Perdu");
                     break;
                 }
-                System.out.println("Gagné");
-            }
+                
+            }  
             
         }
     
-}// Modifier 3
+}
 }
