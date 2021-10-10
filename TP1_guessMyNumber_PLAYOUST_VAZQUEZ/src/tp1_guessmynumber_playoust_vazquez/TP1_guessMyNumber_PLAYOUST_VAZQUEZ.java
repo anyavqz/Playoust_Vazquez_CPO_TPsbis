@@ -20,7 +20,7 @@ public class TP1_guessMyNumber_PLAYOUST_VAZQUEZ {
      */
     public static void main(String[] args) {
         Random generateurAleat = new Random ();
-        int Nb1=generateurAleat.nextInt(100);
+        int Nb1=generateurAleat.nextInt(100); // Genere un nb aleatoire entre 0 et 100
         int Nb2=generateurAleat.nextInt(100);
         int Nb3=generateurAleat.nextInt(100);
         int Nb4=generateurAleat.nextInt(100);
