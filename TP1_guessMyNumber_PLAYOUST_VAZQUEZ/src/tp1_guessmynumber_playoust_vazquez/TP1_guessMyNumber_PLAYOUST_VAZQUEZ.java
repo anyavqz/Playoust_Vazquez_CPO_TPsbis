@@ -19,8 +19,8 @@ public class TP1_guessMyNumber_PLAYOUST_VAZQUEZ {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Random generateurAleat = new Random (); //Creation du generateur de nombre aleatoire
-        int Nb1=generateurAleat.nextInt(100); // Creation d'un nombre aleatoire entre 0 et 100
+        Random generateurAleat = new Random ();
+        int Nb1=generateurAleat.nextInt(100); // Genere un nb aleatoire entre 0 et 100
         int Nb2=generateurAleat.nextInt(100);
         int Nb3=generateurAleat.nextInt(100);
         int Nb4=generateurAleat.nextInt(100);
@@ -76,10 +76,14 @@ public class TP1_guessMyNumber_PLAYOUST_VAZQUEZ {
         }    
         if (Diff==3) {
             NbAl=generateurAleat.nextInt(150);
-            while (NbUt!=NbAl) {
+            while (compteur<=10) {
                 System.out.println("Veuillez saisir un nombre");
                 NbUt=sc.nextInt();
                 compteur+=1;
+                if (NbUt==NbAl) {
+                    System.out.println("Gagné");
+                    break;
+                }
                 
                 if (NbUt>NbAl) {
                     System.out.println("Trop grand");
@@ -89,12 +93,13 @@ public class TP1_guessMyNumber_PLAYOUST_VAZQUEZ {
                     System.out.println("Trop petit");
                 }
                 if (compteur==10) {
+                    System.out.println("Perdu");
                     break;
                 }
-                System.out.println("Gagné");
-            }
+                
+            }  
             
         }
     
-}// Modifier 3
+}
 }
