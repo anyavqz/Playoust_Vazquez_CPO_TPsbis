@@ -34,7 +34,7 @@ public class TP1_stats_PLAYOUST_VAZQUEZ {
         for (int i=0; i <= m; i++) { //création de la boucle for pour i compris entre 0 et m
             Random generateurAleat = new Random ();//générateur de nombre
             int Nb1=generateurAleat.nextInt(5); //déclaration de la variable Nb1 et attribution d'une valeur aléatoire entre 0 et 5
-            Tab[Nb1]=i;// la case d'indice correspondant est incrémentée de la valeur de i ???????? bizarre
+            Tab[Nb1]+=1;// on incrémente la case d'indice correspondante
         }
         System.out.println("Le tableau résultat est: ");
         for (int i=0; i < 6; i++) {
