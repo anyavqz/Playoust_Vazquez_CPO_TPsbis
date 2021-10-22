@@ -21,6 +21,14 @@ public class TP2_Bieres_PLAYOUST_VAZQUEZ {
         //uneBiere.Brasserie = "Dubuisson";
         //uneBiere.ouverte = false;
         BouteilleBiere uneSecondeBiere = new BouteilleBiere("Leffe", 6.6 ,"Abbaye de Leffe") ;
+        BouteilleBiere uneTroisiemeBiere = new BouteilleBiere("Kronenbourg", 4.2 ,"Obernai") ;
+        BouteilleBiere uneQuatriemeBiere = new BouteilleBiere("Pietra", 6.0 ,"Brasserie de Pietra") ;
+        
+        // affichage des étiquettes à l'écran
+        uneBiere.lireEtiquette();
+        uneSecondeBiere.lireEtiquette();
+        uneTroisiemeBiere.lireEtiquette();
+        uneQuatriemeBiere.lireEtiquette();
         
         //BouteilleBiere uneSecondeBiere = new BouteilleBiere() ;
         //uneSecondeBiere.Nom = "Leffe";
