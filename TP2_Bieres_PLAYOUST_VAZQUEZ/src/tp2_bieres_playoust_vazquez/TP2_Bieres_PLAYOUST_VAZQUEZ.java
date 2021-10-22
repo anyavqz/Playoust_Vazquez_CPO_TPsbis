@@ -14,11 +14,19 @@ public class TP2_Bieres_PLAYOUST_VAZQUEZ {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        BouteilleBiere uneBiere = new BouteilleBiere() ;
-        uneBiere.Nom = "Cuvée des trolls"; 
-        uneBiere.degreAlcool = 7.0 ;
-        uneBiere.Brasserie = "Dubuisson";
-        uneBiere.ouverte = false;
+        //BouteilleBiere uneBiere = new BouteilleBiere() ;
+        BouteilleBiere uneBiere = new BouteilleBiere("Cuvée des trolls", 7.0 ,"Dubuisson") ;
+        //uneBiere.Nom = "Cuvée des trolls"; 
+        //uneBiere.degreAlcool = 7.0 ;
+        //uneBiere.Brasserie = "Dubuisson";
+        //uneBiere.ouverte = false;
+        BouteilleBiere uneSecondeBiere = new BouteilleBiere("Leffe", 6.6 ,"Abbaye de Leffe") ;
+        
+        //BouteilleBiere uneSecondeBiere = new BouteilleBiere() ;
+        //uneSecondeBiere.Nom = "Leffe";
+        //uneSecondeBiere.degreAlcool = 6.6 ;
+        //uneSecondeBiere.Brasserie = "Abbaye de Leffe";
+        
     }
     
 }
