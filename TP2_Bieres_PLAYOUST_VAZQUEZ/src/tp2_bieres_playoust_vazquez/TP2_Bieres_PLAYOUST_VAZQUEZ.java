@@ -29,6 +29,11 @@ public class TP2_Bieres_PLAYOUST_VAZQUEZ {
         uneSecondeBiere.lireEtiquette();
         uneTroisiemeBiere.lireEtiquette();
         uneQuatriemeBiere.lireEtiquette();
+       
+        uneSecondeBiere.Decapsuler(); // on applique la commande décapsuler à la seconde bière
+        System.out.println(uneSecondeBiere.ouverte); //on regarde si la valeur de ouverte est bien mise à jour
+        
+        System.out.println(uneBiere) ; //affiche le type et l'adresse mémoire associée
         
         //BouteilleBiere uneSecondeBiere = new BouteilleBiere() ;
         //uneSecondeBiere.Nom = "Leffe";
