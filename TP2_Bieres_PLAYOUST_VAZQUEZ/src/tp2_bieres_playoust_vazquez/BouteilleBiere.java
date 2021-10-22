@@ -11,5 +11,14 @@ package tp2_bieres_playoust_vazquez;
 public class BouteilleBiere {
     String Nom;
     float degreAlcool;
+    String Brasserie;
+    boolean ouverte;
+    
+    public void lireEtiquette() {
+        System.out.println("Bouteille de " + Nom +" (" + degreAlcool + " degres) \nBrasserie : " + Brasserie ) ;
+    }
     
 }
+
+
+
