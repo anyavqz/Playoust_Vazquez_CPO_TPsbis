@@ -9,7 +9,7 @@
  * @author petitweb
  */
 public class Joueur {
-    String Nom;;
+    String Nom;
     String Couleur; 
     int nombreJetonsRestants;
     int nombreDesintegrateurs;
