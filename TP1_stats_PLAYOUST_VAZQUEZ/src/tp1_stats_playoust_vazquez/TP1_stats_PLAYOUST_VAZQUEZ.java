@@ -31,14 +31,16 @@ public class TP1_stats_PLAYOUST_VAZQUEZ {
         sc = new Scanner(System.in); // Scanner permet à l'utilisateur de saisir des valeurs, et "new" permet qu'elles soient enregistrées
         m=sc.nextInt(); // saisie de la valeur entière
         
-        for (int i=0; i <= m; i++) { //création de la boucle for pour i compris entre 0 et m
+        for (int i=0; i < m; i++) { //création de la boucle for pour i compris entre 0 et m
             Random generateurAleat = new Random ();//générateur de nombre
-            int Nb1=generateurAleat.nextInt(5); //déclaration de la variable Nb1 et attribution d'une valeur aléatoire entre 0 et 5
+            int Nb1=generateurAleat.nextInt(6); //déclaration de la variable Nb1 et attribution d'une valeur aléatoire entre 0 et 5
             Tab[Nb1]+=1;// on incrémente la case d'indice correspondante
         }
         System.out.println("Le tableau résultat est: ");
+        double [] Pourcentage=new double [6];
         for (int i=0; i < 6; i++) {
-            System.out.println(Tab[i]); // affichage du tableau résultat à l'aide d'une boucle for
+            Pourcentage[i]=100.0*Tab[i]/m;
+            System.out.println(Pourcentage[i]+"%"); // affichage du tableau résultat à l'aide d'une boucle for
         }
     }
     
