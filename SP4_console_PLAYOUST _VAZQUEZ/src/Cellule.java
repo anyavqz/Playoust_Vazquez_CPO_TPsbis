@@ -9,6 +9,39 @@
  * @author petitweb
  */
 public class Cellule {
-    //salut
+    Jeton jetonCourant;
+    boolean trouNoir;
+    boolean desintegrateur;
+    
+    public Cellule() {
+        jetonCourant= null;
+        trouNoir=false;
+        desintegrateur=false;
+    }
+    
+    public boolean affecterJeton(Jeton j) {     
+        if (jetonCourant==null) {
+            jetonCourant=j;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public Jeton recupererJeton() {
+        return jetonCourant;
+    }
+    
+    public String lireCouleurDuJeton() {
+        if (jetonCourant!=null) {
+            return jetonCourant.Couleur;
+        } else {
+            return ("vide");
+        }
+        
+    }
+    
+    
+    
     
 }
