@@ -34,11 +34,8 @@ public class Joueur {
     }
         ListeJetons[i]=j;
         return true;
-            }
-            
-            
-            
-        }
+            }   
+}
         
     
     
