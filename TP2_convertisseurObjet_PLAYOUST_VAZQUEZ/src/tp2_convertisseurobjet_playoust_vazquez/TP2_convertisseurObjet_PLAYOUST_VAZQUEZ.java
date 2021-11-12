@@ -51,7 +51,7 @@ public class TP2_convertisseurObjet_PLAYOUST_VAZQUEZ {
         valeurbis=temperature.KelvinVersFarenheit(valeur);
         System.out.println(valeur+" degré Celcius est égal à "+valeurbis+" degrés Kelvin");
     }
-    System.out.println(temperature.nbConversions);
+    System.out.println(temperature);
     }
     
 }
