@@ -54,7 +54,7 @@ public class TP1_convertisseur_PLAYOUST_VAZQUEZ {
     if (Choix==2) {
         Temperaturebis=KelvinVersCelcius(Temperature);
         System.out.println(Temperature+" degré Celcius est égal à "+Temperaturebis+" degrés Kelvin");
-    } // A modifier !!!!
+    }
     if (Choix==3) {
         Temperaturebis=CelciusVersFarenheit(Temperature);
         System.out.println(Temperature+" degré Celcius est égal à "+Temperaturebis+" degrés Kelvin");
