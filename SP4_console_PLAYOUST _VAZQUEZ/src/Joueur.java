@@ -9,12 +9,38 @@
  * @author petitweb
  */
 public class Joueur {
+    
     String Nom;
     String Couleur; 
     int nombreJetonsRestants;
     int nombreDesintegrateurs;
-    ListeJetons [] ;
+    Jeton ListeJetons [] = new Jeton[21] ;
+    
+    public Joueur(String nomj) {
+        Nom=nomj;
+    }
+    
+    public void affecterCouleur(String couleurj) {
+        Couleur=couleurj;
+    }
+    
+    public boolean ajouterJeton(Jeton j) {
+        int i=0;
+        while (ListeJetons[i]!=null) {
+            i+=1;
+            if (i==20) {
+                return false;
+            }
+    }
+        ListeJetons[i]=j;
+        return true;
+            }
+            
+            
+            
+        }
+        
     
     
     
-}
+
