@@ -5,6 +5,7 @@ package sp4_console_playoust._vazquez;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 import java.util.Random;
+import java.util.Scanner;
 /**
  *
  * @author anyavazquez
@@ -59,8 +60,8 @@ public class Partie {
  public void debuterPartie() {
      initialiserPartie();
      joueurCourant=ListeJoueurs[0];
-     while (etreGagnantePourJoueur(ListeJoueurs[0])=false && etreGagnantePourJoueur(ListeJoueurs[1])=false) && (etreRemplie()=false){
-     
+     while (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[0])==false && grilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])==true && grilleJeu.etreRemplie()==false){
+     ajouterJetonDansColonne(jeton, int)
  }
      
      
