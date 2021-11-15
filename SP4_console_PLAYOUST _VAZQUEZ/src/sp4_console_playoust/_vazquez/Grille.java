@@ -57,12 +57,12 @@ public class Grille {
                 if (CellulesJeu[i][j].jetonCourant!=null) {
                     CellulesJeu[i][j].jetonCourant.lireCouleur();
                     if ("Rouge".equals(CellulesJeu[i][j].jetonCourant.Couleur)) {
-                        System.out.print("R");
+                        System.out.println("R");
                     } else {
-                        System.out.print("J");
+                        System.out.println("J");
                     }
                 } else {
-                    System.out.print("/");
+                    System.out.println("/");
                 }
             }
         }
