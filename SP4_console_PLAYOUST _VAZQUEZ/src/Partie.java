@@ -55,6 +55,12 @@ public class Partie {
  }
  }    
  public void debuterPartie() {
+     initialiserPartie();
+     joueurCourant=ListeJoueurs[0];
+     while (etreGagnantePourJoueur(ListeJoueurs[0])=false && etreGagnantePourJoueur(ListeJoueurs[1])=false) && (etreRemplie()=false){
+     
+ }
+     
      
     
 }
