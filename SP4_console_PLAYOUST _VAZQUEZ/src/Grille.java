@@ -31,7 +31,7 @@ public class Grille {
     public boolean etreRemplie() {
         boolean EtatGrille = true;
         for (int i=0; i<7; i++) {
-            if (CellulesJeu[0][i]==null) {
+            if (CellulesJeu[0][i].jetonCourant==null) {
                 EtatGrille = false;
                 return EtatGrille;
             }
@@ -44,7 +44,7 @@ public class Grille {
     public void viderGrille() {
         for (int i=0; i<6; i++) {
             for (int j = 0; i<7; i++) {
-                CellulesJeu[i][j]=null;
+                CellulesJeu[i][j].jetonCourant=null;
             }
         }
     }
@@ -68,10 +68,10 @@ public class Grille {
     }
     
     public boolean celluleOccupee(int L, int C) {
-        if (CellulesJeu[L][C]!=null) {
+        if (CellulesJeu[L][C].jetonCourant!=null) {
             return true;
         }
-        return true;
+        return false;
     }
     
     public String lireCouleurDuJeton(int L, int C) {
@@ -79,6 +79,8 @@ public class Grille {
         return couleurCourante;
     }
     
-    public boolean etreGagnantePourJoueur(Joueur )
+    public boolean etreGagnantePourJoueur(Joueur Player) {
+        
+    }
     
 }
