@@ -15,6 +15,8 @@ public class SP4_console_PLAYOUST_VAZQUEZ {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Jeton j =new Jeton("Rouge");
+        Grille G = new Grille()
     }
     
 }
