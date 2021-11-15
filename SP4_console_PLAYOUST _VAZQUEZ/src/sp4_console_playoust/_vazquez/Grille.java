@@ -25,6 +25,7 @@ public class Grille {
         for (int i=5; i>=0; i--) {
             if (CellulesJeu[i][Colonne].jetonCourant ==null) {
                 CellulesJeu[i][Colonne].jetonCourant=J;
+                return true;
             }
         }
         return false;
@@ -57,14 +58,14 @@ public class Grille {
                 if (CellulesJeu[i][j].jetonCourant!=null) {
                     CellulesJeu[i][j].jetonCourant.lireCouleur();
                     if ("Rouge".equals(CellulesJeu[i][j].jetonCourant.Couleur)) {
-                        System.out.println("R");
+                        System.out.print("R");
                     } else {
-                        System.out.println("J");
+                        System.out.print("J");
                     }
                 } else {
-                    System.out.println("/");
+                    System.out.print("/");
                 }
-            }
+            } System.out.println("");
         }
         
     }
@@ -81,8 +82,8 @@ public class Grille {
         return couleurCourante;
     }
     
-    //public boolean etreGagnantePourJoueur(Joueur Player) {
+    public boolean etreGagnantePourJoueur(Joueur Player) {
         
-    //}
+    }
     
 }
