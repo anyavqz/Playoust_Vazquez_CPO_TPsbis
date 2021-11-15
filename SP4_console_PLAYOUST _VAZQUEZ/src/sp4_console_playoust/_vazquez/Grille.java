@@ -15,7 +15,7 @@ public class Grille {
     public Grille() {
         CellulesJeu= new Cellule [6][7];
         for (int i=0; i < 6; i++) {
-            for (int j=0; i<7; j++) {
+            for (int j=0; j<7; j++) {
                 CellulesJeu[i][j]=new Cellule();
             }
         }
@@ -81,8 +81,8 @@ public class Grille {
         return couleurCourante;
     }
     
-    public boolean etreGagnantePourJoueur(Joueur Player) {
+    //public boolean etreGagnantePourJoueur(Joueur Player) {
         
-    }
+    //}
     
 }
