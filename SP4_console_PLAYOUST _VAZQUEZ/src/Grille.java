@@ -72,5 +72,6 @@ public class Grille {
         if (CellulesJeu[L][C]!=null) {
             return true;
         }
+        return true;
     }
 }
