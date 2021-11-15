@@ -12,7 +12,7 @@ public class Joueur {
     
     String Nom;
     String Couleur; 
-    int nombreJetonsRestants;
+    int nombreJetonsRestants=0;
     int nombreDesintegrateurs;
     Jeton ListeJetons [] = new Jeton[21] ;
     
@@ -33,6 +33,7 @@ public class Joueur {
             }
     }
         ListeJetons[i]=j;
+        nombreJetonsRestants+=1;
         return true;
             }   
 }
