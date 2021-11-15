@@ -25,7 +25,40 @@ public class Grille {
                 CellulesJeu[i][Colonne].jetonCourant=J;
             }
         }
+        return false;
     }
     
+    public boolean etreRemplie() {
+        boolean EtatGrille = true;
+        for (int i=0; i<7; i++) {
+            if (CellulesJeu[0][i]==null) {
+                EtatGrille = false;
+                return EtatGrille;
+            }
+        }
+        return EtatGrille;
+        
+            
+    }
     
+    public void viderGrille() {
+        for (int i=0; i<6; i++) {
+            for (int j = 0; i<7; i++) {
+                CellulesJeu[i][j]=null;
+            }
+        }
+    }
+    
+    public void afficherGrilleSurConsole() {
+        for (int i=0; i<6; i++) {
+            for (int j=0; j<7; j++) {
+                if (CellulesJeu!=null) {
+                    if (jetonCourant.Couleur=="rouge") {
+                        
+                    }
+                }
+            }
+        }
+        
+    }
 }
