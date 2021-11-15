@@ -23,7 +23,6 @@ public class Grille {
         for (int i=5; i>=0; i--) {
             if (CellulesJeu[i][Colonne].jetonCourant ==null) {
                 CellulesJeu[i][Colonne].jetonCourant=J;
-                // Peut être enlever un jeton à chaque fois qu'un joueur en place un
             }
         }
         return false;
@@ -50,12 +49,12 @@ public class Grille {
         }
     }
     
-    public void afficherGrilleSurConsole() {//ajouter les trous noirs
+    public void afficherGrilleSurConsole() {//ajouter les trous noirs pour versions suivantes
         for (int i=0; i<6; i++) {
             for (int j=0; j<7; j++) {
-                if (CellulesJeu[i][j]!=null) {
+                if (CellulesJeu[i][j].jetonCourant!=null) {
                     CellulesJeu[i][j].jetonCourant.lireCouleur();
-                    if (CellulesJeu[i][j].jetonCourant.Couleur=="Rouge") {
+                    if ("Rouge".equals(CellulesJeu[i][j].jetonCourant.Couleur)) {
                         System.out.print("R");
                     } else {
                         System.out.print("J");
@@ -74,4 +73,12 @@ public class Grille {
         }
         return true;
     }
+    
+    public String lireCouleurDuJeton(int L, int C) {
+        String couleurCourante = CellulesJeu[L][C].jetonCourant.Couleur;
+        return couleurCourante;
+    }
+    
+    public boolean etreGagnantePourJoueur(Joueur )
+    
 }
