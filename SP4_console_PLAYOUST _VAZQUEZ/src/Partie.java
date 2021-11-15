@@ -24,11 +24,12 @@ public class Partie {
      if (ch_couleur==0) {
          
          ListeJoueurs[0].affecterCouleur("Rouge");
+         ListeJoueurs[1].affecterCouleur("Jaune");
          
      } else {
          
-         ListeJoueurs[1].affecterCouleur("Jaune");
-         
+         ListeJoueurs[0].affecterCouleur("Jaune");
+         ListeJoueurs[1].affecterCouleur("Rouge");
               }
      }
      
@@ -38,15 +39,21 @@ public class Partie {
      grilleJeu=new Grille();
      
      attribuerCouleursAuxJoueurs();
-     Jeton jR=new Jeton("Rouge");
-     Jeton jJ=new Jeton("Jaune");
      
      for (int i=0;i<21;i++) {
+         
+        Jeton jR=new Jeton("Rouge");
+        Jeton jJ=new Jeton("Jaune");
+        if (ListeJoueurs[0].Couleur=="Rouge") {
          ListeJoueurs[0].ajouterJeton(jR);
          ListeJoueurs[1].ajouterJeton(jJ);
      }
+        else {
+            ListeJoueurs[1].ajouterJeton(jR);
+            ListeJoueurs[0].ajouterJeton(jJ);
+        }
  }
-     
+ }    
  public void debuterPartie() {
      
     
