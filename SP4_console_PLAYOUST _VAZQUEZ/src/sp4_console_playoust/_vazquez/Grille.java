@@ -83,6 +83,36 @@ public class Grille {
     }
     
     public boolean etreGagnantePourJoueur(Joueur Player) {
+        String Color = Player.Couleur;
+        for (int i = 0; i< 6; i++) {
+            for (int j = 0; j<4; j++) {
+                if (CellulesJeu[i][j].lireCouleurDuJeton() == Color && CellulesJeu[i][j+1].jetonCourant.Couleur == Color && CellulesJeu[i][j+2].jetonCourant.Couleur == Color && CellulesJeu[i][j+3].jetonCourant.Couleur == Color) {
+                    return true;
+                }
+            }
+        }
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0 ; j < 7; j++) {
+                if (CellulesJeu[i][j].lireCouleurDuJeton() == Color && CellulesJeu[i+1][j].jetonCourant.Couleur == Color && CellulesJeu[i+2][j].jetonCourant.Couleur == Color && CellulesJeu[i+3][j].jetonCourant.Couleur == Color) {
+                    return true;
+                }
+            }
+        }
+        for (int i=0; i<3; i++) {
+            for (int j=0; j<4; j++) {
+                if (CellulesJeu[i][j].lireCouleurDuJeton() == Color && CellulesJeu[i+1][j+1].jetonCourant.Couleur == Color && CellulesJeu[i+2][j+2].jetonCourant.Couleur == Color && CellulesJeu[i+3][j+3].jetonCourant.Couleur == Color) {
+                    return true;
+                }
+            }
+        }
+        for (int i=5; i>2; i--) {
+            for (int j=0; j<4; j++) {
+                if (CellulesJeu[i][j].lireCouleurDuJeton() == Color && CellulesJeu[i-1][j+1].jetonCourant.Couleur == Color && CellulesJeu[i-2][j+2].jetonCourant.Couleur == Color && CellulesJeu[i-3][j+3].jetonCourant.Couleur == Color) {
+                    return true;
+                }
+            }
+        }
+        return false;
         
     }
     
