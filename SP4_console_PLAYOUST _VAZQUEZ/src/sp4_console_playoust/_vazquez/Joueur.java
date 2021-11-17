@@ -41,6 +41,7 @@ public class Joueur {
 
 
     public void obtenirDesintegrateur() {
+        if (recupererDesintegrateur()==True)
         
 }
         
