@@ -15,12 +15,16 @@ public class SP4_console_PLAYOUST_VAZQUEZ {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Jeton j =new Jeton("Rouge");
-        Jeton j2 = new Jeton ("Jaune");
-        Grille G = new Grille();
-        G.ajouterJetonDansColonne(j, 5);
-        G.ajouterJetonDansColonne(j2, 1);
-        G.afficherGrilleSurConsole();
+        Joueur J1 = new Joueur("Prosper");
+        Joueur J2 = new Joueur("Petasse");
+        Partie Partie = new Partie(J1,J2);
+        Partie.debuterPartie();
+        System.out.println(J2.Couleur);
+        
+        
+        
+        
+        
            
     }
     

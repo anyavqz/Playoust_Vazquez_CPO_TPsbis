@@ -62,15 +62,15 @@ public class Partie {
      initialiserPartie();
      int P1J=generateurAleat.nextInt(1);
      joueurCourant=ListeJoueurs[P1J];
-     while (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[0])==false && grilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])==true && grilleJeu.etreRemplie()==false){
+     while (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[0])==false && grilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])==false && grilleJeu.etreRemplie()==false){
          
          grilleJeu.afficherGrilleSurConsole();
          
          System.out.println("Veuillez choisir une colonne");
-         int col=sc.nextInt();
+         int col=sc.nextInt()-1;
          while (col>6 || col<0) {
              System.out.println("Erreur ! Veuillez choisir une colonne");
-             col=sc.nextInt();
+             col=sc.nextInt()-1;
          }
          
          Jeton jetonj=joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1];
@@ -84,6 +84,8 @@ public class Partie {
          } else {
              joueurCourant=ListeJoueurs[0];
          }
- } 
+ }
+     System.out.println("Le perdant est "+joueurCourant.Nom);
+     
 }
 }

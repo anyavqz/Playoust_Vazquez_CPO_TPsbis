@@ -38,9 +38,14 @@ public class Joueur {
         nombreJetonsRestants+=1;
         return true;
             }   
+
+
+    public void obtenirDesintegrateur() {
+        if (recupererDesintegrateur()==True)
+        
 }
         
-    
+}    
     
     
 
