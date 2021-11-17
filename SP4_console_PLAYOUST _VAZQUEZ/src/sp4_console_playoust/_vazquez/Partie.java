@@ -17,6 +17,7 @@ public class Partie {
  Joueur ListeJoueurs [] = new Joueur[2];
  Joueur joueurCourant;
  Grille grilleJeu;
+ Scanner sc = new Scanner(System.in);
  
  public Partie(Joueur j1,Joueur j2) {
      ListeJoueurs[0]=j1;
@@ -59,18 +60,30 @@ public class Partie {
  }    
  public void debuterPartie() {
      initialiserPartie();
-     joueurCourant=ListeJoueurs[0];
+     int P1J=generateurAleat.nextInt(1);
+     joueurCourant=ListeJoueurs[P1J];
      while (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[0])==false && grilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])==true && grilleJeu.etreRemplie()==false){
-     ajouterJetonDansColonne(jeton, int)
- }
-     
-     
-    
+         
+         grilleJeu.afficherGrilleSurConsole();
+         
+         System.out.println("Veuillez choisir une colonne");
+         int col=sc.nextInt();
+         while (col>6 || col<0) {
+             System.out.println("Erreur ! Veuillez choisir une colonne");
+             col=sc.nextInt();
+         }
+         
+         Jeton jetonj=joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1];
+         joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1]=null;
+         joueurCourant.nombreJetonsRestants-=1;
+         
+         grilleJeu.ajouterJetonDansColonne(jetonj,col);
+         
+         if (joueurCourant==ListeJoueurs[0]) {
+             joueurCourant=ListeJoueurs[1];
+         } else {
+             joueurCourant=ListeJoueurs[0];
+         }
+ } 
 }
-     
-     
-     
-     
- 
- 
 }
