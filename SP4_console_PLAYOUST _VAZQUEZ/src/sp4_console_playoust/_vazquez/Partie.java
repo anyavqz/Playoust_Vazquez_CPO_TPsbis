@@ -57,11 +57,25 @@ public class Partie {
             ListeJoueurs[0].ajouterJeton(jJ);
         }
  }
+     for (int i=0; i<5;i++) {
+         int ColAl=generateurAleat.nextInt(6);
+         int LigAl=generateurAleat.nextInt(5);
+         Cellule TrN =grilleJeu.CellulesJeu[LigAl][ColAl];
+         while (TrN.presenceTrouNoir()==true) {
+            ColAl=generateurAleat.nextInt(6);
+            LigAl=generateurAleat.nextInt(5);
+            TrN =grilleJeu.CellulesJeu[LigAl][ColAl];
+            TrN.placerTrouNoir();
+         }
+     }
  }    
  public void debuterPartie() {
+     
      initialiserPartie();
+     
      int P1J=generateurAleat.nextInt(1);
      joueurCourant=ListeJoueurs[P1J];
+     
      while (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[0])==false && grilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])==false && grilleJeu.etreRemplie()==false){
          
          grilleJeu.afficherGrilleSurConsole();
