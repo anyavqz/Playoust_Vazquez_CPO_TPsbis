@@ -43,6 +43,24 @@ public class Cellule {
         
     }
     
+    public boolean supprimerJeton() {
+        if (jetonCourant!=null) {
+            jetonCourant=null;
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean placerTrouNoir() {
+        if (trouNoir==false) {
+            trouNoir=true;
+            return trouNoir;
+        } else {
+            return false;
+        }
+        
+    }
+    
     
     
     
