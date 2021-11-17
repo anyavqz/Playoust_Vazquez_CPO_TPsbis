@@ -61,7 +61,38 @@ public class Cellule {
         
     }
     
+    public boolean placerDesintegrateur() {
+        if (desintegrateur==false) {
+            desintegrateur=true;
+            return desintegrateur;
+        } else {
+            return false;
+        }
+    }
     
+    public boolean presenceTrouNoir() {
+        return trouNoir;
+    }
+    
+    public boolean presenceDesintegrateur() {
+        return desintegrateur;
+    }
+    
+    public boolean recupererDesintegrateur() {
+        if (desintegrateur == true) {
+            desintegrateur = false;
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean activerTrouNoir() {
+        if (jetonCourant!=null && trouNoir==true) {
+            jetonCourant=null;
+            return true;
+        }
+        return false;
+    }
     
     
 }
