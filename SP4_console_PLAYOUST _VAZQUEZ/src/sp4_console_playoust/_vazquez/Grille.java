@@ -116,4 +116,45 @@ public class Grille {
         
     }
     
+    public void tasserGrille(int col) {
+        for (int i=5; i>0; i--) {
+            if (celluleOccupee(i , col)==false) {
+                CellulesJeu[i][col].jetonCourant=CellulesJeu[i-1][col].jetonCourant;
+                CellulesJeu[i-1][col].jetonCourant=null;
+            }
+        }  
+    }
+    
+    public void tasserGrille() {
+        for (int i=0; i<7; i++) {
+            tasserGrille(i);
+        }
+    }
+    
+    public boolean placerTrouNoir(int L, int C) {
+        return CellulesJeu[L][C].placerTrouNoir()==true;
+    }
+    
+    public boolean placerDesintegrateur(int L, int C) {
+        return CellulesJeu[L][C].presenceDesintegrateur()==true;
+    }
+    
+    public boolean supprimerJeton(int L, int C) {
+        if (CellulesJeu[L][C].jetonCourant!=null) {
+            CellulesJeu[L][C].supprimerJeton();
+            return true;
+        }
+        return false;
+    }
+    
+    public Jeton recupererJeton(int L, int C) {
+        Jeton refJeton = CellulesJeu[L][C].recupererJeton();
+        CellulesJeu[L][C].supprimerJeton();
+        return refJeton;
+    }
+    
+    
+    
+    
+    
 }
