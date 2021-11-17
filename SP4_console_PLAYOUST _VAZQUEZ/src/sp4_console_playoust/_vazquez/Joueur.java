@@ -41,11 +41,21 @@ public class Joueur {
 
 
     public void obtenirDesintegrateur() {
-        if (recupererDesintegrateur()==True)
+        nombreDesintegrateurs+=1;
+        }
+    
+    public boolean utiliserDesintegrateur() {
+        if (nombreDesintegrateurs>=1) {
+            nombreDesintegrateurs-=1;
+            return true;
+        } 
+        return false;
+    }
+    
         
 }
         
-}    
+    
     
     
 
