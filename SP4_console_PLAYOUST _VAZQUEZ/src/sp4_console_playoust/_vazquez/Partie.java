@@ -65,8 +65,10 @@ public class Partie {
             ColAl=generateurAleat.nextInt(6);
             LigAl=generateurAleat.nextInt(5);
             TrN =grilleJeu.CellulesJeu[LigAl][ColAl];
-            TrN.placerTrouNoir();
          }
+        grilleJeu.placerTrouNoir(LigAl, ColAl);
+//TrN.placerTrouNoir();
+         
      }
  }    
  public void debuterPartie() {
