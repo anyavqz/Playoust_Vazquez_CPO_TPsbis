@@ -23,7 +23,7 @@ public class Grille {
     
     public boolean ajouterJetonDansColonne(Jeton J, int Colonne) {
         for (int i=5; i>=0; i--) {
-            if (CellulesJeu[i][Colonne].affecterJeton(J) == false) {
+            if (CellulesJeu[i][Colonne].jetonCourant == null) {
                 CellulesJeu[i][Colonne].jetonCourant=J;
                 return true;
             }
@@ -52,23 +52,28 @@ public class Grille {
         }
     }
     
-    public void afficherGrilleSurConsole() {//ajouter les trous noirs pour versions suivantes
+    public void afficherGrilleSurConsole() {
         for (int i=0; i<6; i++) {
             for (int j=0; j<7; j++) {
                 if (CellulesJeu[i][j].jetonCourant!=null) {
                     CellulesJeu[i][j].jetonCourant.lireCouleur();
                     if ("Rouge".equals(CellulesJeu[i][j].jetonCourant.Couleur)) {
                         System.out.print("R");
-                    } else {
+                    } 
+                    if ("Jaune".equals(CellulesJeu[i][j].jetonCourant.Couleur)) {
                         System.out.print("J");
                     }
                 } else {
-                    System.out.print("/");
+                        System.out.print("/");
                 }
+                if (CellulesJeu[i][j].presenceTrouNoir()==true) {
+                    System.out.print("N");
+                } 
             } System.out.println("");
         }
-        
     }
+        
+    
     
     public boolean celluleOccupee(int L, int C) {
         if (CellulesJeu[L][C].jetonCourant!=null) {

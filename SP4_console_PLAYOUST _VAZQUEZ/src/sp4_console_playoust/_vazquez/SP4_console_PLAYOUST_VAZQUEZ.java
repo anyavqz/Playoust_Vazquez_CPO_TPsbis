@@ -21,10 +21,6 @@ public class SP4_console_PLAYOUST_VAZQUEZ {
         Partie.debuterPartie();
         System.out.println(J2.Couleur);
         
-        
-        
-        
-        
            
     }
     
