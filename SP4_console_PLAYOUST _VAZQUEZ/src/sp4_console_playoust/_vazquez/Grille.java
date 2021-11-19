@@ -55,19 +55,19 @@ public class Grille {
         for (int i=0; i<6; i++) {
             for (int j=0; j<7; j++) {
                 if (CellulesJeu[i][j].presenceTrouNoir()==true) {
-                    System.out.print("N");
+                    System.out.print("N ");
                 } else if (CellulesJeu[i][j].presenceDesintegrateur()==true) {
-                    System.out.print("D");
+                    System.out.print("D ");
                 } else if (CellulesJeu[i][j].jetonCourant!=null) {
                     CellulesJeu[i][j].jetonCourant.lireCouleur();
                     if ("Rouge".equals(CellulesJeu[i][j].jetonCourant.Couleur)) {
-                        System.out.print("R");
+                        System.out.print("R ");
                     } 
                     if ("Jaune".equals(CellulesJeu[i][j].jetonCourant.Couleur)) {
-                        System.out.print("J");
+                        System.out.print("J ");
                     }
                 } else {
-                        System.out.print("/");
+                        System.out.print("/ ");
                 }
             } System.out.println("");
         }
