@@ -23,8 +23,7 @@ public class Grille {
     
     public boolean ajouterJetonDansColonne(Jeton J, int Colonne) {
         for (int i=5; i>=0; i--) {
-            if (CellulesJeu[i][Colonne].jetonCourant == null) {
-                CellulesJeu[i][Colonne].jetonCourant=J;
+            if (CellulesJeu[i][Colonne].affecterJeton(J)==true){
                 return true;
             }
         }
@@ -55,7 +54,9 @@ public class Grille {
     public void afficherGrilleSurConsole() {
         for (int i=0; i<6; i++) {
             for (int j=0; j<7; j++) {
-                if (CellulesJeu[i][j].jetonCourant!=null) {
+                if (CellulesJeu[i][j].presenceTrouNoir()==true) {
+                    System.out.print("N");
+                } else if (CellulesJeu[i][j].jetonCourant!=null) {
                     CellulesJeu[i][j].jetonCourant.lireCouleur();
                     if ("Rouge".equals(CellulesJeu[i][j].jetonCourant.Couleur)) {
                         System.out.print("R");
@@ -64,9 +65,7 @@ public class Grille {
                         System.out.print("J");
                     }
                 }
-                if (CellulesJeu[i][j].presenceTrouNoir()==true) {
-                    System.out.print("N");
-                }
+                
                 else {
                         System.out.print("/");
                 }
