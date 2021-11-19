@@ -67,7 +67,6 @@ public class Partie {
             TrN =grilleJeu.CellulesJeu[LigAl][ColAl];
          }
         grilleJeu.placerTrouNoir(LigAl, ColAl);
-//TrN.placerTrouNoir();
          
      }
  }    
@@ -103,12 +102,33 @@ public class Partie {
             } else {
                 joueurCourant=ListeJoueurs[0];
                 }
-            if (commande==2) {
-                
+         }
+        if (commande==2) {
+            System.out.println("Veuillez saisir les coordonées du jeton\n Colonne : ");
+            int colonne=sc.nextInt();
+            System.out.println("Ligne");
+            int ligne=sc.nextInt();
+            Jeton Jr = grilleJeu.recupererJeton(colonne,ligne);
+            //if (Jr.Couleur)
+            grilleJeu.tasserGrille();
+            if (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[0])==true && grilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])==true) {
+                System.out.println("Le perdant est "+joueurCourant.Nom);
+                return;
             }
-        }
-     System.out.println("Le perdant est "+joueurCourant.Nom);
+            if (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[0])) {
+                System.out.println("Le gagnant est "+ListeJoueurs[0].Nom);
+                return;
+            }
+            if (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])) {
+                System.out.println("Le gagnant est "+ListeJoueurs[1].Nom);
+                return;
+                }
+            }
+        
      
-    }       
+     
+    }
+     System.out.println("Le perdant est "+joueurCourant.Nom);       
  }
 }
+  
