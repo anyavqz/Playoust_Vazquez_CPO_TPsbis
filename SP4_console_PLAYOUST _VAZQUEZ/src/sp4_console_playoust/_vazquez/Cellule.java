@@ -24,6 +24,7 @@ public class Cellule {
     public boolean affecterJeton(Jeton j) {     
         if (jetonCourant==null) {
             jetonCourant=j;
+            activerTrouNoir();
             return true;
         } else {
             return false;
