@@ -63,7 +63,7 @@ public class Grille {
                     if ("Jaune".equals(CellulesJeu[i][j].jetonCourant.Couleur)) {
                         System.out.print("J");
                     }
-                } else {
+                } if (CellulesJeu[i][j].jetonCourant==null) {
                         System.out.print("/");
                 }
                 if (CellulesJeu[i][j].presenceTrouNoir()==true) {
