@@ -82,26 +82,33 @@ public class Partie {
          
          grilleJeu.afficherGrilleSurConsole();
          
-         System.out.println("Veuillez choisir une colonne");
-         int col=sc.nextInt()-1;
-         while (col>6 || col<0) {
-             System.out.println("Erreur ! Veuillez choisir une colonne");
-             col=sc.nextInt()-1;
-         }
+         System.out.println("Voulez-vous jouer un jeton ou récuperer un jeton ?\n 1) Jouer\n 2) Récuperer");
+         int commande=sc.nextInt();
+         if (commande==1){
+            System.out.println("Veuillez choisir une colonne");
+            int col=sc.nextInt()-1;
+            while (col>6 || col<0) {
+                System.out.println("Erreur ! Veuillez choisir une colonne");
+                col=sc.nextInt()-1;
+            }
          
-         Jeton jetonj=joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1];
-         joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1]=null;
-         joueurCourant.nombreJetonsRestants-=1;
-         
-         grilleJeu.ajouterJetonDansColonne(jetonj,col);
-         
-         if (joueurCourant==ListeJoueurs[0]) {
-             joueurCourant=ListeJoueurs[1];
-         } else {
-             joueurCourant=ListeJoueurs[0];
-         }
- }
+            Jeton jetonj=joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1];
+            joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1]=null;
+            joueurCourant.nombreJetonsRestants-=1;
+
+            grilleJeu.ajouterJetonDansColonne(jetonj,col);
+
+            if (joueurCourant==ListeJoueurs[0]) {
+                joueurCourant=ListeJoueurs[1];
+            } else {
+                joueurCourant=ListeJoueurs[0];
+                }
+            if (commande==2) {
+                
+            }
+        }
      System.out.println("Le perdant est "+joueurCourant.Nom);
      
-}
+    }       
+ }
 }
