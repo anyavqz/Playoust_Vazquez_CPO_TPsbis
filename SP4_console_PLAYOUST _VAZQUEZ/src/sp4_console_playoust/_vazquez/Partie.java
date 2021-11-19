@@ -57,6 +57,7 @@ public class Partie {
             ListeJoueurs[0].ajouterJeton(jJ);
         }
  }
+     Cellule tabDes [] = new Cellule[5];
      for (int i=0; i<5;i++) {
          int ColAl=generateurAleat.nextInt(6);
          int LigAl=generateurAleat.nextInt(5);
@@ -66,7 +67,21 @@ public class Partie {
             LigAl=generateurAleat.nextInt(5);
             TrN =grilleJeu.CellulesJeu[LigAl][ColAl];
          }
+         
         grilleJeu.placerTrouNoir(LigAl, ColAl);
+         if (i<2) {
+             tabDes[i]=grilleJeu.CellulesJeu[LigAl] [ColAl];
+             grilleJeu.placerDesintegrateur(LigAl, ColAl);
+         }
+     }
+     for (int j=2;j<5;j++) {
+         int ColAl=generateurAleat.nextInt(6);
+         int LigAl=generateurAleat.nextInt(5);
+         while (grilleJeu.CellulesJeu[LigAl][ColAl].presenceDesintegrateur()==true) {
+             ColAl=generateurAleat.nextInt(6);
+             LigAl=generateurAleat.nextInt(5);
+         }
+         grilleJeu.placerDesintegrateur(LigAl, ColAl);
          
      }
  }    
@@ -110,9 +125,8 @@ public class Partie {
                 System.out.println("Colonne");
                 colonne=sc.nextInt();
                 }
-            grilleJeu.recupererJeton(ligne-1,colonne-1);
-            joueurCourant.nombreJetonsRestants+=1;
-            
+            Jeton Jrecup=grilleJeu.recupererJeton(ligne-1,colonne-1);
+            joueurCourant.ajouterJeton(Jrecup);
             grilleJeu.tasserGrille();
             if (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[0])==true && grilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])==true) {
                 System.out.println("Le perdant est "+joueurCourant.Nom);
