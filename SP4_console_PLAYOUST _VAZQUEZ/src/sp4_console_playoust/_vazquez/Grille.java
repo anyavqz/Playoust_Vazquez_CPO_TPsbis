@@ -56,6 +56,8 @@ public class Grille {
             for (int j=0; j<7; j++) {
                 if (CellulesJeu[i][j].presenceTrouNoir()==true) {
                     System.out.print("N");
+                } else if (CellulesJeu[i][j].presenceDesintegrateur()==true) {
+                    System.out.print("D");
                 } else if (CellulesJeu[i][j].jetonCourant!=null) {
                     CellulesJeu[i][j].jetonCourant.lireCouleur();
                     if ("Rouge".equals(CellulesJeu[i][j].jetonCourant.Couleur)) {
@@ -64,9 +66,7 @@ public class Grille {
                     if ("Jaune".equals(CellulesJeu[i][j].jetonCourant.Couleur)) {
                         System.out.print("J");
                     }
-                }
-                
-                else {
+                } else {
                         System.out.print("/");
                 }
             } System.out.println("");
@@ -154,7 +154,7 @@ public class Grille {
     
     public Jeton recupererJeton(int L, int C) {
         Jeton refJeton = CellulesJeu[L][C].recupererJeton();
-        CellulesJeu[L][C].supprimerJeton();
+        supprimerJeton(L,C);
         return refJeton;
     }
     
