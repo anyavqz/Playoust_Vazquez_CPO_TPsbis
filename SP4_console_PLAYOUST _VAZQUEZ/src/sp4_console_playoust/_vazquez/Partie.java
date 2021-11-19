@@ -102,10 +102,17 @@ public class Partie {
             int ligne=sc.nextInt();
             System.out.println("Colonne");
             int colonne=sc.nextInt();
-            Jeton Jrecup = grilleJeu.recupererJeton(ligne-1,colonne-1);
-           // if (Jrecup.Couleur!=joueurCourant.Couleur) {
-                
-            //}
+            
+            while (grilleJeu.lireCouleurDuJeton(ligne-1,colonne-1)!=joueurCourant.Couleur) {
+                System.out.println("Erreur, vous ne pouvez pas retirer de jetons adverses");
+                System.out.println("Veuillez saisir les coordonées du jeton\n Ligne : ");
+                ligne=sc.nextInt();
+                System.out.println("Colonne");
+                colonne=sc.nextInt();
+                }
+            grilleJeu.recupererJeton(ligne-1,colonne-1);
+            joueurCourant.nombreJetonsRestants+=1;
+            
             grilleJeu.tasserGrille();
             if (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[0])==true && grilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])==true) {
                 System.out.println("Le perdant est "+joueurCourant.Nom);
