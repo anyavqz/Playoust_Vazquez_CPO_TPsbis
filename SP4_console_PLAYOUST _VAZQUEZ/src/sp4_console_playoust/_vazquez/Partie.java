@@ -98,11 +98,11 @@ public class Partie {
             grilleJeu.ajouterJetonDansColonne(jetonj,col);
          }
         if (commande==2) {
-            System.out.println("Veuillez saisir les coordonées du jeton\n Colonne : ");
-            int colonne=sc.nextInt();
-            System.out.println("Ligne");
+            System.out.println("Veuillez saisir les coordonées du jeton\n Ligne : ");
             int ligne=sc.nextInt();
-            Jeton Jrecup = grilleJeu.recupererJeton(colonne,ligne);
+            System.out.println("Colonne");
+            int colonne=sc.nextInt();
+            Jeton Jrecup = grilleJeu.recupererJeton(ligne-1,colonne-1);
            // if (Jrecup.Couleur!=joueurCourant.Couleur) {
                 
             //}
