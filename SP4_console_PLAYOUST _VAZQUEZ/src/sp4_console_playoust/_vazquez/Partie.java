@@ -96,20 +96,16 @@ public class Partie {
             joueurCourant.nombreJetonsRestants-=1;
 
             grilleJeu.ajouterJetonDansColonne(jetonj,col);
-
-            if (joueurCourant==ListeJoueurs[0]) {
-                joueurCourant=ListeJoueurs[1];
-            } else {
-                joueurCourant=ListeJoueurs[0];
-                }
          }
         if (commande==2) {
             System.out.println("Veuillez saisir les coordonées du jeton\n Colonne : ");
             int colonne=sc.nextInt();
             System.out.println("Ligne");
             int ligne=sc.nextInt();
-            Jeton Jr = grilleJeu.recupererJeton(colonne,ligne);
-            //if (Jr.Couleur)
+            Jeton Jrecup = grilleJeu.recupererJeton(colonne,ligne);
+            if (Jrecup.Couleur!=joueurCourant.Couleur) {
+                
+            }
             grilleJeu.tasserGrille();
             if (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[0])==true && grilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])==true) {
                 System.out.println("Le perdant est "+joueurCourant.Nom);
@@ -124,7 +120,11 @@ public class Partie {
                 return;
                 }
             }
-        
+            if (joueurCourant==ListeJoueurs[0]) {
+                    joueurCourant=ListeJoueurs[1];
+                } else {
+                    joueurCourant=ListeJoueurs[0];
+                    }
      
      
     }
