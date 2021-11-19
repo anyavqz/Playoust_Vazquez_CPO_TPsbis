@@ -103,9 +103,9 @@ public class Partie {
             System.out.println("Ligne");
             int ligne=sc.nextInt();
             Jeton Jrecup = grilleJeu.recupererJeton(colonne,ligne);
-            if (Jrecup.Couleur!=joueurCourant.Couleur) {
+           // if (Jrecup.Couleur!=joueurCourant.Couleur) {
                 
-            }
+            //}
             grilleJeu.tasserGrille();
             if (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[0])==true && grilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])==true) {
                 System.out.println("Le perdant est "+joueurCourant.Nom);
