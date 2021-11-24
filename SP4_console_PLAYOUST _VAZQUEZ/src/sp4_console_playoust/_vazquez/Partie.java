@@ -110,6 +110,7 @@ public class Partie {
             joueurCourant.nombreJetonsRestants-=1;
 
             grilleJeu.ajouterJetonDansColonne(jetonj,col);
+            
          }
         if (commande==2) {
             System.out.println("Veuillez saisir les coordonées du jeton\n Ligne : ");
