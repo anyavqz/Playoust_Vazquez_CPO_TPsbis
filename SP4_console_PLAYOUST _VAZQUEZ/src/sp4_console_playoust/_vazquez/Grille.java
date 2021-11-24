@@ -141,7 +141,7 @@ public class Grille {
     }
     
     public boolean placerDesintegrateur(int L, int C) {
-        return CellulesJeu[L][C].presenceDesintegrateur()==true;
+        return CellulesJeu[L][C].placerDesintegrateur()==true;
     }
     
     public boolean supprimerJeton(int L, int C) {

@@ -74,7 +74,7 @@ public class Partie {
              grilleJeu.placerDesintegrateur(LigAl, ColAl);
          }
      }
-     for (int j=2;j<5;j++) {
+     for (int j=0;j<3;j++) {
          int ColAl=generateurAleat.nextInt(6);
          int LigAl=generateurAleat.nextInt(5);
          while (grilleJeu.CellulesJeu[LigAl][ColAl].presenceDesintegrateur()==true) {
@@ -82,7 +82,6 @@ public class Partie {
              LigAl=generateurAleat.nextInt(5);
          }
          grilleJeu.placerDesintegrateur(LigAl, ColAl);
-         
      }
  }    
  public void debuterPartie() {
