@@ -4,6 +4,8 @@
  */
 package sp4_console_playoust._vazquez;
 
+import java.util.Random;
+
 /**
  *
  * @author anyavazquez
@@ -200,6 +202,9 @@ public class fenetreDeJeu extends javax.swing.JFrame {
 
         panneau_infos_joueurs.setVisible(true);
         panneau_infos_partie.setVisible(true);
+        initialiserPartie();
+        
+        
     }//GEN-LAST:event_btn_startActionPerformed
 
     /**
@@ -235,6 +240,79 @@ public class fenetreDeJeu extends javax.swing.JFrame {
                 new fenetreDeJeu().setVisible(true);
             }
         });
+    }
+    
+    Random generateurAleat = new Random ();
+    
+    public void initialiserPartie() {
+        //On initialise la grille
+     grilleJeu=new Grille();
+     
+     //Création de deux joueurs avec récupération des noms entrés par les joueurs dans les cases dédiées
+     
+     String nomJoueur1 = nom_joueur1.getText();
+     Joueur J1 = new Joueur(nomJoueur1);
+     
+     String nomJoueur2 = nom_joueur2.getText();
+     Joueur J2 = new Joueur(nomJoueur2);
+     
+     System.out.println(J1.Nom + " est de couleur " + J1.Couleur);
+     System.out.println(J2.Nom + " est de couleur " + J2.Couleur);
+     
+     // attribution de couleur aux deux joueurs 
+     attribuerCouleursAuxJoueurs();
+     
+     //On donne leurs jetons aux joueurs 
+     
+     for (int i=0;i<21;i++) {
+         
+        Jeton jR=new Jeton("Rouge");
+        Jeton jJ=new Jeton("Jaune");
+        if (ListeJoueurs[0].Couleur=="Rouge") {
+         ListeJoueurs[0].ajouterJeton(jR);
+         ListeJoueurs[1].ajouterJeton(jJ);
+        }
+        else {
+            ListeJoueurs[1].ajouterJeton(jR);
+            ListeJoueurs[0].ajouterJeton(jJ);
+        }
+     }
+     
+     //On génère les trous noirs et les désintégrateurs 
+     for (int i=0; i<5;i++) {
+         int ColAl=generateurAleat.nextInt(6);
+         int LigAl=generateurAleat.nextInt(5);
+         Cellule TrN =grilleJeu.CellulesJeu[LigAl][ColAl];
+         while (TrN.presenceTrouNoir()==true) {
+            ColAl=generateurAleat.nextInt(6);
+            LigAl=generateurAleat.nextInt(5);
+            TrN =grilleJeu.CellulesJeu[LigAl][ColAl];
+         }
+         // placement des trous noirs
+        grilleJeu.placerTrouNoir(LigAl, ColAl);
+         
+     }
+    }
+    
+    // méthode qui permet l'attribution des couleurs aléatoirement aux joueurs 
+    public void attribuerCouleursAuxJoueurs() {
+     int ch_couleur = generateurAleat.nextInt(1);
+     if (ch_couleur==0) {
+         
+         ListeJoueurs[0].affecterCouleur("Rouge");
+         ListeJoueurs[1].affecterCouleur("Jaune");
+         
+     } else {
+         
+         ListeJoueurs[0].affecterCouleur("Jaune");
+         ListeJoueurs[1].affecterCouleur("Rouge");
+              }
+    }
+    
+    
+    public void affecterCouleur(String couleurj) {
+        String Couleur;
+        Couleur=couleurj;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
