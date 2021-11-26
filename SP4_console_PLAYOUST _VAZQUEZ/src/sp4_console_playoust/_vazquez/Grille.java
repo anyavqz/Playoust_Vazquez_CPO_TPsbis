@@ -12,6 +12,9 @@ package sp4_console_playoust._vazquez;
 public class Grille {
     Cellule CellulesJeu [][];
     
+    /**
+     * Constructeur de la classe grille.
+     */
     public Grille() {
         CellulesJeu= new Cellule [6][7];
         for (int i=0; i < 6; i++) {
@@ -21,6 +24,12 @@ public class Grille {
         }
     }
     
+    /**
+     * Permet d'ajouter un jeton dans une colonne de la grille.
+     * @param J : le jeton à ajouter
+     * @param Colonne : la colonne où est ajoutée le jeton
+     * @return true ou false si l'ajout s'est bien passé
+     */
     public boolean ajouterJetonDansColonne(Jeton J, int Colonne) {
         for (int i=5; i>=0; i--) {
             if (CellulesJeu[i][Colonne].affecterJeton(J)==true){
@@ -30,6 +39,11 @@ public class Grille {
         return false;
     }
     
+    /**
+     * Permet de vérifier si une colonne est remplie
+     * @param col : le numéro de la colonne à vérifier 
+     * @return true ou false si la colonne est remplie ou non
+     */
     public boolean colonneRemplie(int col) {
         boolean remplie=true;
         for (int i=0; i<6; i++) {
@@ -40,6 +54,10 @@ public class Grille {
         return remplie;
     }
     
+    /**
+     * Permet de vérifier si la grille est remplie ou non.
+     * @return true ou false si la grille est remplie ou non
+     */
     public boolean etreRemplie () {
         boolean EtatGrille = true;
         int i=0;
@@ -52,18 +70,10 @@ public class Grille {
         }
         return EtatGrille;
     }
-    //public boolean etreRemplie() {
-        //boolean EtatGrille = true;
-        //for (int i=0; i<7; i++) {
-            //if (CellulesJeu[0][i].jetonCourant==null) {
-                //EtatGrille = false;
-                //return EtatGrille;
-            //}
-        //}
-        //return EtatGrille;      
-    //}
     
-    
+    /**
+     * Permet de vider la grille. Réinitialise toute la grille
+     */
     public void viderGrille() {
         for (int i=0; i<6; i++) {
             for (int j = 0; i<7; i++) {
@@ -72,6 +82,9 @@ public class Grille {
         }
     }
     
+    /**
+     * Permet d'afficher la grille dans la console
+     */
     public void afficherGrilleSurConsole() {
         for (int i=0; i<6; i++) {
             for (int j=0; j<7; j++) {
@@ -94,8 +107,12 @@ public class Grille {
         }
     }
         
-    
-    
+    /**
+     * Permet de savoir si la cellule est occupée par un jeton ou non
+     * @param L : la ligne de la cellule 
+     * @param C : la colonne de la cellule
+     * @return true ou false si la cellule est occupée ou non
+     */
     public boolean celluleOccupee(int L, int C) {
         if (CellulesJeu[L][C].jetonCourant!=null) {
             return true;
@@ -103,11 +120,22 @@ public class Grille {
         return false;
     }
     
+    /**
+     * Permet de lire la couleur du jeton dans la celllule
+     * @param L : la ligne de la cellule
+     * @param C : la colonne de la cellule
+     * @return la couleur du jeton
+     */
     public String lireCouleurDuJeton(int L, int C) {
         String couleurCourante = CellulesJeu[L][C].jetonCourant.Couleur;
         return couleurCourante;
     }
     
+    /**
+     * Permet de vérifier si la partie est gagnée par un joueur
+     * @param Player : joueur testé pour savoir si il a gagné
+     * @return true ou false si le joueur a gagné ou non
+     */
     public boolean etreGagnantePourJoueur(Joueur Player) {
         String Color = Player.Couleur;
         for (int i = 0; i< 6; i++) {
@@ -142,6 +170,10 @@ public class Grille {
         
     }
     
+    /**
+     * Permet de tasser une colonne 
+     * @param col : colonne à tasser
+     */
     public void tasserGrille(int col) {
         for (int i=5; i>0; i--) {
             if (celluleOccupee(i , col)==false) {
@@ -151,20 +183,41 @@ public class Grille {
         }  
     }
     
+    /**
+     * Permet de tasser toute la grille
+     */
     public void tasserGrille() {
         for (int i=0; i<7; i++) {
             tasserGrille(i);
         }
     }
     
+    /**
+     * Permet de placer un trou noir
+     * @param L : ligne de la cellule 
+     * @param C : colonne de la cellule 
+     * @return  true ou false si le trou noir a bien été placé
+     */
     public boolean placerTrouNoir(int L, int C) {
         return CellulesJeu[L][C].placerTrouNoir()==true;
     }
     
+    /**
+     * Permet de placer un désintégrateur
+     * @param L : ligne de la cellule
+     * @param C : colonne de la cellule
+     * @return true ou false si le désintégrateur a bien été placé
+     */
     public boolean placerDesintegrateur(int L, int C) {
         return CellulesJeu[L][C].placerDesintegrateur()==true;
     }
     
+    /**
+     * Permet de supprimer un jeton
+     * @param L : ligne de la cellule
+     * @param C : colonne de la cellule
+     * @return true ou false si le jeton a bien été supprimé
+     */
     public boolean supprimerJeton(int L, int C) {
         if (CellulesJeu[L][C].jetonCourant!=null) {
             CellulesJeu[L][C].supprimerJeton();
@@ -173,14 +226,16 @@ public class Grille {
         return false;
     }
     
+    /**
+     * Permet de récuperer un jeton
+     * @param L : ligne de la cellule
+     * @param C : colonne de la cellule
+     * @return référence du jeton récuperé
+     */
     public Jeton recupererJeton(int L, int C) {
         Jeton refJeton = CellulesJeu[L][C].recupererJeton();
         supprimerJeton(L,C);
         return refJeton;
     }
-    
-    
-    
-    
     
 }

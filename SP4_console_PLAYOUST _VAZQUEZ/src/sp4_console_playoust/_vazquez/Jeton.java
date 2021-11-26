@@ -12,9 +12,18 @@ package sp4_console_playoust._vazquez;
 public class Jeton {
     String Couleur;
     
+    /**
+     * Constructeur de la classe jeton. Affecte la couleur du jeton rentrée en paramètre au jeton
+     * @param CouleurJeton : couleur à affecter
+     */
     public Jeton(String CouleurJeton) {
         Couleur=CouleurJeton;  
     }
+
+    /**
+     * Permet de connaitre la couleur du jeton
+     * @return la couleur du jeton
+     */
     public String lireCouleur() {
         return Couleur;
     }
