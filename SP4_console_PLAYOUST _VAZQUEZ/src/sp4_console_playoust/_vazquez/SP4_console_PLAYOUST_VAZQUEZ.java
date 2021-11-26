@@ -20,6 +20,7 @@ public class SP4_console_PLAYOUST_VAZQUEZ {
         Partie Partie = new Partie(J1,J2);
         Partie.debuterPartie();
         System.out.println(J2.Couleur);
+                
         
            
     }
