@@ -30,18 +30,39 @@ public class Grille {
         return false;
     }
     
-    public boolean etreRemplie() {
+    public boolean colonneRemplie(int col) {
+        boolean remplie=true;
+        for (int i=0; i<6; i++) {
+            if (CellulesJeu[i][col].jetonCourant==null) {
+                remplie=false;
+            } 
+        }
+        return remplie;
+    }
+    
+    public boolean etreRemplie () {
         boolean EtatGrille = true;
-        for (int i=0; i<7; i++) {
-            if (CellulesJeu[0][i].jetonCourant==null) {
-                EtatGrille = false;
+        int i=0;
+        while (EtatGrille==true) {
+            EtatGrille=colonneRemplie(i);
+            i+=1;
+            if (i==7) {
                 return EtatGrille;
             }
         }
         return EtatGrille;
-        
-            
     }
+    //public boolean etreRemplie() {
+        //boolean EtatGrille = true;
+        //for (int i=0; i<7; i++) {
+            //if (CellulesJeu[0][i].jetonCourant==null) {
+                //EtatGrille = false;
+                //return EtatGrille;
+            //}
+        //}
+        //return EtatGrille;      
+    //}
+    
     
     public void viderGrille() {
         for (int i=0; i<6; i++) {

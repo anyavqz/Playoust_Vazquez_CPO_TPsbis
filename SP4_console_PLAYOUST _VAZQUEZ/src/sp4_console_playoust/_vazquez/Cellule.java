@@ -25,6 +25,7 @@ public class Cellule {
         if (jetonCourant==null) {
             jetonCourant=j;
             activerTrouNoir();
+            recupererDesintegrateur();
             return true;
         } else {
             return false;
