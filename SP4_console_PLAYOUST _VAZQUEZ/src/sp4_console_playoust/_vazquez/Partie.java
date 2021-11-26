@@ -51,43 +51,53 @@ public class Partie {
         if (ListeJoueurs[0].Couleur=="Rouge") {
          ListeJoueurs[0].ajouterJeton(jR);
          ListeJoueurs[1].ajouterJeton(jJ);
-     }
+        }
         else {
             ListeJoueurs[1].ajouterJeton(jR);
             ListeJoueurs[0].ajouterJeton(jJ);
         }
- }
+    } 
+    
      Cellule tabDes [] = new Cellule[5];
+     
      for (int i=0; i<5;i++) {
+         
          int ColAl=generateurAleat.nextInt(6);
          int LigAl=generateurAleat.nextInt(5);
          Cellule TrN =grilleJeu.CellulesJeu[LigAl][ColAl];
+         
          while (TrN.presenceTrouNoir()==true) {
             ColAl=generateurAleat.nextInt(6);
             LigAl=generateurAleat.nextInt(5);
             TrN =grilleJeu.CellulesJeu[LigAl][ColAl];
          }
          
-        grilleJeu.placerTrouNoir(LigAl, ColAl);
+         grilleJeu.placerTrouNoir(LigAl, ColAl);
+         
          if (i<2) {
              tabDes[i]=grilleJeu.CellulesJeu[LigAl] [ColAl];
              grilleJeu.placerDesintegrateur(LigAl, ColAl);
          }
      }
+     
      for (int j=0;j<3;j++) {
          int ColAl=generateurAleat.nextInt(6);
          int LigAl=generateurAleat.nextInt(5);
+         
          while (grilleJeu.CellulesJeu[LigAl][ColAl].presenceDesintegrateur()==true) {
              ColAl=generateurAleat.nextInt(6);
              LigAl=generateurAleat.nextInt(5);
          }
+         
          grilleJeu.placerDesintegrateur(LigAl, ColAl);
      }
- }    
+ }
+ 
  public void debuterPartie() {
      
      initialiserPartie();
      
+     // Détermination du premier joueur
      int P1J=generateurAleat.nextInt(1);
      joueurCourant=ListeJoueurs[P1J];
      
@@ -95,33 +105,37 @@ public class Partie {
          
          grilleJeu.afficherGrilleSurConsole();
          
-         
          int ligne=-1;
          int colonne=-1;
          int commande=0;
+         
          boolean Valide=false;
+         
          while (Valide==false) {
              System.out.println("Voulez-vous jouer un jeton ou récuperer un jeton ou désintegrer un jeton ?\n 1) Jouer\n 2) Récuperer\n 3) Désintégrer \n Vous avez "+ joueurCourant.nombreDesintegrateurs+" désintégrateurs");
              commande=sc.nextInt();
+             
              if (commande==1){
                  System.out.println("Veuillez choisir une colonne");
                  colonne=sc.nextInt()-1;
                  if ( colonne<=6 && colonne>=0 && grilleJeu.colonneRemplie(colonne)==false) {
                      Valide=true;
-                    } else {
+                 } else {
                      System.out.println("Erreur, choisissez une autre colonne");
-                    }
-                }
+                   }
+             }    
              
              if (commande==2) {
                  System.out.println("Veuillez saisir les coordonées du jeton\n Ligne : ");
                  ligne=sc.nextInt()-1;
+                 
                  System.out.println("Colonne");
                  colonne=sc.nextInt()-1;
+                 
                  if (grilleJeu.lireCouleurDuJeton(ligne-1,colonne-1)==joueurCourant.Couleur) {
                      Valide=true;
-                    }
-                }
+                 }
+             }
              
              if (commande == 3) {
                  if (joueurCourant.nombreDesintegrateurs!=0) {
@@ -131,16 +145,16 @@ public class Partie {
                     colonne=sc.nextInt()-1;
                     if (grilleJeu.celluleOccupee(ligne, colonne)==true && grilleJeu.lireCouleurDuJeton(ligne, colonne)!=joueurCourant.Couleur) {
                         Valide=true;
-                        } 
+                     } 
                     else {
                         System.out.println("Vous ne pouvez pas désintegrer de case vide ou un de vos jetons ");
-                        }
-                    } 
+                     }
+                 } 
                  else {
                      System.out.println("Vous n'avez pas de désintégrateurs");
-                    }
-                }
-        }
+                 }
+             }
+         }
          if (commande==1){
              
             Jeton jetonj=joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1];
