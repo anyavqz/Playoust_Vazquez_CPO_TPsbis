@@ -16,16 +16,29 @@ public class Joueur {
     String Couleur; 
     int nombreJetonsRestants=0;
     int nombreDesintegrateurs;
-    Jeton ListeJetons [] = new Jeton[21] ;  // Creation des attributs de la classe joueur.
+    Jeton ListeJetons [] = new Jeton[21] ;
     
+    /**
+     * Constructeur de la classe Joueur. Attribue le nom rentré en paramètre au joueur
+     * @param nomj : nom à affecter
+     */
     public Joueur(String nomj) {
         Nom=nomj;
-    }       // On construit la classe joueur en lui attribuant son nom qui est rentré dans les paramètres du constructeur.
+    }
     
+    /**
+     * Permet d'affecter une couleur au joueur
+     * @param couleurj : couleur à affecter au joueur.
+     */
     public void affecterCouleur(String couleurj) {
         Couleur=couleurj;
-    }       // On affecte la couleur rentrée en paramètre au joueur
+    }
     
+    /**
+     * Permet d'ajouter un jeton a la liste de jeton du joueur.
+     * @param j : le jeton à ajouter à la liste.
+     * @return true ou false si l'ajout s'est bien passé ou non.
+     */
     public boolean ajouterJeton(Jeton j) {
         int i=0;
         while (ListeJetons[i]!=null) {
@@ -37,14 +50,19 @@ public class Joueur {
         ListeJetons[i]=j;
         nombreJetonsRestants+=1;
         return true;
-            }                           // On ajoute le jeton j dans la première case vide du tableau ListeJetons qui est parcouru entièrement.
-                                        // On incrémente le nombre de jetons restants du joueur et on vérifie si l'ajout du jeton s'est bien déroulé
+            }
 
-
+    /**
+     *Permet d'incrémenter le nombre de désintégrateurs.
+     */
     public void obtenirDesintegrateur() {
         nombreDesintegrateurs+=1;
-        }                                   // On incrémente le nombre de désintégrateurs.
+        }
     
+    /**
+     * Permet de désincrémenter le nombre de désintégrateurs.
+     * @return true ou false si la méthode s'est bien passée ou non
+     */
     public boolean utiliserDesintegrateur() {
         if (nombreDesintegrateurs>=1) {
             nombreDesintegrateurs-=1;
@@ -52,8 +70,7 @@ public class Joueur {
         } 
         return false;
     }
-                                            // On désincrémente le nombre de désintégrateurs. On vérifie que la méthode la désincrémentation s'est bien passée.
-        
+            
 }
         
     

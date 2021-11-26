@@ -63,8 +63,8 @@ public class Cellule {
     }
     
     /**
-     *
-     * @return
+     * Permet de supprimer le jeton dans une cellule
+     * @return true ou false si le jeton a bien été supprimé
      */
     public boolean supprimerJeton() {
         if (jetonCourant!=null) {
@@ -74,6 +74,10 @@ public class Cellule {
         return false;
     }
     
+    /**
+     * Permet de placer un trou noir dans la cellule
+     * @return true ou false si le trou noir a bien été placé
+     */
     public boolean placerTrouNoir() {
         if (trouNoir==false) {
             trouNoir=true;
@@ -84,6 +88,10 @@ public class Cellule {
         
     }
     
+    /**
+     * Permet de placer un désintegrateur dans la cellule
+     * @return true ou false si le désintégrateur a bien été placé
+     */
     public boolean placerDesintegrateur() {
         if (desintegrateur==false) {
             desintegrateur=true;
@@ -93,14 +101,26 @@ public class Cellule {
         }
     }
     
+    /**
+     * Permet de savoir si il y a un trou noir ou non
+     * @return true ou false si il y a un trou noir ou non
+     */
     public boolean presenceTrouNoir() {
         return trouNoir;
     }
     
+    /**
+     * Permet de savoir si il y a un désintégrateur ou non
+     * @return true ou false selon si il y un désintégrateur
+     */
     public boolean presenceDesintegrateur() {
         return desintegrateur;
     }
     
+    /**
+     * Permet de récuperer un désintagrateur
+     * @return true ou false si le désintégrateur a bien été récupéré.
+     */
     public boolean recupererDesintegrateur() {
         if (desintegrateur == true) {
             desintegrateur = false;
@@ -109,6 +129,10 @@ public class Cellule {
         return false;
     }
     
+    /**
+     * Permet d'activer le trou noir dans la cellule
+     * @return true ou false si le trou noir est bien activé
+     */
     public boolean activerTrouNoir() {
         if (jetonCourant!=null && trouNoir==true) {
             jetonCourant=null;
