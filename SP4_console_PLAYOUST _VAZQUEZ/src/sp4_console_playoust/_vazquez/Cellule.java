@@ -14,13 +14,22 @@ public class Cellule {
     Jeton jetonCourant;
     boolean trouNoir;
     boolean desintegrateur;
-    
+                                            // Crétation des attributs de la classe Cellule
+
+    /**
+     * Constructeur de la classe Cellule. Affecte à ses attributs des valeurs par défaut.
+     */
     public Cellule() {
         jetonCourant= null;
         trouNoir=false;
         desintegrateur=false;
-    }
+    }                                      
     
+    /**
+     * Permet d'affecter un jeton
+     * @param j : jeton a affecter
+     * @return true ou false selon si la méthode s'est bien déroulée ou non
+     */
     public boolean affecterJeton(Jeton j) {     
         if (jetonCourant==null) {
             jetonCourant=j;
@@ -32,10 +41,18 @@ public class Cellule {
         }
     }
     
+    /**
+     * Renvoie une référence vers le jeton à récuperer 
+     * @return jetonCourant
+     */
     public Jeton recupererJeton() {
         return jetonCourant;
     }
     
+    /**
+     * Permet de lire la couleur du jeton compris dans la cellule
+     * @return la couleur du jeton dans la cellule ou "vide" si il n'y a pas de jeton
+     */
     public String lireCouleurDuJeton() {
         if (jetonCourant!=null) {
             return jetonCourant.Couleur;
@@ -45,6 +62,10 @@ public class Cellule {
         
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean supprimerJeton() {
         if (jetonCourant!=null) {
             jetonCourant=null;

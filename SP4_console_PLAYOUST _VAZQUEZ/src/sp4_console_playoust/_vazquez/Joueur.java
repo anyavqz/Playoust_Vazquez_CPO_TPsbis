@@ -16,15 +16,15 @@ public class Joueur {
     String Couleur; 
     int nombreJetonsRestants=0;
     int nombreDesintegrateurs;
-    Jeton ListeJetons [] = new Jeton[21] ;
+    Jeton ListeJetons [] = new Jeton[21] ;  // Creation des attributs de la classe joueur.
     
     public Joueur(String nomj) {
         Nom=nomj;
-    }
+    }       // On construit la classe joueur en lui attribuant son nom qui est rentré dans les paramètres du constructeur.
     
     public void affecterCouleur(String couleurj) {
         Couleur=couleurj;
-    }
+    }       // On affecte la couleur rentrée en paramètre au joueur
     
     public boolean ajouterJeton(Jeton j) {
         int i=0;
@@ -37,12 +37,13 @@ public class Joueur {
         ListeJetons[i]=j;
         nombreJetonsRestants+=1;
         return true;
-            }   
+            }                           // On ajoute le jeton j dans la première case vide du tableau ListeJetons qui est parcouru entièrement.
+                                        // On incrémente le nombre de jetons restants du joueur et on vérifie si l'ajout du jeton s'est bien déroulé
 
 
     public void obtenirDesintegrateur() {
         nombreDesintegrateurs+=1;
-        }
+        }                                   // On incrémente le nombre de désintégrateurs.
     
     public boolean utiliserDesintegrateur() {
         if (nombreDesintegrateurs>=1) {
@@ -51,7 +52,7 @@ public class Joueur {
         } 
         return false;
     }
-    
+                                            // On désincrémente le nombre de désintégrateurs. On vérifie que la méthode la désincrémentation s'est bien passée.
         
 }
         

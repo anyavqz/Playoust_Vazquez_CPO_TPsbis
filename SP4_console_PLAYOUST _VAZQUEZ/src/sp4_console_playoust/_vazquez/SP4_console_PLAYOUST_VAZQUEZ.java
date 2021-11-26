@@ -19,7 +19,6 @@ public class SP4_console_PLAYOUST_VAZQUEZ {
         Joueur J2 = new Joueur("Petasse");
         Partie Partie = new Partie(J1,J2);
         Partie.debuterPartie();
-        System.out.println(J2.Couleur);
                 
         
            
