@@ -95,7 +95,7 @@ public class Partie {
          
          grilleJeu.afficherGrilleSurConsole();
          
-         System.out.println("Voulez-vous jouer un jeton ou récuperer un jeton ?\n 1) Jouer\n 2) Récuperer");
+         System.out.println("Voulez-vous jouer un jeton ou récuperer un jeton ou désintegrer un jeton ?\n 1) Jouer\n 2) Récuperer\n 3) Désintégrer \n Vous avez "+ joueurCourant.nombreDesintegrateurs+" désintégrateurs");
          int commande=sc.nextInt();
          if (commande==1){
             System.out.println("Veuillez choisir une colonne");
