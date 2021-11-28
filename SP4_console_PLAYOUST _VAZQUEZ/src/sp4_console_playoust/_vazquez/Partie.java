@@ -84,7 +84,7 @@ public class Partie {
          int ColAl=generateurAleat.nextInt(6);
          int LigAl=generateurAleat.nextInt(5);
          
-         while (grilleJeu.CellulesJeu[LigAl][ColAl].presenceDesintegrateur()==true) {
+         while (grilleJeu.CellulesJeu[LigAl][ColAl].presenceDesintegrateur()==true && grilleJeu.CellulesJeu[LigAl][ColAl].presenceTrouNoir()==true) {
              ColAl=generateurAleat.nextInt(6);
              LigAl=generateurAleat.nextInt(5);
          }
@@ -169,6 +169,13 @@ public class Partie {
             }
             grilleJeu.ajouterJetonDansColonne(jetonj,colonne);
             
+            if (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[0])) {
+                System.out.println("Le gagnant est "+ListeJoueurs[0].Nom);
+            }
+            if (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])) {
+                System.out.println("Le gagnant est "+ListeJoueurs[1].Nom);
+                }
+            
          }
         if (commande==2) {
             
@@ -194,6 +201,17 @@ public class Partie {
                 grilleJeu.supprimerJeton(ligne, colonne);
                 grilleJeu.tasserGrille();
                 
+                if (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[0])==true && grilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])==true) {
+                    if (joueurCourant==ListeJoueurs[0]) {
+                        System.out.println("Le gagnant est " + ListeJoueurs[1]);
+                    } else {
+                        System.out.println("Le gagnant est " + ListeJoueurs[0]);
+                    }
+                } else if (grilleJeu.etreGagnantePourJoueur(ListeJoueurs [0])) {
+                    System.out.println("Le gagnant est "+ListeJoueurs[0]);
+                } else if (grilleJeu.etreGagnantePourJoueur(ListeJoueurs [1])) {
+                    System.out.println("Le gagnant est "+ListeJoueurs[1]);
+                }
             }
         
             if (joueurCourant==ListeJoueurs[0]) {
@@ -202,13 +220,6 @@ public class Partie {
                     joueurCourant=ListeJoueurs[0];
                     }
         }
-            if (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[0])) {
-                System.out.println("Le gagnant est "+ListeJoueurs[0].Nom);
-            }
-            if (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])) {
-                System.out.println("Le gagnant est "+ListeJoueurs[1].Nom);
-                }
-    
     }
  }     
 
