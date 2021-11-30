@@ -96,7 +96,7 @@ public class Partie {
          int ColAl=generateurAleat.nextInt(6);
          int LigAl=generateurAleat.nextInt(5);
          
-         while (grilleJeu.CellulesJeu[LigAl][ColAl].presenceDesintegrateur()==true && grilleJeu.CellulesJeu[LigAl][ColAl].presenceTrouNoir()==true) {
+         while (grilleJeu.CellulesJeu[LigAl][ColAl].presenceDesintegrateur()==true || grilleJeu.CellulesJeu[LigAl][ColAl].presenceTrouNoir()==true) {
              ColAl=generateurAleat.nextInt(6);
              LigAl=generateurAleat.nextInt(5);
          }
@@ -219,7 +219,7 @@ public class Partie {
                 
                 if (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[0])==true && grilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])==true) {
                     if (joueurCourant==ListeJoueurs[0]) {
-                        System.out.println("Le gagnant est " + ListeJoueurs[1]);
+                        System.out.println("Le gagnant est " + ListeJoueurs[1].Nom);
                     } else {
                         System.out.println("Le gagnant est " + ListeJoueurs[0]);
                     }
