@@ -209,6 +209,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         panneau_infos_partie.setVisible(true);
         initialiserPartie();
         panneau_grille.repaint();
+        btn_start.setEnabled(false);
         
         
     }//GEN-LAST:event_btn_startActionPerformed
@@ -270,69 +271,90 @@ public class fenetreDeJeu extends javax.swing.JFrame {
     }
 
     public void initialiserPartie() {
-        //On initialise la grille
-        grilleJeu = new Grille();
+    //On initialise la grille
+     grilleJeu=new Grille();
+     
+     //Création de deux joueurs avec récupération des noms entrés par les joueurs dans les cases dédiées
+    String nomJoueur1 = nom_joueur1.getText();
+    Joueur J1 = new Joueur(nomJoueur1);
 
-        //Création de deux joueurs avec récupération des noms entrés par les joueurs dans les cases dédiées
-        String nomJoueur1 = nom_joueur1.getText();
-        Joueur J1 = new Joueur(nomJoueur1);
+    String nomJoueur2 = nom_joueur2.getText();
+    Joueur J2 = new Joueur(nomJoueur2);
 
-        String nomJoueur2 = nom_joueur2.getText();
-        Joueur J2 = new Joueur(nomJoueur2);
+    ListeJoueurs[0] = J1;
+    ListeJoueurs[1] = J2;
 
-        ListeJoueurs[0] = J1;
-        ListeJoueurs[1] = J2;
+    // attribution de couleur aux deux joueurs 
+     attribuerCouleursAuxJoueurs();
+             
+     System.out.println(J1.Nom + " est de couleur " + J1.Couleur);
+     System.out.println(J2.Nom + " est de couleur " + J2.Couleur);
+     
+     lbl_j1_nom.setText(nomJoueur1);
+     lbl_j2_nom.setText(nomJoueur2);
+     lbl_j1_couleur.setText(J1.Couleur);
+     lbl_j2_couleur.setText(J2.Couleur);
+     lbl_j1_desint.setText(J1.nombreDesintegrateurs+"");
+     lbl_j2_desint.setText(J2.nombreDesintegrateurs+"");
+     
 
-        // attribution de couleur aux deux joueurs 
-        attribuerCouleursAuxJoueurs();
-
-        System.out.println(J1.Nom + " est de couleur " + J1.Couleur);
-        System.out.println(J2.Nom + " est de couleur " + J2.Couleur);
-
-        //On donne leurs jetons aux joueurs 
-        for (int i = 0; i < 21; i++) {
-
-            Jeton jR = new Jeton("Rouge");
-            Jeton jJ = new Jeton("Jaune");
-            if (ListeJoueurs[0].Couleur == "Rouge") {
-                ListeJoueurs[0].ajouterJeton(jR);
-                ListeJoueurs[1].ajouterJeton(jJ);
-            } else {
-                ListeJoueurs[1].ajouterJeton(jR);
-                ListeJoueurs[0].ajouterJeton(jJ);
-            }
+     
+     //On donne leurs jetons aux joueurs
+     for (int i=0;i<21;i++) {
+         
+        Jeton jR=new Jeton("Rouge");
+        Jeton jJ=new Jeton("Jaune");
+        if (ListeJoueurs[0].Couleur=="Rouge") {
+         ListeJoueurs[0].ajouterJeton(jR);
+         ListeJoueurs[1].ajouterJeton(jJ);
         }
-
-        //On génère les trous noirs et les désintégrateurs 
-        for (int i = 0; i < 5; i++) {
-            int ColAl = generateurAleat.nextInt(6);
-            int LigAl = generateurAleat.nextInt(5);
-            Cellule TrN = grilleJeu.CellulesJeu[LigAl][ColAl];
-            while (TrN.presenceTrouNoir() == true) {
-                ColAl = generateurAleat.nextInt(6);
-                LigAl = generateurAleat.nextInt(5);
-                TrN = grilleJeu.CellulesJeu[LigAl][ColAl];
-            }
-            // placement des trous noirs
-            grilleJeu.placerTrouNoir(LigAl, ColAl);
-
-            if (i < 2) {
-                grilleJeu.placerDesintegrateur(LigAl, ColAl);
-            }
+        else {
+            ListeJoueurs[1].ajouterJeton(jR);
+            ListeJoueurs[0].ajouterJeton(jJ);
         }
-
-        for (int j = 0; j < 3; j++) {
-            int ColAl = generateurAleat.nextInt(6);
-            int LigAl = generateurAleat.nextInt(5);
-
-            while (grilleJeu.CellulesJeu[LigAl][ColAl].presenceDesintegrateur() == true) {
-                ColAl = generateurAleat.nextInt(6);
-                LigAl = generateurAleat.nextInt(5);
-            }
-
-            grilleJeu.placerDesintegrateur(LigAl, ColAl);
-        }
-    }
+    } 
+     
+     Random r = new Random ();
+     boolean premier = r.nextBoolean();
+     if (premier) {
+         
+     }
+     
+     
+     lbl_jcourant.setText(joueurCourant.Nom);
+     
+     //On génère les trous noirs et les désintégrateurs 
+     for (int i=0; i<5;i++) {
+         
+         int ColAl=generateurAleat.nextInt(6);
+         int LigAl=generateurAleat.nextInt(5);
+         Cellule TrN =grilleJeu.CellulesJeu[LigAl][ColAl];
+         
+         while (TrN.presenceTrouNoir()==true) {
+            ColAl=generateurAleat.nextInt(6);
+            LigAl=generateurAleat.nextInt(5);
+            TrN =grilleJeu.CellulesJeu[LigAl][ColAl];
+         }
+         
+         grilleJeu.placerTrouNoir(LigAl, ColAl);
+         
+         if (i<2) {
+             grilleJeu.placerDesintegrateur(LigAl, ColAl);
+         }
+     }
+     
+     for (int j=0;j<3;j++) {
+         int ColAl=generateurAleat.nextInt(6);
+         int LigAl=generateurAleat.nextInt(5);
+         
+         while (grilleJeu.CellulesJeu[LigAl][ColAl].presenceDesintegrateur()==true || grilleJeu.CellulesJeu[LigAl][ColAl].presenceTrouNoir()==true) {
+             ColAl=generateurAleat.nextInt(6);
+             LigAl=generateurAleat.nextInt(5);
+         }
+         
+         grilleJeu.placerDesintegrateur(LigAl, ColAl);
+     }
+ }
 
     public boolean placerTrouNoir() {
         if (trouNoir == false) {
