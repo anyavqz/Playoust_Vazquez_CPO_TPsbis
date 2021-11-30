@@ -52,10 +52,15 @@ public class Partie {
      */
     
     public void initialiserPartie() {
+    //On initialise la grille
      grilleJeu=new Grille();
-     
+  
+
+    // attribution de couleur aux deux joueurs 
      attribuerCouleursAuxJoueurs();
+
      
+     //On donne leurs jetons aux joueurs
      for (int i=0;i<21;i++) {
          
         Jeton jR=new Jeton("Rouge");
@@ -70,6 +75,7 @@ public class Partie {
         }
     } 
      
+     //On génère les trous noirs et les désintégrateurs 
      for (int i=0; i<5;i++) {
          
          int ColAl=generateurAleat.nextInt(6);
