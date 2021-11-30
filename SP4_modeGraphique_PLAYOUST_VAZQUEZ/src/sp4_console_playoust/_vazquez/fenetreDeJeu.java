@@ -14,6 +14,11 @@ public class fenetreDeJeu extends javax.swing.JFrame {
     Joueur ListeJoueurs [] = new Joueur[2];
     Joueur joueurCourant;
     Grille grilleJeu = new Grille();
+    String Couleur;
+    Jeton jetonCourant;
+    boolean trouNoir;
+    boolean desintegrateur;
+    Cellule CellulesJeu [][];
     /**
      * Creates new form fenetreDeJeu
      */
@@ -203,6 +208,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         panneau_infos_joueurs.setVisible(true);
         panneau_infos_partie.setVisible(true);
         initialiserPartie();
+        panneau_grille.repaint();
         
         
     }//GEN-LAST:event_btn_startActionPerformed
@@ -244,76 +250,128 @@ public class fenetreDeJeu extends javax.swing.JFrame {
     
     Random generateurAleat = new Random ();
     
-    public void initialiserPartie() {
-        //On initialise la grille
-     grilleJeu=new Grille();
-     
-     //Création de deux joueurs avec récupération des noms entrés par les joueurs dans les cases dédiées
-     
-     String nomJoueur1 = nom_joueur1.getText();
-     Joueur J1 = new Joueur(nomJoueur1);
-     
-     String nomJoueur2 = nom_joueur2.getText();
-     Joueur J2 = new Joueur(nomJoueur2);
-     
-     System.out.println(J1.Nom + " est de couleur " + J1.Couleur);
-     System.out.println(J2.Nom + " est de couleur " + J2.Couleur);
-     
-     // attribution de couleur aux deux joueurs 
-     attribuerCouleursAuxJoueurs();
-     
-     //On donne leurs jetons aux joueurs 
-     
-     for (int i=0;i<21;i++) {
-         
-        Jeton jR=new Jeton("Rouge");
-        Jeton jJ=new Jeton("Jaune");
-        if (ListeJoueurs[0].Couleur=="Rouge") {
-         ListeJoueurs[0].ajouterJeton(jR);
-         ListeJoueurs[1].ajouterJeton(jJ);
-        }
-        else {
-            ListeJoueurs[1].ajouterJeton(jR);
-            ListeJoueurs[0].ajouterJeton(jJ);
-        }
-     }
-     
-     //On génère les trous noirs et les désintégrateurs 
-     for (int i=0; i<5;i++) {
-         int ColAl=generateurAleat.nextInt(6);
-         int LigAl=generateurAleat.nextInt(5);
-         Cellule TrN =grilleJeu.CellulesJeu[LigAl][ColAl];
-         while (TrN.presenceTrouNoir()==true) {
-            ColAl=generateurAleat.nextInt(6);
-            LigAl=generateurAleat.nextInt(5);
-            TrN =grilleJeu.CellulesJeu[LigAl][ColAl];
-         }
-         // placement des trous noirs
-        grilleJeu.placerTrouNoir(LigAl, ColAl);
-         
-     }
+    public void affecterCouleur(String couleurj) {
+        Couleur = couleurj;
     }
-    
+
     // méthode qui permet l'attribution des couleurs aléatoirement aux joueurs 
     public void attribuerCouleursAuxJoueurs() {
-     int ch_couleur = generateurAleat.nextInt(1);
-     if (ch_couleur==0) {
-         
-         ListeJoueurs[0].affecterCouleur("Rouge");
-         ListeJoueurs[1].affecterCouleur("Jaune");
-         
-     } else {
-         
-         ListeJoueurs[0].affecterCouleur("Jaune");
-         ListeJoueurs[1].affecterCouleur("Rouge");
-              }
+        int ch_couleur = generateurAleat.nextInt(1);
+        if (ch_couleur == 0) {
+
+            ListeJoueurs[0].affecterCouleur("Rouge");
+            ListeJoueurs[1].affecterCouleur("Jaune");
+
+        } else {
+
+            ListeJoueurs[0].affecterCouleur("Jaune");
+            ListeJoueurs[1].affecterCouleur("Rouge");
+        }
+    }
+
+    public void initialiserPartie() {
+        //On initialise la grille
+        grilleJeu = new Grille();
+
+        //Création de deux joueurs avec récupération des noms entrés par les joueurs dans les cases dédiées
+        String nomJoueur1 = nom_joueur1.getText();
+        Joueur J1 = new Joueur(nomJoueur1);
+
+        String nomJoueur2 = nom_joueur2.getText();
+        Joueur J2 = new Joueur(nomJoueur2);
+
+        ListeJoueurs[0] = J1;
+        ListeJoueurs[1] = J2;
+
+        // attribution de couleur aux deux joueurs 
+        attribuerCouleursAuxJoueurs();
+
+        System.out.println(J1.Nom + " est de couleur " + J1.Couleur);
+        System.out.println(J2.Nom + " est de couleur " + J2.Couleur);
+
+        //On donne leurs jetons aux joueurs 
+        for (int i = 0; i < 21; i++) {
+
+            Jeton jR = new Jeton("Rouge");
+            Jeton jJ = new Jeton("Jaune");
+            if (ListeJoueurs[0].Couleur == "Rouge") {
+                ListeJoueurs[0].ajouterJeton(jR);
+                ListeJoueurs[1].ajouterJeton(jJ);
+            } else {
+                ListeJoueurs[1].ajouterJeton(jR);
+                ListeJoueurs[0].ajouterJeton(jJ);
+            }
+        }
+        Cellule tabDes[] = new Cellule[5];
+
+        //On génère les trous noirs et les désintégrateurs 
+        for (int i = 0; i < 5; i++) {
+            int ColAl = generateurAleat.nextInt(6);
+            int LigAl = generateurAleat.nextInt(5);
+            Cellule TrN = grilleJeu.CellulesJeu[LigAl][ColAl];
+            while (TrN.presenceTrouNoir() == true) {
+                ColAl = generateurAleat.nextInt(6);
+                LigAl = generateurAleat.nextInt(5);
+                TrN = grilleJeu.CellulesJeu[LigAl][ColAl];
+            }
+            // placement des trous noirs
+            grilleJeu.placerTrouNoir(LigAl, ColAl);
+
+            if (i < 2) {
+                tabDes[i] = grilleJeu.CellulesJeu[LigAl][ColAl];
+                grilleJeu.placerDesintegrateur(LigAl, ColAl);
+            }
+        }
+
+        for (int j = 0; j < 3; j++) {
+            int ColAl = generateurAleat.nextInt(6);
+            int LigAl = generateurAleat.nextInt(5);
+
+            while (grilleJeu.CellulesJeu[LigAl][ColAl].presenceDesintegrateur() == true) {
+                ColAl = generateurAleat.nextInt(6);
+                LigAl = generateurAleat.nextInt(5);
+            }
+
+            grilleJeu.placerDesintegrateur(LigAl, ColAl);
+        }
+    }
+
+    public boolean placerTrouNoir() {
+        if (trouNoir == false) {
+            trouNoir = true;
+            return trouNoir;
+        } else {
+            return false;
+        }
+
+    }
+
+    public boolean placerDesintegrateur() {
+        if (desintegrateur == false) {
+            desintegrateur = true;
+            return desintegrateur;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean presenceDesintegrateur() {
+        return desintegrateur;
+    }
+
+    public boolean presenceTrouNoir() {
+        return trouNoir;
+    }
+
+    public boolean placerTrouNoir(int L, int C) {
+        return CellulesJeu[L][C].placerTrouNoir() == true;
+    }
+
+    public boolean placerDesintegrateur(int L, int C) {
+        return CellulesJeu[L][C].placerDesintegrateur() == true;
     }
     
     
-    public void affecterCouleur(String couleurj) {
-        String Couleur;
-        Couleur=couleurj;
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_col_0;
