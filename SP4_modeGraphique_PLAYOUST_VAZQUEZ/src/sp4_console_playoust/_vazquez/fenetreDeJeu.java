@@ -317,7 +317,9 @@ public class fenetreDeJeu extends javax.swing.JFrame {
      Random r = new Random ();
      boolean premier = r.nextBoolean();
      if (premier) {
-         
+         joueurCourant=ListeJoueurs[0];
+     } else {
+         joueurCourant=ListeJoueurs[1];
      }
      
      
