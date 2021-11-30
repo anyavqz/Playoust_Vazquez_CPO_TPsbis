@@ -302,7 +302,6 @@ public class fenetreDeJeu extends javax.swing.JFrame {
                 ListeJoueurs[0].ajouterJeton(jJ);
             }
         }
-        Cellule tabDes[] = new Cellule[5];
 
         //On génère les trous noirs et les désintégrateurs 
         for (int i = 0; i < 5; i++) {
@@ -318,7 +317,6 @@ public class fenetreDeJeu extends javax.swing.JFrame {
             grilleJeu.placerTrouNoir(LigAl, ColAl);
 
             if (i < 2) {
-                tabDes[i] = grilleJeu.CellulesJeu[LigAl][ColAl];
                 grilleJeu.placerDesintegrateur(LigAl, ColAl);
             }
         }
