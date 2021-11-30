@@ -19,11 +19,20 @@ public class Partie {
  Grille grilleJeu;
  Scanner sc = new Scanner(System.in);
  
- public Partie(Joueur j1,Joueur j2) {
+    /**
+     * Constructeur de la classe Partie. Attribue les joueurs rentrés en paramètre à notre liste de joueurs.
+     * @param j1
+     * @param j2
+     */
+    public Partie(Joueur j1,Joueur j2) {
      ListeJoueurs[0]=j1;
      ListeJoueurs[1]=j2;
 }
- public void attribuerCouleursAuxJoueurs() {
+
+    /**
+     *Permet d'affecter une couleur à chaque joueur. Cette affection est aléatoire
+     */
+    public void attribuerCouleursAuxJoueurs() {
      int ch_couleur = generateurAleat.nextInt(1);
      if (ch_couleur==0) {
          
@@ -37,9 +46,12 @@ public class Partie {
               }
      }
      
- 
- 
- public void initialiserPartie() {
+    /**
+     * Permet d'initialiser la partie. On créé une nouvelle grille, on attribue une couleur au joueur à qui on ajoute ses jetons. On place les trous noirs et les désinégrateurs
+     * 
+     */
+    
+    public void initialiserPartie() {
      grilleJeu=new Grille();
      
      attribuerCouleursAuxJoueurs();
@@ -84,7 +96,7 @@ public class Partie {
          int ColAl=generateurAleat.nextInt(6);
          int LigAl=generateurAleat.nextInt(5);
          
-         while (grilleJeu.CellulesJeu[LigAl][ColAl].presenceDesintegrateur()==true) {
+         while (grilleJeu.CellulesJeu[LigAl][ColAl].presenceDesintegrateur()==true || grilleJeu.CellulesJeu[LigAl][ColAl].presenceTrouNoir()==true) {
              ColAl=generateurAleat.nextInt(6);
              LigAl=generateurAleat.nextInt(5);
          }
@@ -93,7 +105,11 @@ public class Partie {
      }
  }
  
- public void debuterPartie() {
+    /**
+     * Permet de débuter la partie.
+     * On initialise la partie, on détermine aléatoirement le premier joueur puis tant que la partie n'est pas terminée, on alterne les tours des joueurs.
+     */
+    public void debuterPartie() {
      
      initialiserPartie();
      
@@ -169,6 +185,13 @@ public class Partie {
             }
             grilleJeu.ajouterJetonDansColonne(jetonj,colonne);
             
+            if (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[0])) {
+                System.out.println("Le gagnant est "+ListeJoueurs[0].Nom);
+            }
+            if (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])) {
+                System.out.println("Le gagnant est "+ListeJoueurs[1].Nom);
+                }
+            
          }
         if (commande==2) {
             
@@ -194,6 +217,17 @@ public class Partie {
                 grilleJeu.supprimerJeton(ligne, colonne);
                 grilleJeu.tasserGrille();
                 
+                if (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[0])==true && grilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])==true) {
+                    if (joueurCourant==ListeJoueurs[0]) {
+                        System.out.println("Le gagnant est " + ListeJoueurs[1].Nom);
+                    } else {
+                        System.out.println("Le gagnant est " + ListeJoueurs[0]);
+                    }
+                } else if (grilleJeu.etreGagnantePourJoueur(ListeJoueurs [0])) {
+                    System.out.println("Le gagnant est "+ListeJoueurs[0]);
+                } else if (grilleJeu.etreGagnantePourJoueur(ListeJoueurs [1])) {
+                    System.out.println("Le gagnant est "+ListeJoueurs[1]);
+                }
             }
         
             if (joueurCourant==ListeJoueurs[0]) {
@@ -202,13 +236,6 @@ public class Partie {
                     joueurCourant=ListeJoueurs[0];
                     }
         }
-            if (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[0])) {
-                System.out.println("Le gagnant est "+ListeJoueurs[0].Nom);
-            }
-            if (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])) {
-                System.out.println("Le gagnant est "+ListeJoueurs[1].Nom);
-                }
-    
     }
  }     
 
