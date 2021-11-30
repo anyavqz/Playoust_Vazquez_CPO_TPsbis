@@ -19,11 +19,20 @@ public class Partie {
  Grille grilleJeu;
  Scanner sc = new Scanner(System.in);
  
- public Partie(Joueur j1,Joueur j2) {
+    /**
+     * Constructeur de la classe Partie. Attribue les joueurs rentrés en paramètre à notre liste de joueurs.
+     * @param j1
+     * @param j2
+     */
+    public Partie(Joueur j1,Joueur j2) {
      ListeJoueurs[0]=j1;
      ListeJoueurs[1]=j2;
 }
- public void attribuerCouleursAuxJoueurs() {
+
+    /**
+     *Permet d'affecter une couleur à chaque joueur. Cette affection est aléatoire
+     */
+    public void attribuerCouleursAuxJoueurs() {
      int ch_couleur = generateurAleat.nextInt(1);
      if (ch_couleur==0) {
          
@@ -37,9 +46,12 @@ public class Partie {
               }
      }
      
- 
- 
- public void initialiserPartie() {
+    /**
+     * Permet d'initialiser la partie. On créé une nouvelle grille, on attribue une couleur au joueur à qui on ajoute ses jetons. On place les trous noirs et les désinégrateurs
+     * 
+     */
+    
+    public void initialiserPartie() {
      grilleJeu=new Grille();
      
      attribuerCouleursAuxJoueurs();
@@ -93,7 +105,11 @@ public class Partie {
      }
  }
  
- public void debuterPartie() {
+    /**
+     * Permet de débuter la partie.
+     * On initialise la partie, on détermine aléatoirement le premier joueur puis tant que la partie n'est pas terminée, on alterne les tours des joueurs.
+     */
+    public void debuterPartie() {
      
      initialiserPartie();
      
