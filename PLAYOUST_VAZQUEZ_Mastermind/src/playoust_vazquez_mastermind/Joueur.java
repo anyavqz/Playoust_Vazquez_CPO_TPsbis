@@ -9,5 +9,14 @@ package playoust_vazquez_mastermind;
  * @author anyavazquez
  */
 public class Joueur {
+    String Nom;
+    Pion ListePions [] = new Pion [480];
+    
+    public Joueur (String nomJ){
+        Nom=nomJ;
+    }
+    
+    
+    
     
 }
