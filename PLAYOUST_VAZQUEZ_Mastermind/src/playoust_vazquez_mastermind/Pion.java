@@ -10,5 +10,12 @@ package playoust_vazquez_mastermind;
  * @author petitweb
  */
 public class Pion {
+    String couleur;
+    public Pion(String color) {
+        couleur=color;
+    }
     
+    public String lireCouleur() {
+        return couleur;
+    }
 }
