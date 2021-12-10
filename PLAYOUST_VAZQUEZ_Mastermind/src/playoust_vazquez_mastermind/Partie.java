@@ -13,10 +13,12 @@ public class Partie {
     Joueur player;
     Grille GrilleJeu;
     Pion [] CombiGagnante;
+    Pion [] CombiCourante;
     Random generateurAleat = new Random ();
     
-    void initialiserPartie(){
+    public void initialiserPartie(){
         Pion [] CombiGagnante = new Pion [4];
+        Pion [] CombiCourante = new Pion [4];
         GrilleJeu=new Grille();
         
         for (int i=0; i<4; i++) {
@@ -49,13 +51,14 @@ public class Partie {
         
     }
     
-    void debuterPartie(){
+    public void debuterPartie(){
         initialiserPartie();
+        
         
         
     }
     
-    int [] VerifCombi (Pion [] CombiG, Pion [] CombiJ) {
+    public int [] VerifCombi (Pion [] CombiG, Pion [] CombiJ) {
         int [] tabVerif = new int [2];
         boolean [] tabBool = new boolean [4];
         int OK = 0;
@@ -88,6 +91,15 @@ public class Partie {
         
         return tabVerif;
     }
+    
+    public boolean Gagnant () {
+        int check [] = VerifCombi(CombiGagnante, CombiCourante);
+        boolean resultat= false;
         
+        if (check[0]==4 && check[1]==0) {
+            resultat = true;
+        }
+        return resultat;
+    }
     
 }
