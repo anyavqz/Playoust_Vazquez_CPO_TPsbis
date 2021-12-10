@@ -11,6 +11,7 @@ package playoust_vazquez_mastermind;
  */
 public class Pion {
     String couleur;
+    
     public Pion(String color) {
         couleur=color;
     }
