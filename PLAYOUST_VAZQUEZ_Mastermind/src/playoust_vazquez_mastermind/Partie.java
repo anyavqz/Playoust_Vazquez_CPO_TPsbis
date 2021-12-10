@@ -55,11 +55,39 @@ public class Partie {
         
     }
     
-    int [] VerifCombi (Pion[] CombiG, Pion[] CombiJ) {
+    int [] VerifCombi (Pion [] CombiG, Pion [] CombiJ) {
+        int [] tabVerif = new int [2];
+        boolean [] tabBool = new boolean [4];
         int OK = 0;
         int notOK =0;
-        int [] tab = new int [2];
-        return tab;
+        
+        for (int i=0; i<4; i++) {
+            tabBool[i]=false;
+        }
+        
+        for (int i=0; i<4; i++) {
+            if (CombiG[i].couleur.equals(CombiJ[i].couleur)){
+                OK+=1;
+                tabBool[i]=true;
+            }
+        
+        }
+        tabVerif[0]=OK;
+        
+        for (int i=0; i<4; i++) {
+            for (int j=0; j<4; j++) {
+                if (tabBool[i]==false && tabBool[j]==false) {
+                    if (CombiG[i].couleur.equals(CombiJ[j].couleur)) {
+                        notOK+=1;
+                        tabBool[j]=true;
+                    }
+                }
+            }
+        }
+        tabVerif[1]=notOK;
+        
+        return tabVerif;
     }
+        
     
 }
