@@ -26,10 +26,17 @@ public class Grille {
         return PionJeu[l][c].lireCouleur();
     }
     
-    public boolean etreGagnant(Joueur J) {
-        
-    }
     
+    public void ajouterCombinaison(Pion[] Combi) {
+        int i=0;
+        int j=0;
+        while ( PionJeu[i][j].lireCouleur()!=null) {
+            i+=1;
+        }
+        for (j=0;j<4;j++) {
+            PionJeu[i][j]=Combi[j];
+        }
+    }
     
     public void afficherGrillesurConsole() {
          
