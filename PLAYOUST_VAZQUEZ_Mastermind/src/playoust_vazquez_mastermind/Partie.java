@@ -24,28 +24,28 @@ public class Partie {
         for (int i=0; i<4; i++) {
             int choixCouleur = generateurAleat.nextInt(7);
             if (choixCouleur==0) {
-                CombiGagnante[i].couleur="Rose";
+                CombiGagnante[i]=new Pion("Rose");
             }
             if (choixCouleur==1) {
-                CombiGagnante[i].couleur="Jaune";
+                CombiGagnante[i]=new Pion("Jaune");
             }
             if (choixCouleur==2) {
-                CombiGagnante[i].couleur="Vert";
+                CombiGagnante[i]=new Pion("Vert");
             }
             if (choixCouleur==3) {
-                CombiGagnante[i].couleur="Bleu";
+                CombiGagnante[i]=new Pion("Bleu");
             }
             if (choixCouleur==4) {
-                CombiGagnante[i].couleur="Orange";
+                CombiGagnante[i]=new Pion("Orange");
             }
             if (choixCouleur==5) {
-                CombiGagnante[i].couleur="Violet";
+                CombiGagnante[i]=new Pion("Violet");
             }
             if (choixCouleur==6) {
-                CombiGagnante[i].couleur="Marron";
+                CombiGagnante[i]=new Pion("Marron");
             }
             if (choixCouleur==7) {
-                CombiGagnante[i].couleur="Turquoise";
+                CombiGagnante[i]=new Pion("Turquoise");
             }
         }
         
@@ -53,6 +53,15 @@ public class Partie {
     
     public void debuterPartie(){
         initialiserPartie();
+        while (Gagnant()==false || GrilleJeu.etreRemplie()==false) {
+            GrilleJeu.afficherGrillesurConsole();
+            
+            CombiCourante=GrilleJeu.CreerCombi();
+            
+            GrilleJeu.ajouterCombinaison(CombiCourante);
+            
+            VerifCombi(CombiGagnante,CombiCourante);
+        }
         
         
         
