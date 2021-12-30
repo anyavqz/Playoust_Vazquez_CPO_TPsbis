@@ -86,7 +86,7 @@ public class Grille {
     
     public boolean etreRemplie() {
         boolean etat=false;
-        if (PionJeu[12][0]!=null) {
+        if (PionJeu[11][0].lireCouleur()!="") {
             etat=true;
         }
         return etat;
