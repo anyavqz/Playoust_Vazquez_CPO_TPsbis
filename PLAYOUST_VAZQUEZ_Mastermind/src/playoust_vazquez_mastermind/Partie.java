@@ -47,7 +47,7 @@ public class Partie {
                 CombiGagnante[i]=new Pion("Orange");
             }
             if (choixCouleur==5) {
-                CombiGagnante[i]=new Pion("Violet");
+                CombiGagnante[i]=new Pion("Gris");
             }
             if (choixCouleur==6) {
                 CombiGagnante[i]=new Pion("Marron");
@@ -67,7 +67,9 @@ public class Partie {
             CombiCourante=GrilleJeu.CreerCombi();
             
             GrilleJeu.ajouterCombinaison(CombiCourante);
-            
+            for (int i=0;i<4;i++) {
+            System.out.println(CombiGagnante[i].lireCouleur());
+            }
             VerifComb(CombiGagnante,CombiCourante);
         }
          
@@ -113,6 +115,7 @@ public class Partie {
         tabVerif[0]=0;
         tabVerif[1]=0;
         
+        
         boolean [] tabBool1= new boolean [4];
         boolean [] tabBool2 = new boolean [4];
         for (int i=0; i<4;i++) {
@@ -121,7 +124,7 @@ public class Partie {
         }
         
         for (int i=0;i<4;i++) {
-            if (CombiG[i]==CombiJ[i]) {
+            if (CombiG[i].lireCouleur()==CombiJ[i].lireCouleur()) {
                 tabVerif[0]+=1;
                 tabBool1[i]=true;
                 tabBool2[i]=true;        
@@ -133,19 +136,16 @@ public class Partie {
                 break;
             }
             for (int j=0;j<4;j++) {
-                if (tabBool2[j]==true) {
-                    break;
-                }
-                
-                if (CombiJ[i]==CombiG[j]) {
+                if (CombiJ[i].lireCouleur()==CombiG[j].lireCouleur()&& tabBool2[j]!=true) {
                     tabVerif[1]+=1;
                     tabBool1[i]=true;
-                    tabBool2[2]=true;
+                    tabBool2[j]=true;
+                    break;
                 }
             }
         }
         
-        System.out.println("Vous avez "+ tabVerif[0]+ " jetons bien placés et "+ tabVerif[1]+" jetons mal placés");
+        System.out.println("Vous avez "+ tabVerif[0]+ " pions bien placés et "+ tabVerif[1]+" pions mal placés");
     }
     
     
