@@ -30,8 +30,16 @@ public class Grille {
     
     public Pion AjouterPion() {
         System.out.println("Veuillez choisir une couleur : \nR : Rose \nJ : Jaune \nV : Vert \nB : Bleu\nO : Orange\nG : Gris\nM : Marron\nT : Turquoise");
+        
         int ch=sc.next().charAt(0);
+        while (ch!='R' && ch!='J'&& ch!='M' && ch!='V' && ch!='T' && ch!='B' && ch!='G' && ch!='O') {
+            System.out.println("Saisie incorrecte, veuillez rééssayer");
+            System.out.println("Veuillez choisir une couleur : \nR : Rose \nJ : Jaune \nV : Vert \nB : Bleu\nO : Orange\nG : Gris\nM : Marron\nT : Turquoise");
+            ch=sc.next().charAt(0);
+        }
+        
         Pion PionJ= new Pion(null);
+        
         switch (ch){
          case 'R' :
              PionJ= new Pion("Rose");
@@ -58,6 +66,7 @@ public class Grille {
              PionJ =new Pion("Turquoise");
              break;
         }
+        
         return PionJ;
     }
     

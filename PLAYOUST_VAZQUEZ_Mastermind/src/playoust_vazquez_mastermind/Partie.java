@@ -68,9 +68,6 @@ public class Partie {
             CombiCourante=GrilleJeu.CreerCombi();
             
             GrilleJeu.ajouterCombinaison(CombiCourante);
-            for (int i=0;i<4;i++) {
-            System.out.println(CombiGagnante[i].lireCouleur());
-            }
             
             GrilleJeu.afficherGrillesurConsole();
             
