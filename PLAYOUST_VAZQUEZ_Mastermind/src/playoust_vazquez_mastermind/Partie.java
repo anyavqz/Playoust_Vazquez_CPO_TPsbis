@@ -61,8 +61,9 @@ public class Partie {
     
     public void debuterPartie(){
         initialiserPartie();
-        while (Gagnant(CombiCourante,CombiGagnante)==false || GrilleJeu.etreRemplie()==false) {
-            GrilleJeu.afficherGrillesurConsole();
+        GrilleJeu.afficherGrillesurConsole();
+        
+        while (Gagnant(CombiCourante,CombiGagnante)==false && GrilleJeu.etreRemplie()==false) {
             
             CombiCourante=GrilleJeu.CreerCombi();
             
@@ -70,9 +71,22 @@ public class Partie {
             for (int i=0;i<4;i++) {
             System.out.println(CombiGagnante[i].lireCouleur());
             }
+            
+            GrilleJeu.afficherGrillesurConsole();
+            
             VerifComb(CombiGagnante,CombiCourante);
         }
-         
+        
+        if (Gagnant(CombiCourante,CombiGagnante)==true) {
+            System.out.print("Bravo " + player.Nom + " ! Vous avez gagné.");
+        }         
+        
+        else {
+            System.out.print("Vous avez perdu !\nLa bonne combinaison était : ");
+            for (int i=0;i<4;i++) {
+                System.out.print(CombiGagnante[i].lireCouleur()+" ");
+            }
+        }
     }
     
     public int [] VerifCombi (Pion [] CombiG, Pion [] CombiJ) {
