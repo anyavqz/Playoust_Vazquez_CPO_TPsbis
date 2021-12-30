@@ -53,7 +53,7 @@ public class Partie {
     
     public void debuterPartie(){
         initialiserPartie();
-        while (Gagnant()==false || GrilleJeu.etreRemplie()==false) {
+        while (Gagnant(CombiCourante,CombiGagnante)==false || GrilleJeu.etreRemplie()==false) {
             GrilleJeu.afficherGrillesurConsole();
             
             CombiCourante=GrilleJeu.CreerCombi();
@@ -62,9 +62,7 @@ public class Partie {
             
             VerifCombi(CombiGagnante,CombiCourante);
         }
-        
-        
-        
+         
     }
     
     public int [] VerifCombi (Pion [] CombiG, Pion [] CombiJ) {
@@ -143,12 +141,12 @@ public class Partie {
     }
     
     
-    public boolean Gagnant () {
-        int check [] = VerifCombi(CombiGagnante, CombiCourante);
+    public boolean Gagnant (Pion [] CombiG, Pion [] CombiJ) {
+        
         boolean resultat= false;
         
-        if (check[0]==4 && check[1]==0) {
-            resultat = true;
+        if (CombiG==CombiJ) {
+            resultat=true;
         }
         return resultat;
     }
