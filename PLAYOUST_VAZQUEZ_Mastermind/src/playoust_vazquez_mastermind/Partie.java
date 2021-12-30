@@ -101,6 +101,48 @@ public class Partie {
         return tabVerif;
     }
     
+    public void VerifComb (Pion [] CombiG, Pion [] CombiJ) {
+       
+        int [] tabVerif = new int[2];
+        tabVerif[0]=0;
+        tabVerif[1]=0;
+        
+        boolean [] tabBool1= new boolean [4];
+        boolean [] tabBool2 = new boolean [4];
+        for (int i=0; i<4;i++) {
+            tabBool1[i]=false;
+            tabBool2[i]=false;
+        }
+        
+        for (int i=0;i<4;i++) {
+            if (CombiG[i]==CombiJ[i]) {
+                tabVerif[0]+=1;
+                tabBool1[i]=true;
+                tabBool2[i]=true;        
+            }
+        }
+        
+        for (int i=0;i<4;i++) {
+            if (tabBool1[i]==true) {
+                break;
+            }
+            for (int j=0;j<4;j++) {
+                if (tabBool2[j]==true) {
+                    break;
+                }
+                
+                if (CombiJ[i]==CombiG[j]) {
+                    tabVerif[1]+=1;
+                    tabBool1[i]=true;
+                    tabBool2[2]=true;
+                }
+            }
+        }
+        
+        System.out.print("Vous avez "+ tabVerif[0]+ " jetons bien placés et "+ tabVerif[1]+" jetons mal placés");
+    }
+    
+    
     public boolean Gagnant () {
         int check [] = VerifCombi(CombiGagnante, CombiCourante);
         boolean resultat= false;
