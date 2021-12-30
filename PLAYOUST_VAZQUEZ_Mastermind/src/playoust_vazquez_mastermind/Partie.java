@@ -16,9 +16,17 @@ public class Partie {
     Pion [] CombiCourante;
     Random generateurAleat = new Random ();
     
+    public Partie() {
+        CombiGagnante = new Pion [4];
+        CombiCourante = new Pion [4];
+        
+        for (int i=0;i<4;i++) {
+            CombiGagnante[i] = new Pion("");
+            CombiCourante[i] = new Pion("");
+        }
+    }    
+    
     public void initialiserPartie(){
-        Pion [] CombiGagnante = new Pion [4];
-        Pion [] CombiCourante = new Pion [4];
         GrilleJeu=new Grille();
         
         for (int i=0; i<4; i++) {
@@ -60,7 +68,7 @@ public class Partie {
             
             GrilleJeu.ajouterCombinaison(CombiCourante);
             
-            VerifCombi(CombiGagnante,CombiCourante);
+            VerifComb(CombiGagnante,CombiCourante);
         }
          
     }
@@ -137,7 +145,7 @@ public class Partie {
             }
         }
         
-        System.out.print("Vous avez "+ tabVerif[0]+ " jetons bien placés et "+ tabVerif[1]+" jetons mal placés");
+        System.out.println("Vous avez "+ tabVerif[0]+ " jetons bien placés et "+ tabVerif[1]+" jetons mal placés");
     }
     
     

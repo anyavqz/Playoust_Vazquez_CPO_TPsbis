@@ -19,7 +19,7 @@ public class Grille {
         PionJeu = new Pion[12][4];
         for (int i = 0; i < 12; i++) {
             for (int j = 0; j < 4; j++) {
-                PionJeu[i][j] = new Pion(null);
+                PionJeu[i][j] = new Pion("");
             }
         }
     }
@@ -29,7 +29,7 @@ public class Grille {
     }
     
     public Pion AjouterPion() {
-        System.out.print("Veuillez choisir une couleur : \n1 : Rose \n2 : Jaune \n3 : Vert \n4 : Bleu\n5 : Orange\n6 : Violet\n7 : Marron\n8 : Turquoise");
+        System.out.println("Veuillez choisir une couleur : \n1 : Rose \n2 : Jaune \n3 : Vert \n4 : Bleu\n5 : Orange\n6 : Violet\n7 : Marron\n8 : Turquoise");
         int ch=sc.nextInt();
         Pion PionJ= new Pion(null);
         switch (ch){
@@ -75,7 +75,7 @@ public class Grille {
     public void ajouterCombinaison(Pion[] Combi) {
         int i=0;
         int j=0;
-        while ( PionJeu[i][j].lireCouleur()!=null) {
+        while ( PionJeu[i][j].lireCouleur()!="") {
             i+=1;
         }
         for (j=0;j<4;j++) {
@@ -120,10 +120,12 @@ public class Grille {
                 if (PionJeu[i][j].lireCouleur().equals("Bleu")) {
                     System.out.print("B ");
                 }
-                else {
+                if (PionJeu[i][j].lireCouleur().equals("")) {
                     System.out.print("/ ");
                 }
-            }    
+                
+            }
+            System.out.println("");
         
         
     }
