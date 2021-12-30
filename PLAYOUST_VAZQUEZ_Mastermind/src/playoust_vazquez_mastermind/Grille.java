@@ -29,32 +29,32 @@ public class Grille {
     }
     
     public Pion AjouterPion() {
-        System.out.println("Veuillez choisir une couleur : \n1 : Rose \n2 : Jaune \n3 : Vert \n4 : Bleu\n5 : Orange\n6 : Violet\n7 : Marron\n8 : Turquoise");
-        int ch=sc.nextInt();
+        System.out.println("Veuillez choisir une couleur : \nR : Rose \nJ : Jaune \nV : Vert \nB : Bleu\nO : Orange\nG : Gris\nM : Marron\nT : Turquoise");
+        int ch=sc.next().charAt(0);
         Pion PionJ= new Pion(null);
         switch (ch){
-         case 1 :
+         case 'R' :
              PionJ= new Pion("Rose");
              break;
-         case 2 : 
+         case 'J' : 
              PionJ =new Pion("Jaune");
              break;
-         case 3 :
+         case 'V' :
              PionJ =new Pion("Vert");
              break;
-         case 4 : 
+         case 'B' : 
              PionJ =new Pion("Bleu");
              break;
-         case 5 :
+         case 'O' :
              PionJ =new Pion("Orange");
              break;
-         case 6 : 
-             PionJ =new Pion("Violet");
+         case 'G' : 
+             PionJ =new Pion("Gris");
              break;
-         case 7 :
+         case 'M' :
              PionJ =new Pion("Marron");
              break;
-         case 8 : 
+         case 'T' : 
              PionJ =new Pion("Turquoise");
              break;
         }
@@ -103,10 +103,10 @@ public class Grille {
                     System.out.print("J ");
                 }
                 if (PionJeu[i][j].lireCouleur().equals("Vert")) {
-                    System.out.print("Ve ");
+                    System.out.print("V ");
                 }
-                if (PionJeu[i][j].lireCouleur().equals("Violet")) {
-                    System.out.print("Vi ");
+                if (PionJeu[i][j].lireCouleur().equals("Gris")) {
+                    System.out.print("G ");
                 }
                 if (PionJeu[i][j].lireCouleur().equals("Orange")) {
                     System.out.print("O ");
