@@ -144,11 +144,16 @@ public class Partie {
     public boolean Gagnant (Pion [] CombiG, Pion [] CombiJ) {
         
         boolean resultat= false;
+        int res=0;
         
-        if (CombiG==CombiJ) {
+        for (int i=0;i<4;i++) {
+            if (CombiG[i]==CombiJ[i]) {
+                res+=1;
+            }
+        }
+        if (res==4) {
             resultat=true;
         }
         return resultat;
     }
-    
 }
