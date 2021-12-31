@@ -4,18 +4,40 @@
  */
 package playoust_vazquez_mastermind;
 
+import java.util.Random;
+
 /**
  *
  * @author anyavazquez
  */
 public class FenetreDeJeu extends javax.swing.JFrame {
-
+    
+    
+    Joueur player;
+    Grille GrilleJeu;
+    Pion [] CombiGagnante;
+    Pion [] CombiCourante;
+    Random generateurAleat = new Random ();
     /**
      * Creates new form FenetreDeJeu
      */
     public FenetreDeJeu() {
         initComponents();
         panneau_choix_pions.setVisible(false);
+        
+        for (int i=0; i<12; i++) {
+            for (int j=0; j<4; j++) {
+                PionsGraphique PionGraph = new PionsGraphique(GrilleJeu.PionJeu[i][j]);
+                panneau_pions_joueur.add(PionGraph);
+            }
+        }
+        
+        for (int i=0; i<12; i++) {
+            for (int j=0; j<4; j++) {
+                VerifGraphique PetitPion = new VerifGraphique();
+                panneau_verif_pions.add(PetitPion);
+            }
+        }
     }
 
     /**
@@ -93,10 +115,10 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         );
         panneau_choix_pionsLayout.setVerticalGroup(
             panneau_choix_pionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+            .addGap(0, 530, Short.MAX_VALUE)
         );
 
-        getContentPane().add(panneau_choix_pions, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, 500, 480));
+        getContentPane().add(panneau_choix_pions, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, 500, 530));
 
         setBounds(0, 0, 1095, 832);
     }// </editor-fold>//GEN-END:initComponents
