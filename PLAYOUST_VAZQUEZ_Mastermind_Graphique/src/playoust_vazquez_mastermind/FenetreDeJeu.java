@@ -22,6 +22,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
      * Creates new form FenetreDeJeu
      */
     public FenetreDeJeu() {
+        GrilleJeu = new Grille();
         initComponents();
         panneau_choix_pions.setVisible(false);
         
@@ -36,6 +37,13 @@ public class FenetreDeJeu extends javax.swing.JFrame {
             for (int j=0; j<4; j++) {
                 VerifGraphique PetitPion = new VerifGraphique();
                 panneau_verif_pions.add(PetitPion);
+            }
+        }
+        
+        for (int i=0; i<4; i++) {
+            for (int j=0; j<2; j++) {
+                CouleurGraphique color = new CouleurGraphique();
+                panneau_choix_pions.add(color);
             }
         }
     }
@@ -106,18 +114,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         getContentPane().add(panneau_infos_joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 500, 220));
 
         panneau_choix_pions.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout panneau_choix_pionsLayout = new javax.swing.GroupLayout(panneau_choix_pions);
-        panneau_choix_pions.setLayout(panneau_choix_pionsLayout);
-        panneau_choix_pionsLayout.setHorizontalGroup(
-            panneau_choix_pionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
-        );
-        panneau_choix_pionsLayout.setVerticalGroup(
-            panneau_choix_pionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
-        );
-
+        panneau_choix_pions.setLayout(new java.awt.GridLayout(4, 2));
         getContentPane().add(panneau_choix_pions, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, 500, 530));
 
         setBounds(0, 0, 1095, 832);
