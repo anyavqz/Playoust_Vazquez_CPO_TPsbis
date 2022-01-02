@@ -60,38 +60,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         
         
     }
-    public void initialiserPartie(){
-        GrilleJeu=new Grille();
-        
-        for (int i=0; i<4; i++) {
-            int choixCouleur = generateurAleat.nextInt(7);
-            if (choixCouleur==0) {
-                CombiGagnante[i]=new Pion("Rose");
-            }
-            if (choixCouleur==1) {
-                CombiGagnante[i]=new Pion("Jaune");
-            }
-            if (choixCouleur==2) {
-                CombiGagnante[i]=new Pion("Vert");
-            }
-            if (choixCouleur==3) {
-                CombiGagnante[i]=new Pion("Bleu");
-            }
-            if (choixCouleur==4) {
-                CombiGagnante[i]=new Pion("Orange");
-            }
-            if (choixCouleur==5) {
-                CombiGagnante[i]=new Pion("Gris");
-            }
-            if (choixCouleur==6) {
-                CombiGagnante[i]=new Pion("Marron");
-            }
-            if (choixCouleur==7) {
-                CombiGagnante[i]=new Pion("Turquoise");
-            }
-        }
-        
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -114,13 +83,13 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         panneau_choix_pions = new javax.swing.JPanel();
         btn_T = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        btn_V = new javax.swing.JButton();
+        btn_G = new javax.swing.JButton();
+        btn_J = new javax.swing.JButton();
+        btn_M = new javax.swing.JButton();
+        btn_O = new javax.swing.JButton();
+        btn_B = new javax.swing.JButton();
+        btn_R = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -169,7 +138,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         panneau_choix_pions.setBackground(new java.awt.Color(255, 255, 255));
         panneau_choix_pions.setLayout(new java.awt.GridLayout(4, 2));
 
-        btn_T.setText("jButton1");
+        btn_T.setText("Turquoise");
         btn_T.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_TActionPerformed(evt);
@@ -177,26 +146,36 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         });
         panneau_choix_pions.add(btn_T);
 
-        jButton2.setText("jButton2");
-        panneau_choix_pions.add(jButton2);
+        btn_V.setText("Vert");
+        btn_V.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_VActionPerformed(evt);
+            }
+        });
+        panneau_choix_pions.add(btn_V);
 
-        jButton5.setText("jButton5");
-        panneau_choix_pions.add(jButton5);
+        btn_G.setText("Gris");
+        panneau_choix_pions.add(btn_G);
 
-        jButton3.setText("jButton3");
-        panneau_choix_pions.add(jButton3);
+        btn_J.setText("Jaune");
+        btn_J.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_JActionPerformed(evt);
+            }
+        });
+        panneau_choix_pions.add(btn_J);
 
-        jButton4.setText("jButton4");
-        panneau_choix_pions.add(jButton4);
+        btn_M.setText("Marron");
+        panneau_choix_pions.add(btn_M);
 
-        jButton6.setText("jButton6");
-        panneau_choix_pions.add(jButton6);
+        btn_O.setText("Orange");
+        panneau_choix_pions.add(btn_O);
 
-        jButton7.setText("jButton7");
-        panneau_choix_pions.add(jButton7);
+        btn_B.setText("Bleu");
+        panneau_choix_pions.add(btn_B);
 
-        jButton8.setText("jButton8");
-        panneau_choix_pions.add(jButton8);
+        btn_R.setText("Rose");
+        panneau_choix_pions.add(btn_R);
 
         getContentPane().add(panneau_choix_pions, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, 500, 530));
 
@@ -217,6 +196,14 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private void btn_TActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_TActionPerformed
+
+    private void btn_JActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_JActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_JActionPerformed
+
+    private void btn_VActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_VActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,22 +234,59 @@ public class FenetreDeJeu extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new FenetreDeJeu().setVisible(true);
             }
         });
     }
+    
+    public void initialiserPartie(){
+        GrilleJeu=new Grille();
+        
+        String nomJoueur = nom_joueur.getText();
+        Joueur J1 = new Joueur(nomJoueur); // dans la console, quand demande-t-on au joueur son nom?
+        
+        for (int i=0; i<4; i++) {
+            int choixCouleur = generateurAleat.nextInt(7);
+            if (choixCouleur==0) {
+                CombiGagnante[i]=new Pion("Rose");
+            }
+            if (choixCouleur==1) {
+                CombiGagnante[i]=new Pion("Jaune");
+            }
+            if (choixCouleur==2) {
+                CombiGagnante[i]=new Pion("Vert");
+            }
+            if (choixCouleur==3) {
+                CombiGagnante[i]=new Pion("Bleu");
+            }
+            if (choixCouleur==4) {
+                CombiGagnante[i]=new Pion("Orange");
+            }
+            if (choixCouleur==5) {
+                CombiGagnante[i]=new Pion("Gris");
+            }
+            if (choixCouleur==6) {
+                CombiGagnante[i]=new Pion("Marron");
+            }
+            if (choixCouleur==7) {
+                CombiGagnante[i]=new Pion("Turquoise");
+            }
+        }
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_B;
+    private javax.swing.JButton btn_G;
+    private javax.swing.JButton btn_J;
+    private javax.swing.JButton btn_M;
+    private javax.swing.JButton btn_O;
+    private javax.swing.JButton btn_R;
     private javax.swing.JButton btn_T;
+    private javax.swing.JButton btn_V;
     private javax.swing.JButton btn_start;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
