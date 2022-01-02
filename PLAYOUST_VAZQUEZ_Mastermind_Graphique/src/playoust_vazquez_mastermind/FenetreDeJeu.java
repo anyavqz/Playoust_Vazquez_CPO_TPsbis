@@ -58,6 +58,33 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         
         
     }
+    public Pion AjouterPion(String couleur) {
+        
+        Pion PionJ= new Pion(couleur);
+        
+        return PionJ;
+    }
+    public Pion[] CreerCombi(String couleur) {
+        Pion[] Combi=new Pion[4];
+        
+        Combi[0]=AjouterPion(couleur);
+        Combi[1]=AjouterPion(couleur);
+        Combi[2]=AjouterPion(couleur);
+        Combi[3]=AjouterPion(couleur);
+        
+        return Combi;
+    }
+    public void ajouterCombinaison(Pion[] Combi) {
+        int i=0;
+        int j=0;
+        while ( PionJeu[i][j].lireCouleur()!="") {
+            i+=1;
+        }
+        for (j=0;j<4;j++) {
+            PionsGraph[i][j]=Combi[j];
+        }
+    
+    }
     
 
     /**
@@ -248,46 +275,32 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_RActionPerformed
     
-    public Pion AjouterPion() {
-        System.out.println("Veuillez choisir une couleur : \nR : Rose \nJ : Jaune \nV : Vert \nB : Bleu\nO : Orange\nG : Gris\nM : Marron\nT : Turquoise");
+    public Pion AjouterPion(String couleur) {
         
-        int ch=sc.next().charAt(0);
-        while (ch!='R' && ch!='J'&& ch!='M' && ch!='V' && ch!='T' && ch!='B' && ch!='G' && ch!='O') {
-            System.out.println("Saisie incorrecte, veuillez rééssayer");
-            System.out.println("Veuillez choisir une couleur : \nR : Rose \nJ : Jaune \nV : Vert \nB : Bleu\nO : Orange\nG : Gris\nM : Marron\nT : Turquoise");
-            ch=sc.next().charAt(0);
-        }
-        
-        Pion PionJ= new Pion(null);
-        
-        switch (ch){
-         case 'R' :
-             PionJ= new Pion("Rose");
-             break;
-         case 'J' : 
-             PionJ =new Pion("Jaune");
-             break;
-         case 'V' :
-             PionJ =new Pion("Vert");
-             break;
-         case 'B' : 
-             PionJ =new Pion("Bleu");
-             break;
-         case 'O' :
-             PionJ =new Pion("Orange");
-             break;
-         case 'G' : 
-             PionJ =new Pion("Gris");
-             break;
-         case 'M' :
-             PionJ =new Pion("Marron");
-             break;
-         case 'T' : 
-             PionJ =new Pion("Turquoise");
-             break;
-        }
+        Pion PionJ= new Pion(couleur);
         
         return PionJ;
+    }
+    public Pion[] CreerCombi(String couleur) {
+        Pion[] Combi=new Pion[4];
+        
+        Combi[0]=AjouterPion(couleur);
+        Combi[1]=AjouterPion(couleur);
+        Combi[2]=AjouterPion(couleur);
+        Combi[3]=AjouterPion(couleur);
+        
+        return Combi;
+    }
+    public void ajouterCombinaison(Pion[] Combi) {
+        int i=0;
+        int j=0;
+        while ( PionsGraphique[i][j].lireCouleur()!="") {
+            i+=1;
+        }
+        for (j=0;j<4;j++) {
+            PionsGraphique[i][j]=Combi[j];
+        }
+    
     }
     /**
      * @param args the command line arguments
