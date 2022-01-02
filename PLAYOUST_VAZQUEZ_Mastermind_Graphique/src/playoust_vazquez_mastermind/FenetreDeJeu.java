@@ -5,13 +5,16 @@
 package playoust_vazquez_mastermind;
 
 import java.awt.Color;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Random;
+
 
 /**
  *
  * @author anyavazquez
  */
-public class FenetreDeJeu extends javax.swing.JFrame {
+public class FenetreDeJeu extends javax.swing.JFrame implements MouseListener {
     
     
     Joueur player;
@@ -54,36 +57,82 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         btn_V.setBackground(Color.GREEN);
         btn_O.setBackground(Color.ORANGE);
         
+        CombiGagnante = new Pion [4];
+        CombiCourante = new Pion [4];
         
-        
-        
+        for (int i=0;i<4;i++) {
+            CombiGagnante[i] = new Pion("");
+            CombiCourante[i] = new Pion("");
+        }
     }
+    
+    
     public Pion AjouterPion(String couleur) {
-        
-        Pion PionJ= new Pion(couleur);
-        
-        return PionJ;
+        for (int i=0;i<12;i++) {
+            for (int j=0;j<4;j++) {
+                if (GrilleJeu.PionJeu[i][j].lireCouleur()=="") {
+                    GrilleJeu.PionJeu[i][j].couleur=couleur;
+                    //Pion PionAj = new Pion(couleur);
+                    //PionsGraphique PionGraph= new PionsGraphique(PionAj);
+                    //panneau_pions_joueur.add(PionGraph);
+                    panneau_pions_joueur.repaint();
+                    System.out.println("Jai ajoute un pion");
+                    return null;
+                }
+                
+            }
+        }
+        System.out.println("Jai pas ajoute un pion");
+        return null;
     }
-    public Pion[] CreerCombi(String couleur) {
+    public Pion[] CreerCombi(String couleur1,String couleur2,String couleur3,String couleur4) {
         Pion[] Combi=new Pion[4];
         
-        Combi[0]=AjouterPion(couleur);
-        Combi[1]=AjouterPion(couleur);
-        Combi[2]=AjouterPion(couleur);
-        Combi[3]=AjouterPion(couleur);
+        Combi[0]=AjouterPion(couleur1);
+        Combi[1]=AjouterPion(couleur2);
+        Combi[2]=AjouterPion(couleur3);
+        Combi[3]=AjouterPion(couleur4);
         
         return Combi;
     }
-    public void ajouterCombinaison(Pion[] Combi) {
-        int i=0;
-        int j=0;
-        while ( GrilleJeu.PionJeu[i][j].lireCouleur()!="") {
-            i+=1;
-        }
-        for (j=0;j<4;j++) {
-            GrilleJeu.PionJeu[i][j]=Combi[j];
-        }
     
+    public void VerifComb (Pion [] CombiG, Pion [] CombiJ) {
+       
+        int [] tabVerif = new int[2];
+        tabVerif[0]=0;
+        tabVerif[1]=0;
+        
+        
+        boolean [] tabBool1= new boolean [4];
+        boolean [] tabBool2 = new boolean [4];
+        for (int i=0; i<4;i++) {
+            tabBool1[i]=false;
+            tabBool2[i]=false;
+        }
+        
+        for (int i=0;i<4;i++) {
+            if (CombiG[i].lireCouleur()==CombiJ[i].lireCouleur()) {
+                tabVerif[0]+=1;
+                tabBool1[i]=true;
+                tabBool2[i]=true;        
+            }
+        }
+        
+        for (int i=0;i<4;i++) {
+            if (tabBool1[i]==true) {
+                break;
+            }
+            for (int j=0;j<4;j++) {
+                if (CombiJ[i].lireCouleur()==CombiG[j].lireCouleur()&& tabBool2[j]!=true) {
+                    tabVerif[1]+=1;
+                    tabBool1[i]=true;
+                    tabBool2[j]=true;
+                    break;
+                }
+            }
+        }
+        
+        System.out.println("Vous avez "+ tabVerif[0]+ " pions bien placés et "+ tabVerif[1]+" pions mal placés");
     }
     
 
@@ -245,34 +294,42 @@ public class FenetreDeJeu extends javax.swing.JFrame {
 
     private void btn_TActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TActionPerformed
         // TODO add your handling code here:
+        AjouterPion("Turquoise");
     }//GEN-LAST:event_btn_TActionPerformed
 
     private void btn_JActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_JActionPerformed
         // TODO add your handling code here:
+        AjouterPion("Jaune");
     }//GEN-LAST:event_btn_JActionPerformed
 
     private void btn_VActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VActionPerformed
         // TODO add your handling code here:
+        AjouterPion("Vert");
     }//GEN-LAST:event_btn_VActionPerformed
 
     private void btn_GActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GActionPerformed
         // TODO add your handling code here:
+        AjouterPion("Gris");
     }//GEN-LAST:event_btn_GActionPerformed
 
     private void btn_MActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MActionPerformed
         // TODO add your handling code here:
+        AjouterPion("Marron");
     }//GEN-LAST:event_btn_MActionPerformed
 
     private void btn_OActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_OActionPerformed
         // TODO add your handling code here:
+        AjouterPion("Orange");
     }//GEN-LAST:event_btn_OActionPerformed
 
     private void btn_BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BActionPerformed
         // TODO add your handling code here:
+        AjouterPion("Bleu");
     }//GEN-LAST:event_btn_BActionPerformed
 
     private void btn_RActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RActionPerformed
         // TODO add your handling code here:
+        AjouterPion("Rose");
     }//GEN-LAST:event_btn_RActionPerformed
 
     /**
@@ -368,4 +425,29 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private javax.swing.JPanel panneau_pions_joueur;
     private javax.swing.JPanel panneau_verif_pions;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

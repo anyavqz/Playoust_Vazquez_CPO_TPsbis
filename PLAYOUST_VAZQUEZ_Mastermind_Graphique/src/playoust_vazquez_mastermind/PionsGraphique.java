@@ -14,6 +14,7 @@ import javax.swing.JButton;
  */
 public class PionsGraphique extends JButton{
     Pion PionAssocie;
+    
     ImageIcon img_turquoise = new javax.swing.ImageIcon(getClass().getResource("/imagesMastermind/T.jpeg"));
     ImageIcon img_bleue = new javax.swing.ImageIcon(getClass().getResource("/imagesMastermind/B.jpeg"));
     ImageIcon img_grise = new javax.swing.ImageIcon(getClass().getResource("/imagesMastermind/G.jpeg"));
