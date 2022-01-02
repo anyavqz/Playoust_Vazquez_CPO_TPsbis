@@ -113,6 +113,14 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         panneau_choix_pions = new javax.swing.JPanel();
+        btn_T = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -160,6 +168,36 @@ public class FenetreDeJeu extends javax.swing.JFrame {
 
         panneau_choix_pions.setBackground(new java.awt.Color(255, 255, 255));
         panneau_choix_pions.setLayout(new java.awt.GridLayout(4, 2));
+
+        btn_T.setText("jButton1");
+        btn_T.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_TActionPerformed(evt);
+            }
+        });
+        panneau_choix_pions.add(btn_T);
+
+        jButton2.setText("jButton2");
+        panneau_choix_pions.add(jButton2);
+
+        jButton5.setText("jButton5");
+        panneau_choix_pions.add(jButton5);
+
+        jButton3.setText("jButton3");
+        panneau_choix_pions.add(jButton3);
+
+        jButton4.setText("jButton4");
+        panneau_choix_pions.add(jButton4);
+
+        jButton6.setText("jButton6");
+        panneau_choix_pions.add(jButton6);
+
+        jButton7.setText("jButton7");
+        panneau_choix_pions.add(jButton7);
+
+        jButton8.setText("jButton8");
+        panneau_choix_pions.add(jButton8);
+
         getContentPane().add(panneau_choix_pions, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, 500, 530));
 
         setBounds(0, 0, 1095, 832);
@@ -175,6 +213,10 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         //panneau_pions_joueur.repaint();
         btn_start.setEnabled(false);
     }//GEN-LAST:event_btn_startActionPerformed
+
+    private void btn_TActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_TActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,7 +254,15 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_T;
     private javax.swing.JButton btn_start;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
