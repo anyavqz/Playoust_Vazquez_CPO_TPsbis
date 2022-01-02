@@ -64,6 +64,7 @@ public class FenetreDeJeu extends javax.swing.JFrame implements MouseListener {
             CombiGagnante[i] = new Pion("");
             CombiCourante[i] = new Pion("");
         }
+        initialiserPartie();
     }
     
     
@@ -71,13 +72,11 @@ public class FenetreDeJeu extends javax.swing.JFrame implements MouseListener {
         for (int i=0;i<12;i++) {
             for (int j=0;j<4;j++) {
                 if (GrilleJeu.PionJeu[i][j].lireCouleur()=="") {
-                    GrilleJeu.PionJeu[i][j].couleur=couleur;
-                    //Pion PionAj = new Pion(couleur);
-                    //PionsGraphique PionGraph= new PionsGraphique(PionAj);
-                    //panneau_pions_joueur.add(PionGraph);
+                    Pion PionAj = new Pion(couleur);
+                    PionsGraphique PionGraph= new PionsGraphique(PionAj);
                     panneau_pions_joueur.repaint();
                     System.out.println("Jai ajoute un pion");
-                    return null;
+                    return PionAj;
                 }
                 
             }
