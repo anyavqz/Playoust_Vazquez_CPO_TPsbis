@@ -16,7 +16,6 @@ public class PLAYOUST_VAZQUEZ_Mastermind {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        Joueur J1=new Joueur("prosper");
         Partie Partie1= new Partie();
         Partie1.debuterPartie();
         
