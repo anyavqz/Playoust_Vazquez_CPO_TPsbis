@@ -190,6 +190,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Gris"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_GActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_J">
           <Properties>
@@ -203,21 +206,33 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Marron"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_MActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_O">
           <Properties>
             <Property name="text" type="java.lang.String" value="Orange"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_OActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_B">
           <Properties>
             <Property name="text" type="java.lang.String" value="Bleu"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_BActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_R">
           <Properties>
             <Property name="text" type="java.lang.String" value="Rose"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_RActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

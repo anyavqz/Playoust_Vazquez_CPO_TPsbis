@@ -4,6 +4,7 @@
  */
 package playoust_vazquez_mastermind;
 
+import java.awt.Color;
 import java.util.Random;
 
 /**
@@ -40,23 +41,20 @@ public class FenetreDeJeu extends javax.swing.JFrame {
             }
         }
         
+        btn_B.setBackground(Color.BLUE);
+        Color Turquoise = new Color(64,224,208);
+        btn_T.setBackground(Turquoise);
+        Color Rose = new Color(255,192,203);
+        btn_R.setBackground(Rose);
+        Color Gris = new Color(128,128,128);
+        btn_G.setBackground(Gris);
+        Color Marron = new Color(128,0,0);
+        btn_M.setBackground(Marron);
+        btn_J.setBackground(Color.YELLOW);
+        btn_V.setBackground(Color.GREEN);
+        btn_O.setBackground(Color.ORANGE);
         
-        CouleurGraphique color1 = new CouleurGraphique("Jaune");
-        panneau_choix_pions.add(color1);
-        CouleurGraphique color2 = new CouleurGraphique("Gris");
-        panneau_choix_pions.add(color2);
-        CouleurGraphique color3 = new CouleurGraphique("Turquoise");
-        panneau_choix_pions.add(color3);
-        CouleurGraphique color4 = new CouleurGraphique("Rose");
-        panneau_choix_pions.add(color4);
-        CouleurGraphique color5 = new CouleurGraphique("Vert");
-        panneau_choix_pions.add(color5);
-        CouleurGraphique color6 = new CouleurGraphique("Bleu");
-        panneau_choix_pions.add(color6);
-        CouleurGraphique color7 = new CouleurGraphique("Orange");
-        panneau_choix_pions.add(color7);
-        CouleurGraphique color8 = new CouleurGraphique("Marron");
-        panneau_choix_pions.add(color8);
+        
         
         
     }
@@ -155,6 +153,11 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         panneau_choix_pions.add(btn_V);
 
         btn_G.setText("Gris");
+        btn_G.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_GActionPerformed(evt);
+            }
+        });
         panneau_choix_pions.add(btn_G);
 
         btn_J.setText("Jaune");
@@ -166,15 +169,35 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         panneau_choix_pions.add(btn_J);
 
         btn_M.setText("Marron");
+        btn_M.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_MActionPerformed(evt);
+            }
+        });
         panneau_choix_pions.add(btn_M);
 
         btn_O.setText("Orange");
+        btn_O.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_OActionPerformed(evt);
+            }
+        });
         panneau_choix_pions.add(btn_O);
 
         btn_B.setText("Bleu");
+        btn_B.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_BActionPerformed(evt);
+            }
+        });
         panneau_choix_pions.add(btn_B);
 
         btn_R.setText("Rose");
+        btn_R.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_RActionPerformed(evt);
+            }
+        });
         panneau_choix_pions.add(btn_R);
 
         getContentPane().add(panneau_choix_pions, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, 500, 530));
@@ -205,6 +228,67 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_VActionPerformed
 
+    private void btn_GActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_GActionPerformed
+
+    private void btn_MActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_MActionPerformed
+
+    private void btn_OActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_OActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_OActionPerformed
+
+    private void btn_BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_BActionPerformed
+
+    private void btn_RActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_RActionPerformed
+    
+    public Pion AjouterPion() {
+        System.out.println("Veuillez choisir une couleur : \nR : Rose \nJ : Jaune \nV : Vert \nB : Bleu\nO : Orange\nG : Gris\nM : Marron\nT : Turquoise");
+        
+        int ch=sc.next().charAt(0);
+        while (ch!='R' && ch!='J'&& ch!='M' && ch!='V' && ch!='T' && ch!='B' && ch!='G' && ch!='O') {
+            System.out.println("Saisie incorrecte, veuillez rééssayer");
+            System.out.println("Veuillez choisir une couleur : \nR : Rose \nJ : Jaune \nV : Vert \nB : Bleu\nO : Orange\nG : Gris\nM : Marron\nT : Turquoise");
+            ch=sc.next().charAt(0);
+        }
+        
+        Pion PionJ= new Pion(null);
+        
+        switch (ch){
+         case 'R' :
+             PionJ= new Pion("Rose");
+             break;
+         case 'J' : 
+             PionJ =new Pion("Jaune");
+             break;
+         case 'V' :
+             PionJ =new Pion("Vert");
+             break;
+         case 'B' : 
+             PionJ =new Pion("Bleu");
+             break;
+         case 'O' :
+             PionJ =new Pion("Orange");
+             break;
+         case 'G' : 
+             PionJ =new Pion("Gris");
+             break;
+         case 'M' :
+             PionJ =new Pion("Marron");
+             break;
+         case 'T' : 
+             PionJ =new Pion("Turquoise");
+             break;
+        }
+        
+        return PionJ;
+    }
     /**
      * @param args the command line arguments
      */
@@ -245,7 +329,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         GrilleJeu=new Grille();
         
         String nomJoueur = nom_joueur.getText();
-        Joueur J1 = new Joueur(nomJoueur); // dans la console, quand demande-t-on au joueur son nom?
+        Joueur J1 = new Joueur(nomJoueur); 
         
         for (int i=0; i<4; i++) {
             int choixCouleur = generateurAleat.nextInt(7);
