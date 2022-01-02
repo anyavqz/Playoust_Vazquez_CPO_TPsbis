@@ -22,14 +22,39 @@ public class CouleurGraphique extends JButton {
     ImageIcon img_marron = new javax.swing.ImageIcon(getClass().getResource("/imagesMastermind/M.jpeg"));
     ImageIcon img_orange = new javax.swing.ImageIcon(getClass().getResource("/imagesMastermind/O.jpeg"));
     ImageIcon img_verte = new javax.swing.ImageIcon(getClass().getResource("/imagesMastermind/V.jpeg"));
+    ImageIcon img_rose = new javax.swing.ImageIcon(getClass().getResource("/imagesMastermind/R.jpeg"));
     
-   //public CouleurGraphique (String color) {
-        //CouleurGraph = color;
-    //}
+   public CouleurGraphique (String color) {
+        CouleurGraph = color;
+   }
+   
+   @Override
+   public void paintComponent(Graphics G) {
+       super.paintComponent(G);
+       if (CouleurGraph=="Turquoise") {
+           setIcon(img_turquoise);
+       }
+       if (CouleurGraph=="Bleu") {
+           setIcon(img_bleue);
+       }
+       if (CouleurGraph=="Gris") {
+           setIcon(img_grise);
+       }
+       if (CouleurGraph=="Jaune") {
+           setIcon(img_jaune);
+       }
+       if (CouleurGraph=="Marron") {
+           setIcon(img_marron);
+       }
+       if (CouleurGraph=="Orange") {
+           setIcon(img_orange);
+       }
+       if (CouleurGraph=="Vert") {
+           setIcon(img_verte);
+       }
+       if (CouleurGraph=="Rose") {
+           setIcon(img_rose);
+       }
+   }  
     
-    @Override
-    public void paintComponent (Graphics G) {
-        super.paintComponent(G);
-        setIcon(img_turquoise);
-    }
 }

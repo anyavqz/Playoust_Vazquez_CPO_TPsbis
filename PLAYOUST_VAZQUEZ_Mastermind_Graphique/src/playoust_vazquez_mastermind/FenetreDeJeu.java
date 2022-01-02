@@ -40,12 +40,57 @@ public class FenetreDeJeu extends javax.swing.JFrame {
             }
         }
         
+        
+        CouleurGraphique color1 = new CouleurGraphique("Jaune");
+        panneau_choix_pions.add(color1);
+        CouleurGraphique color2 = new CouleurGraphique("Gris");
+        panneau_choix_pions.add(color2);
+        CouleurGraphique color3 = new CouleurGraphique("Turquoise");
+        panneau_choix_pions.add(color3);
+        CouleurGraphique color4 = new CouleurGraphique("Rose");
+        panneau_choix_pions.add(color4);
+        CouleurGraphique color5 = new CouleurGraphique("Vert");
+        panneau_choix_pions.add(color5);
+        CouleurGraphique color6 = new CouleurGraphique("Bleu");
+        panneau_choix_pions.add(color6);
+        CouleurGraphique color7 = new CouleurGraphique("Orange");
+        panneau_choix_pions.add(color7);
+        CouleurGraphique color8 = new CouleurGraphique("Marron");
+        panneau_choix_pions.add(color8);
+        
+        
+    }
+    public void initialiserPartie(){
+        GrilleJeu=new Grille();
+        
         for (int i=0; i<4; i++) {
-            for (int j=0; j<2; j++) {
-                CouleurGraphique color = new CouleurGraphique();
-                panneau_choix_pions.add(color);
+            int choixCouleur = generateurAleat.nextInt(7);
+            if (choixCouleur==0) {
+                CombiGagnante[i]=new Pion("Rose");
+            }
+            if (choixCouleur==1) {
+                CombiGagnante[i]=new Pion("Jaune");
+            }
+            if (choixCouleur==2) {
+                CombiGagnante[i]=new Pion("Vert");
+            }
+            if (choixCouleur==3) {
+                CombiGagnante[i]=new Pion("Bleu");
+            }
+            if (choixCouleur==4) {
+                CombiGagnante[i]=new Pion("Orange");
+            }
+            if (choixCouleur==5) {
+                CombiGagnante[i]=new Pion("Gris");
+            }
+            if (choixCouleur==6) {
+                CombiGagnante[i]=new Pion("Marron");
+            }
+            if (choixCouleur==7) {
+                CombiGagnante[i]=new Pion("Turquoise");
             }
         }
+        
     }
 
     /**
@@ -126,6 +171,9 @@ public class FenetreDeJeu extends javax.swing.JFrame {
 
     private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
         panneau_choix_pions.setVisible(true);
+        initialiserPartie();
+        //panneau_pions_joueur.repaint();
+        btn_start.setEnabled(false);
     }//GEN-LAST:event_btn_startActionPerformed
 
     /**
