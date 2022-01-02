@@ -77,11 +77,11 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     public void ajouterCombinaison(Pion[] Combi) {
         int i=0;
         int j=0;
-        while ( PionJeu[i][j].lireCouleur()!="") {
+        while ( GrilleJeu.PionJeu[i][j].lireCouleur()!="") {
             i+=1;
         }
         for (j=0;j<4;j++) {
-            PionsGraph[i][j]=Combi[j];
+            GrilleJeu.PionJeu[i][j]=Combi[j];
         }
     
     }
@@ -274,34 +274,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private void btn_RActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_RActionPerformed
-    
-    public Pion AjouterPion(String couleur) {
-        
-        Pion PionJ= new Pion(couleur);
-        
-        return PionJ;
-    }
-    public Pion[] CreerCombi(String couleur) {
-        Pion[] Combi=new Pion[4];
-        
-        Combi[0]=AjouterPion(couleur);
-        Combi[1]=AjouterPion(couleur);
-        Combi[2]=AjouterPion(couleur);
-        Combi[3]=AjouterPion(couleur);
-        
-        return Combi;
-    }
-    public void ajouterCombinaison(Pion[] Combi) {
-        int i=0;
-        int j=0;
-        while ( PionsGraphique[i][j].lireCouleur()!="") {
-            i+=1;
-        }
-        for (j=0;j<4;j++) {
-            PionsGraphique[i][j]=Combi[j];
-        }
-    
-    }
+
     /**
      * @param args the command line arguments
      */
