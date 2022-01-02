@@ -4,6 +4,7 @@
  */
 package playoust_vazquez_mastermind;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  *
@@ -28,6 +29,9 @@ public class Partie {
     
     public void initialiserPartie(){
         GrilleJeu=new Grille();
+        
+        //Scanner sc = new Scanner(System.in);
+        //Joueur J1 = new Joueur(sc.nextLine());
         
         for (int i=0; i<4; i++) {
             int choixCouleur = generateurAleat.nextInt(7);
