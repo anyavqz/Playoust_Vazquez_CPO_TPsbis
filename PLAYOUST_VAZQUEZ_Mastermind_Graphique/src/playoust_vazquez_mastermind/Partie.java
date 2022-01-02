@@ -4,6 +4,7 @@
  */
 package playoust_vazquez_mastermind;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  *
@@ -16,10 +17,22 @@ public class Partie {
     Pion [] CombiCourante;
     Random generateurAleat = new Random ();
     
+    public Partie() {
+        CombiGagnante = new Pion [4];
+        CombiCourante = new Pion [4];
+        
+        for (int i=0;i<4;i++) {
+            CombiGagnante[i] = new Pion("");
+            CombiCourante[i] = new Pion("");
+        }
+    }    
+    
     public void initialiserPartie(){
-        Pion [] CombiGagnante = new Pion [4];
-        Pion [] CombiCourante = new Pion [4];
         GrilleJeu=new Grille();
+        
+        System.out.println("Veuillez saisir votre nom");
+        Scanner sc = new Scanner(System.in);
+        Joueur J1 = new Joueur(sc.nextLine());
         
         for (int i=0; i<4; i++) {
             int choixCouleur = generateurAleat.nextInt(7);
@@ -39,7 +52,7 @@ public class Partie {
                 CombiGagnante[i]=new Pion("Orange");
             }
             if (choixCouleur==5) {
-                CombiGagnante[i]=new Pion("Violet");
+                CombiGagnante[i]=new Pion("Gris");
             }
             if (choixCouleur==6) {
                 CombiGagnante[i]=new Pion("Marron");
@@ -53,52 +66,29 @@ public class Partie {
     
     public void debuterPartie(){
         initialiserPartie();
-        while (Gagnant()==false || GrilleJeu.etreRemplie()==false) {
-            GrilleJeu.afficherGrillesurConsole();
+        GrilleJeu.afficherGrillesurConsole();
+        
+        while (Gagnant(CombiCourante,CombiGagnante)==false && GrilleJeu.etreRemplie()==false) {
             
             CombiCourante=GrilleJeu.CreerCombi();
             
             GrilleJeu.ajouterCombinaison(CombiCourante);
             
-            VerifCombi(CombiGagnante,CombiCourante);
+            GrilleJeu.afficherGrillesurConsole();
+            
+            VerifComb(CombiGagnante,CombiCourante);
         }
         
+        if (Gagnant(CombiCourante,CombiGagnante)==true) {
+            System.out.print("Bravo " + player.Nom + " ! Vous avez gagné.");
+        }         
         
-        
-    }
-    
-    public int [] VerifCombi (Pion [] CombiG, Pion [] CombiJ) {
-        int [] tabVerif = new int [2];
-        boolean [] tabBool = new boolean [4];
-        int OK = 0;
-        int notOK =0;
-        
-        for (int i=0; i<4; i++) {
-            tabBool[i]=false;
-        }
-        
-        for (int i=0; i<4; i++) {
-            if (CombiG[i].couleur.equals(CombiJ[i].couleur)){
-                OK+=1;
-                tabBool[i]=true;
-            }
-        
-        }
-        tabVerif[0]=OK;
-        
-        for (int i=0; i<4; i++) {
-            for (int j=0; j<4; j++) {
-                if (tabBool[i]==false && tabBool[j]==false) {
-                    if (CombiG[i].couleur.equals(CombiJ[j].couleur)) {
-                        notOK+=1;
-                        tabBool[j]=true;
-                    }
-                }
+        else {
+            System.out.print("Vous avez perdu !\nLa bonne combinaison était : ");
+            for (int i=0;i<4;i++) {
+                System.out.print(CombiGagnante[i].lireCouleur()+" ");
             }
         }
-        tabVerif[1]=notOK;
-        
-        return tabVerif;
     }
     
     public void VerifComb (Pion [] CombiG, Pion [] CombiJ) {
@@ -106,6 +96,7 @@ public class Partie {
         int [] tabVerif = new int[2];
         tabVerif[0]=0;
         tabVerif[1]=0;
+        
         
         boolean [] tabBool1= new boolean [4];
         boolean [] tabBool2 = new boolean [4];
@@ -115,7 +106,7 @@ public class Partie {
         }
         
         for (int i=0;i<4;i++) {
-            if (CombiG[i]==CombiJ[i]) {
+            if (CombiG[i].lireCouleur()==CombiJ[i].lireCouleur()) {
                 tabVerif[0]+=1;
                 tabBool1[i]=true;
                 tabBool2[i]=true;        
@@ -127,30 +118,32 @@ public class Partie {
                 break;
             }
             for (int j=0;j<4;j++) {
-                if (tabBool2[j]==true) {
-                    break;
-                }
-                
-                if (CombiJ[i]==CombiG[j]) {
+                if (CombiJ[i].lireCouleur()==CombiG[j].lireCouleur()&& tabBool2[j]!=true) {
                     tabVerif[1]+=1;
                     tabBool1[i]=true;
-                    tabBool2[2]=true;
+                    tabBool2[j]=true;
+                    break;
                 }
             }
         }
         
-        System.out.print("Vous avez "+ tabVerif[0]+ " jetons bien placés et "+ tabVerif[1]+" jetons mal placés");
+        System.out.println("Vous avez "+ tabVerif[0]+ " pions bien placés et "+ tabVerif[1]+" pions mal placés");
     }
     
     
-    public boolean Gagnant () {
-        int check [] = VerifCombi(CombiGagnante, CombiCourante);
-        boolean resultat= false;
+    public boolean Gagnant (Pion [] CombiG, Pion [] CombiJ) {
         
-        if (check[0]==4 && check[1]==0) {
-            resultat = true;
+        boolean resultat= false;
+        int res=0;
+        
+        for (int i=0;i<4;i++) {
+            if (CombiG[i]==CombiJ[i]) {
+                res+=1;
+            }
+        }
+        if (res==4) {
+            resultat=true;
         }
         return resultat;
     }
-    
 }
