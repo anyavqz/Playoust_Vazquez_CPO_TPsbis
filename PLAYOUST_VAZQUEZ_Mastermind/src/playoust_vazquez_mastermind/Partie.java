@@ -20,7 +20,7 @@ public class Partie {
     public Partie() {
         CombiGagnante = new Pion [4];
         CombiCourante = new Pion [4];
-        
+        player = new Joueur("");
         for (int i=0;i<4;i++) {
             CombiGagnante[i] = new Pion("");
             CombiCourante[i] = new Pion("");
@@ -32,7 +32,7 @@ public class Partie {
         
         System.out.println("Veuillez saisir votre nom");
         Scanner sc = new Scanner(System.in);
-        Joueur J1 = new Joueur(sc.nextLine());
+        player.Nom = sc.nextLine();
         
         for (int i=0; i<4; i++) {
             int choixCouleur = generateurAleat.nextInt(7);
@@ -68,7 +68,7 @@ public class Partie {
         initialiserPartie();
         GrilleJeu.afficherGrillesurConsole();
         
-        while (Gagnant(CombiCourante,CombiGagnante)==false && GrilleJeu.etreRemplie()==false) {
+        while (Gagnant(CombiGagnante,CombiCourante)==false && GrilleJeu.etreRemplie()==false) {
             
             CombiCourante=GrilleJeu.CreerCombi();
             
@@ -79,7 +79,7 @@ public class Partie {
             VerifComb(CombiGagnante,CombiCourante);
         }
         
-        if (Gagnant(CombiCourante,CombiGagnante)==true) {
+        if (Gagnant(CombiGagnante,CombiCourante)==true) {
             System.out.print("Bravo " + player.Nom + " ! Vous avez gagné.");
         }         
         
@@ -114,11 +114,8 @@ public class Partie {
         }
         
         for (int i=0;i<4;i++) {
-            if (tabBool1[i]==true) {
-                break;
-            }
             for (int j=0;j<4;j++) {
-                if (CombiJ[i].lireCouleur()==CombiG[j].lireCouleur()&& tabBool2[j]!=true) {
+                if (CombiJ[i].lireCouleur()==CombiG[j].lireCouleur()&& tabBool2[j]!=true && tabBool1[i]!=true) {
                     tabVerif[1]+=1;
                     tabBool1[i]=true;
                     tabBool2[j]=true;
@@ -137,7 +134,7 @@ public class Partie {
         int res=0;
         
         for (int i=0;i<4;i++) {
-            if (CombiG[i]==CombiJ[i]) {
+            if (CombiG[i].lireCouleur()==CombiJ[i].lireCouleur()) {
                 res+=1;
             }
         }
