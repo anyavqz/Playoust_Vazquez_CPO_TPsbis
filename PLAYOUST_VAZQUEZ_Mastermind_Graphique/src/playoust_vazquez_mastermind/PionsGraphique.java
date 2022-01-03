@@ -13,6 +13,7 @@ import javax.swing.JButton;
  * @author anyavazquez
  */
 public class PionsGraphique extends JButton{
+    String couleur;
     Pion PionAssocie;
     
     ImageIcon img_turquoise = new javax.swing.ImageIcon(getClass().getResource("/imagesMastermind/T.jpeg"));
@@ -26,33 +27,34 @@ public class PionsGraphique extends JButton{
     
     public PionsGraphique (Pion unPion) {
         PionAssocie = unPion;
+        couleur = unPion.couleur;
     }
     
     @Override
     public void paintComponent (Graphics G) {
         super.paintComponent(G);
-        if (PionAssocie.lireCouleur()=="Turquoise") {
+        if (couleur=="Turquoise") {
             setIcon(img_turquoise);
         }
-        if (PionAssocie.lireCouleur()=="Orange") {
+        if (couleur=="Orange") {
             setIcon(img_orange);
         }
-        if (PionAssocie.lireCouleur()=="Gris") {
+        if (couleur=="Gris") {
             setIcon(img_grise);
         }
-        if (PionAssocie.lireCouleur()=="Jaune") {
+        if (couleur=="Jaune") {
             setIcon(img_jaune);
         }
-        if (PionAssocie.lireCouleur()=="Marron") {
+        if (couleur=="Marron") {
             setIcon(img_marron);
         }
-        if (PionAssocie.lireCouleur()=="Vert") {
+        if (couleur=="Vert") {
             setIcon(img_verte);
         }
-        if (PionAssocie.lireCouleur()=="Rose") {
+        if (couleur=="Rose") {
             setIcon(img_rose);
         }
-        if (PionAssocie.lireCouleur()=="Bleu") {
+        if (couleur=="Bleu") {
             setIcon(img_bleue);
         }
     }

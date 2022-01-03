@@ -20,8 +20,11 @@ public class FenetreDeJeu extends javax.swing.JFrame implements MouseListener {
     Joueur player;
     Grille GrilleJeu;
     Pion [] CombiGagnante;
-    Pion [] CombiCourante;
+    PionsGraphique [] CombiCourante;
     Random generateurAleat = new Random ();
+    PionsGraphique [][] PionCourant = new PionsGraphique[12][4];
+    int CompteurCombi=-1;
+    
     /**
      * Creates new form FenetreDeJeu
      */
@@ -30,10 +33,12 @@ public class FenetreDeJeu extends javax.swing.JFrame implements MouseListener {
         initComponents();
         panneau_choix_pions.setVisible(false);
         
+        
         for (int i=0; i<12; i++) {
             for (int j=0; j<4; j++) {
                 PionsGraphique PionGraph = new PionsGraphique(GrilleJeu.PionJeu[i][j]);
-                panneau_pions_joueur.add(PionGraph);
+                PionCourant[i][j]=PionGraph;
+                panneau_pions_joueur.add(PionCourant[i][j]);
             }
         }
         
@@ -58,25 +63,25 @@ public class FenetreDeJeu extends javax.swing.JFrame implements MouseListener {
         btn_O.setBackground(Color.ORANGE);
         
         CombiGagnante = new Pion [4];
-        CombiCourante = new Pion [4];
+        CombiCourante = new PionsGraphique [4];
         
         for (int i=0;i<4;i++) {
             CombiGagnante[i] = new Pion("");
-            CombiCourante[i] = new Pion("");
+            CombiCourante[i] = new PionsGraphique(new Pion(""));
         }
-        initialiserPartie();
+        
     }
     
     
-    public Pion AjouterPion(String couleur) {
+    public PionsGraphique AjouterPion(String couleur) {
         for (int i=0;i<12;i++) {
             for (int j=0;j<4;j++) {
-                if (GrilleJeu.PionJeu[i][j].lireCouleur()=="") {
-                    Pion PionAj = new Pion(couleur);
-                    PionsGraphique PionGraph= new PionsGraphique(PionAj);
+                if (PionCourant[i][j].couleur=="") {
+                    PionCourant[i][j].couleur=couleur;
                     panneau_pions_joueur.repaint();
-                    System.out.println("Jai ajoute un pion");
-                    return PionAj;
+                    System.out.print(PionCourant[i][j].couleur);
+                    CombiCourante[CompteurCombi]=PionCourant[i][j];
+                    return PionCourant[i][j];
                 }
                 
             }
@@ -84,56 +89,46 @@ public class FenetreDeJeu extends javax.swing.JFrame implements MouseListener {
         System.out.println("Jai pas ajoute un pion");
         return null;
     }
-    public Pion[] CreerCombi(String couleur1,String couleur2,String couleur3,String couleur4) {
-        Pion[] Combi=new Pion[4];
-        
-        Combi[0]=AjouterPion(couleur1);
-        Combi[1]=AjouterPion(couleur2);
-        Combi[2]=AjouterPion(couleur3);
-        Combi[3]=AjouterPion(couleur4);
-        
-        return Combi;
-    }
     
-    public void VerifComb (Pion [] CombiG, Pion [] CombiJ) {
-       
-        int [] tabVerif = new int[2];
-        tabVerif[0]=0;
-        tabVerif[1]=0;
-        
-        
-        boolean [] tabBool1= new boolean [4];
-        boolean [] tabBool2 = new boolean [4];
-        for (int i=0; i<4;i++) {
-            tabBool1[i]=false;
-            tabBool2[i]=false;
-        }
-        
-        for (int i=0;i<4;i++) {
-            if (CombiG[i].lireCouleur()==CombiJ[i].lireCouleur()) {
-                tabVerif[0]+=1;
-                tabBool1[i]=true;
-                tabBool2[i]=true;        
+    public int[] VerifComb(Pion[] CombiG, PionsGraphique[] CombiJ) {
+
+        if (CompteurCombi==3) {
+            
+            CompteurCombi=-1;
+            int[] tabVerif = new int[2];
+            tabVerif[0] = 0;
+            tabVerif[1] = 0;
+
+            boolean[] tabBool1 = new boolean[4];
+            boolean[] tabBool2 = new boolean[4];
+            for (int i = 0; i < 4; i++) {
+                tabBool1[i] = false;
+                tabBool2[i] = false;
             }
-        }
-        
-        for (int i=0;i<4;i++) {
-            if (tabBool1[i]==true) {
-                break;
-            }
-            for (int j=0;j<4;j++) {
-                if (CombiJ[i].lireCouleur()==CombiG[j].lireCouleur()&& tabBool2[j]!=true) {
-                    tabVerif[1]+=1;
-                    tabBool1[i]=true;
-                    tabBool2[j]=true;
-                    break;
+
+            for (int i = 0; i < 4; i++) {
+                if (CombiG[i].lireCouleur() == CombiJ[i].couleur) {
+                    tabVerif[0] += 1;
+                    tabBool1[i] = true;
+                    tabBool2[i] = true;
                 }
             }
+
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < 4; j++) {
+                    if (CombiJ[i].couleur == CombiG[j].lireCouleur() && tabBool2[j] != true && tabBool1[i]!=true) {
+                        tabVerif[1] += 1;
+                        tabBool1[i] = true;
+                        tabBool2[j] = true;
+                        break;
+                    }
+                }
+            }
+            System.out.println("Vous avez "+ tabVerif[0]+ " pions bien placés et "+ tabVerif[1]+" pions mal placés");
+            return tabVerif;
         }
-        
-        System.out.println("Vous avez "+ tabVerif[0]+ " pions bien placés et "+ tabVerif[1]+" pions mal placés");
+        return null;
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -168,6 +163,7 @@ public class FenetreDeJeu extends javax.swing.JFrame implements MouseListener {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panneau_pions_joueur.setBackground(new java.awt.Color(255, 255, 255));
+        panneau_pions_joueur.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         panneau_pions_joueur.setLayout(new java.awt.GridLayout(12, 4));
         getContentPane().add(panneau_pions_joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 256, 768));
 
@@ -293,42 +289,60 @@ public class FenetreDeJeu extends javax.swing.JFrame implements MouseListener {
 
     private void btn_TActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TActionPerformed
         // TODO add your handling code here:
+        
+        CompteurCombi+=1;
         AjouterPion("Turquoise");
+        VerifComb(CombiGagnante,CombiCourante);
     }//GEN-LAST:event_btn_TActionPerformed
 
     private void btn_JActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_JActionPerformed
         // TODO add your handling code here:
+        CompteurCombi+=1;
         AjouterPion("Jaune");
+        VerifComb(CombiGagnante,CombiCourante);
     }//GEN-LAST:event_btn_JActionPerformed
 
     private void btn_VActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VActionPerformed
         // TODO add your handling code here:
+        CompteurCombi+=1;
         AjouterPion("Vert");
+        VerifComb(CombiGagnante,CombiCourante);
     }//GEN-LAST:event_btn_VActionPerformed
 
     private void btn_GActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GActionPerformed
         // TODO add your handling code here:
+        CompteurCombi+=1;
         AjouterPion("Gris");
+        VerifComb(CombiGagnante,CombiCourante);
     }//GEN-LAST:event_btn_GActionPerformed
 
     private void btn_MActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MActionPerformed
         // TODO add your handling code here:
+        CompteurCombi+=1;
         AjouterPion("Marron");
+        VerifComb(CombiGagnante,CombiCourante);
     }//GEN-LAST:event_btn_MActionPerformed
 
     private void btn_OActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_OActionPerformed
         // TODO add your handling code here:
+        CompteurCombi+=1;
         AjouterPion("Orange");
+        VerifComb(CombiGagnante,CombiCourante);
+        
     }//GEN-LAST:event_btn_OActionPerformed
 
     private void btn_BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BActionPerformed
         // TODO add your handling code here:
+        CompteurCombi+=1;
         AjouterPion("Bleu");
+        VerifComb(CombiGagnante,CombiCourante);
     }//GEN-LAST:event_btn_BActionPerformed
 
     private void btn_RActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RActionPerformed
         // TODO add your handling code here:
+        CompteurCombi+=1;
         AjouterPion("Rose");
+        VerifComb(CombiGagnante,CombiCourante);
     }//GEN-LAST:event_btn_RActionPerformed
 
     /**
