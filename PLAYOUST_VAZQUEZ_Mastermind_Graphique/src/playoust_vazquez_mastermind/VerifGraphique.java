@@ -4,6 +4,8 @@
  */
 package playoust_vazquez_mastermind;
 
+import java.awt.Graphics;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -12,4 +14,14 @@ import javax.swing.JButton;
  */
 public class VerifGraphique extends JButton {
     Pion PetitPion;
+    
+    public VerifGraphique (int tabVerif) {
+        if
+    }
+    
+     @Override
+    public void paintComponent (Graphics G) {
+        super.paintComponent(G);
+        
+    }
 }
