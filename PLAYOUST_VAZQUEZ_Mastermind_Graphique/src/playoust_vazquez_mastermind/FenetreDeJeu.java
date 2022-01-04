@@ -5,8 +5,6 @@
 package playoust_vazquez_mastermind;
 
 import java.awt.Color;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Random;
 
 
@@ -14,7 +12,7 @@ import java.util.Random;
  *
  * @author anyavazquez
  */
-public class FenetreDeJeu extends javax.swing.JFrame implements MouseListener {
+public class FenetreDeJeu extends javax.swing.JFrame {
     
     
     Joueur player;
@@ -24,6 +22,8 @@ public class FenetreDeJeu extends javax.swing.JFrame implements MouseListener {
     Random generateurAleat = new Random ();
     PionsGraphique [][] PionCourant = new PionsGraphique[12][4];
     int CompteurCombi=-1;
+    VerifGraphique PetitPions [][] = new VerifGraphique [12][4];
+    int CompteurLigne=0;
     
     /**
      * Creates new form FenetreDeJeu
@@ -44,8 +44,9 @@ public class FenetreDeJeu extends javax.swing.JFrame implements MouseListener {
         
         for (int i=0; i<12; i++) {
             for (int j=0; j<4; j++) {
-                //VerifGraphique PetitPion = new VerifGraphique();
-                //panneau_verif_pions.add(PetitPion);
+                VerifGraphique PetitPion = new VerifGraphique();
+                PetitPions [i][j] = PetitPion;
+                panneau_verif_pions.add(PetitPions[i][j]);
             }
         }
         
@@ -93,7 +94,7 @@ public class FenetreDeJeu extends javax.swing.JFrame implements MouseListener {
         return null;
     }
     
-    public int[] VerifComb(Pion[] CombiG, PionsGraphique[] CombiJ) {
+    public void VerifComb(Pion[] CombiG, PionsGraphique[] CombiJ) {
 
         if (CompteurCombi==3) {
             
@@ -127,10 +128,15 @@ public class FenetreDeJeu extends javax.swing.JFrame implements MouseListener {
                     }
                 }
             }
+            for (int i=0;i<tabVerif[0];i++) {
+                PetitPions[CompteurLigne][i].Couleur="Blanc";
+            }
+            for (int i=tabVerif[0];i<tabVerif[0]+tabVerif[1];i++) {
+                PetitPions[CompteurLigne][i].Couleur="Rouge";
+            }
+            CompteurLigne+=1;
             System.out.println("Vous avez "+ tabVerif[0]+ " pions bien placés et "+ tabVerif[1]+" pions mal placés");
-            return tabVerif;
         }
-        return null;
     }
     
     public void AjouterPetitPion (int [] tabVerification) {
@@ -446,28 +452,3 @@ public class FenetreDeJeu extends javax.swing.JFrame implements MouseListener {
     private javax.swing.JPanel panneau_verif_pions;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-}

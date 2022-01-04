@@ -14,14 +14,21 @@ import javax.swing.JButton;
  */
 public class VerifGraphique extends JButton {
     Pion PetitPion;
+    String Couleur;
     
-    public VerifGraphique (int tabVerif) {
-        //if
-    }
+    ImageIcon img_PPRouge = new javax.swing.ImageIcon(getClass().getResource("/imagesMastermind/PP_R.jpeg"));
+    ImageIcon img_PPBlanc = new javax.swing.ImageIcon(getClass().getResource("/imagesMastermind/PP_bl.jpeg"));
+    
     
      @Override
     public void paintComponent (Graphics G) {
         super.paintComponent(G);
+        if (Couleur=="Rouge") {
+            setIcon(img_PPRouge);
+        }
+        if (Couleur=="Blanc") {
+            setIcon(img_PPBlanc);
+        }
         
     }
 }
