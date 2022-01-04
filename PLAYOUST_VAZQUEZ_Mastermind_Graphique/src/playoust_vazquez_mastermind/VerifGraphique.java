@@ -16,7 +16,7 @@ public class VerifGraphique extends JButton {
     Pion PetitPion;
     
     public VerifGraphique (int tabVerif) {
-        if
+        //if
     }
     
      @Override

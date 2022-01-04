@@ -44,23 +44,26 @@ public class FenetreDeJeu extends javax.swing.JFrame implements MouseListener {
         
         for (int i=0; i<12; i++) {
             for (int j=0; j<4; j++) {
-                VerifGraphique PetitPion = new VerifGraphique();
-                panneau_verif_pions.add(PetitPion);
+                //VerifGraphique PetitPion = new VerifGraphique();
+                //panneau_verif_pions.add(PetitPion);
             }
         }
         
-        btn_B.setBackground(Color.BLUE);
-        Color Turquoise = new Color(64,224,208);
+        Color Bleu = new Color(51,153,255);
+        btn_B.setBackground(Bleu);
+        Color Turquoise = new Color(0,206,209);
         btn_T.setBackground(Turquoise);
-        Color Rose = new Color(255,192,203);
+        Color Rose = new Color(219,112,147);
         btn_R.setBackground(Rose);
         Color Gris = new Color(128,128,128);
         btn_G.setBackground(Gris);
-        Color Marron = new Color(128,0,0);
+        Color Marron = new Color(102,51,0);
         btn_M.setBackground(Marron);
         btn_J.setBackground(Color.YELLOW);
-        btn_V.setBackground(Color.GREEN);
-        btn_O.setBackground(Color.ORANGE);
+        Color Vert = new Color(160,220,48);
+        btn_V.setBackground(Vert);
+        Color Orange = new Color(255,153,0);
+        btn_O.setBackground(Orange);
         
         CombiGagnante = new Pion [4];
         CombiCourante = new PionsGraphique [4];
@@ -128,6 +131,10 @@ public class FenetreDeJeu extends javax.swing.JFrame implements MouseListener {
             return tabVerif;
         }
         return null;
+    }
+    
+    public void AjouterPetitPion (int [] tabVerification) {
+        
     }
 
     /**
