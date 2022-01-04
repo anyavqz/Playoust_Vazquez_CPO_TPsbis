@@ -17,8 +17,8 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     
     Joueur player;
     Grille GrilleJeu;
-    Pion [] CombiGagnante;
-    PionsGraphique [] CombiCourante;
+    Pion [] CombiGagnante = new Pion [4];
+    PionsGraphique [] CombiCourante = new PionsGraphique [4];
     Random generateurAleat = new Random ();
     PionsGraphique [][] PionCourant = new PionsGraphique[12][4];
     int CompteurCombi=-1;
@@ -26,7 +26,8 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     int CompteurLigne=0;
     
     /**
-     * Creates new form FenetreDeJeu
+     * Creates new form FenetreDeJeu : Initialise la fenêtre de jeu : ajout des cases pour petits pions et grille de jeu et coloration des boutons pour
+     * le choix des couleurs de combinaison.
      */
     public FenetreDeJeu() {
         GrilleJeu = new Grille();
@@ -66,17 +67,13 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         Color Orange = new Color(255,153,0);
         btn_O.setBackground(Orange);
         
-        CombiGagnante = new Pion [4];
-        CombiCourante = new PionsGraphique [4];
-        
-        for (int i=0;i<4;i++) {
-            CombiGagnante[i] = new Pion("");
-            CombiCourante[i] = new PionsGraphique(new Pion(""));
-        }
-        
     }
     
-    
+    /**
+     * Permet d'ajouter les pions de couleurs selectionnés par l'utilisateur dans la grille
+     * @param couleur : couleur selectionnée dans le tableau de 8 couleurs 
+     * @return
+     */
     public PionsGraphique AjouterPion(String couleur) {
         for (int i=0;i<12;i++) {
             for (int j=0;j<4;j++) {
@@ -90,10 +87,14 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                 
             }
         }
-        System.out.println("Jai pas ajoute un pion");
         return null;
     }
     
+    /**
+     * Permet de vérifier les combinaisons entrées par le joueur/ attribue les couleurs aux petits pions en fonction
+     * @param CombiG : combinaison gagnante
+     * @param CombiJ : combinaison entrée par le joueur
+     */
     public void VerifComb(Pion[] CombiG, PionsGraphique[] CombiJ) {
 
         if (CompteurCombi==3) {
@@ -135,13 +136,11 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                 PetitPions[CompteurLigne][i].Couleur="Rouge";
             }
             CompteurLigne+=1;
-            System.out.println("Vous avez "+ tabVerif[0]+ " pions bien placés et "+ tabVerif[1]+" pions mal placés");
+            System.out.println("Vous avez "+ tabVerif[0]+ " pions bien placés et "+ tabVerif[1]+" pions mal placés"); //verification sur la console
         }
+        panneau_verif_pions.repaint();
     }
     
-    public void AjouterPetitPion (int [] tabVerification) {
-        
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -296,7 +295,6 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
         panneau_choix_pions.setVisible(true);
         initialiserPartie();
-        //panneau_pions_joueur.repaint();
         btn_start.setEnabled(false);
     }//GEN-LAST:event_btn_startActionPerformed
 
@@ -394,10 +392,13 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         });
     }
     
+    /**
+     * Création de la combinaison gagnante aléaroirement pour initialiser la partie
+     */
     public void initialiserPartie(){
         GrilleJeu=new Grille();
         
-        String nomJoueur = nom_joueur.getText();
+        String nomJoueur = nom_joueur.getText(); // Permet de récupérer le nom du joueur
         Joueur J1 = new Joueur(nomJoueur); 
         
         for (int i=0; i<4; i++) {
@@ -426,6 +427,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
             if (choixCouleur==7) {
                 CombiGagnante[i]=new Pion("Turquoise");
             }
+            System.out.println(CombiGagnante[i].couleur); //affichage de la combinaison gagnante sur la console pour les tests
         }
         
     }
@@ -452,3 +454,4 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private javax.swing.JPanel panneau_verif_pions;
     // End of variables declaration//GEN-END:variables
 
+}
