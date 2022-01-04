@@ -17,6 +17,10 @@ public class Partie {
     Pion [] CombiCourante;
     Random generateurAleat = new Random ();
     
+    /**
+     *Constructeur de la classe Partie : Crée une combinaison gagnante et courante (qui va être modifié par l'utilisateur ensuite) de pions de couleur "" et une combinaison courante
+     * Crée un joueur de Nom "".
+     */
     public Partie() {
         CombiGagnante = new Pion [4];
         CombiCourante = new Pion [4];
@@ -27,6 +31,9 @@ public class Partie {
         }
     }    
     
+    /**
+     * Permet d'initialiser la partie : Crée une nouvelle grille, demande un nom et crée une combinaison gagnante aléatoire.
+     */
     public void initialiserPartie(){
         GrilleJeu=new Grille();
         
@@ -64,6 +71,9 @@ public class Partie {
         
     }
     
+    /**
+     * Permet de débuter et de jouer la partie. 
+     */
     public void debuterPartie(){
         initialiserPartie();
         GrilleJeu.afficherGrillesurConsole();
@@ -91,6 +101,11 @@ public class Partie {
         }
     }
     
+    /**
+     * Permet de vérifier la combinaison du Joueur (CombiJ). Donne le nombre de pions bien placés et de pions mal placés.
+     * @param CombiG : Combi gagnante crée par le programme
+     * @param CombiJ : Dernière combinaison entrée par le joueur
+     */
     public void VerifComb (Pion [] CombiG, Pion [] CombiJ) {
        
         int [] tabVerif = new int[2];
@@ -127,7 +142,12 @@ public class Partie {
         System.out.println("Vous avez "+ tabVerif[0]+ " pions bien placés et "+ tabVerif[1]+" pions mal placés");
     }
     
-    
+    /**
+     * Permet de déterminer si le joueur est gagnant ou non. 
+     * @param CombiG : Combi gagnante crée par le programme
+     * @param CombiJ : Dernière combinaison entrée par le joueur
+     * @return
+     */
     public boolean Gagnant (Pion [] CombiG, Pion [] CombiJ) {
         
         boolean resultat= false;

@@ -12,10 +12,18 @@ package playoust_vazquez_mastermind;
 public class Pion {
     String couleur;
     
+    /**
+     * Constructeur de la classe Pion. Attribue à l'attribut couleur la couleur saisie en paramètre.
+     * @param color
+     */
     public Pion(String color) {
         couleur=color;
     }
     
+    /**
+     * Permet de garder en mémoire la couleur d'un pion.
+     * @return
+     */
     public String lireCouleur() {
         return couleur;
     }

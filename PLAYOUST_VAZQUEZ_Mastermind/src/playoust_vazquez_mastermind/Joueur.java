@@ -10,8 +10,11 @@ package playoust_vazquez_mastermind;
  */
 public class Joueur {
     String Nom;
-    Pion ListePions [] = new Pion [480];
     
+    /**
+     * Constructeur de la classe Joueur. Attribue le nom saisie en paramètre à son attribut Nom.
+     * @param nomJ
+     */
     public Joueur (String nomJ){
         Nom=nomJ;
     }
