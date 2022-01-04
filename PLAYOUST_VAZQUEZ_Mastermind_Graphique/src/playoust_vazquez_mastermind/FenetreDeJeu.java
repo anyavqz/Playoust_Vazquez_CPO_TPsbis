@@ -17,13 +17,17 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     
     Joueur player;
     Grille GrilleJeu;
-    Pion [] CombiGagnante = new Pion [4];
-    PionsGraphique [] CombiCourante = new PionsGraphique [4];
+    
+    Pion [] CombiGagnante = new Pion [4]; // Combinaison aléatoire de pions.
+    PionsGraphique [] CombiCourante = new PionsGraphique [4]; // Combinaison de pions saisie par l'utilisateur à chaque tour.
+    
+    PionsGraphique [][] PionCourant = new PionsGraphique[12][4]; // Grille de PionsGraphique
+    VerifGraphique [][] PetitPions  = new VerifGraphique [12][4]; // Grille de VerifGraphique
+    
+    int CompteurLigne=0; // Permet d'avoir un suivi sur l'avancement de la partie. Garde en mémoire le numéro de la ligne où il faut jouer
+    int CompteurCombi=-1; // Permet de placer les pions du joueur au fur et à mesure dans CombiCourante
+    
     Random generateurAleat = new Random ();
-    PionsGraphique [][] PionCourant = new PionsGraphique[12][4];
-    int CompteurCombi=-1;
-    VerifGraphique PetitPions [][] = new VerifGraphique [12][4];
-    int CompteurLigne=0;
     
     /**
      * Creates new form FenetreDeJeu : Initialise la fenêtre de jeu : ajout des cases pour petits pions et grille de jeu et coloration des boutons pour
@@ -31,6 +35,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
      */
     public FenetreDeJeu() {
         GrilleJeu = new Grille();
+        player = new Joueur("");
         initComponents();
         panneau_choix_pions.setVisible(false);
         
@@ -51,6 +56,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
             }
         }
         
+        
         Color Bleu = new Color(51,153,255);
         btn_B.setBackground(Bleu);
         Color Turquoise = new Color(0,206,209);
@@ -67,11 +73,12 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         Color Orange = new Color(255,153,0);
         btn_O.setBackground(Orange);
         
+        
     }
     
     /**
      * Permet d'ajouter les pions de couleurs selectionnés par l'utilisateur dans la grille
-     * @param couleur : couleur selectionnée dans le tableau de 8 couleurs 
+     * @param couleur : couleur selectionnée dans le tableau de 8 couleurs disponibles
      * @return
      */
     public PionsGraphique AjouterPion(String couleur) {
@@ -80,13 +87,13 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                 if (PionCourant[i][j].couleur=="") {
                     PionCourant[i][j].couleur=couleur;
                     panneau_pions_joueur.repaint();
-                    System.out.print(PionCourant[i][j].couleur);
                     CombiCourante[CompteurCombi]=PionCourant[i][j];
                     return PionCourant[i][j];
                 }
                 
             }
         }
+        
         return null;
     }
     
@@ -136,7 +143,6 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                 PetitPions[CompteurLigne][i].Couleur="Rouge";
             }
             CompteurLigne+=1;
-            System.out.println("Vous avez "+ tabVerif[0]+ " pions bien placés et "+ tabVerif[1]+" pions mal placés"); //verification sur la console
         }
         panneau_verif_pions.repaint();
     }
