@@ -10,7 +10,6 @@ package playoust_vazquez_mastermind;
  */
 public class Joueur {
     String Nom;
-    Pion ListePions [] = new Pion [480];
     
     public Joueur (String nomJ){
         Nom=nomJ;

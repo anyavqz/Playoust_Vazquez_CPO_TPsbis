@@ -393,13 +393,13 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     }
     
     /**
-     * Création de la combinaison gagnante aléaroirement pour initialiser la partie
+     * Création de la combinaison gagnante aléaroirement pour initialiser la partie et création de la grille de jeu
      */
     public void initialiserPartie(){
         GrilleJeu=new Grille();
         
         String nomJoueur = nom_joueur.getText(); // Permet de récupérer le nom du joueur
-        Joueur J1 = new Joueur(nomJoueur); 
+        player.Nom=nomJoueur;  // attribution de nomJoueur à l'attribut player de la classe
         
         for (int i=0; i<4; i++) {
             int choixCouleur = generateurAleat.nextInt(7);
