@@ -38,6 +38,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         player = new Joueur("");
         initComponents();
         panneau_choix_pions.setVisible(false);
+        panneau_text.setVisible(false);
         
         
         for (int i=0; i<12; i++) {
@@ -143,6 +144,18 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                 PetitPions[CompteurLigne][i].Couleur="Rouge";
             }
             CompteurLigne+=1;
+            if (tabVerif[0]==4) {
+                textemessage.setText("Bravo " + player.Nom + " ! Vous avez gagné.");
+                //System.out.print("Bravo " + player.Nom + " ! Vous avez gagné.");
+                btn_T.setEnabled(false);
+                btn_B.setEnabled(false);
+                btn_G.setEnabled(false);
+                btn_M.setEnabled(false);
+                btn_R.setEnabled(false);
+                btn_J.setEnabled(false);
+                btn_V.setEnabled(false);
+                btn_O.setEnabled(false);  
+            }
         }
         panneau_verif_pions.repaint();
     }
@@ -176,6 +189,9 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         btn_O = new javax.swing.JButton();
         btn_B = new javax.swing.JButton();
         btn_R = new javax.swing.JButton();
+        panneau_text = new javax.swing.JPanel();
+        message = new javax.swing.JScrollPane();
+        textemessage = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -186,7 +202,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         getContentPane().add(panneau_pions_joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 256, 768));
 
         panneau_verif_pions.setBackground(new java.awt.Color(255, 255, 255));
-        panneau_verif_pions.setLayout(new java.awt.GridLayout(24, 2));
+        panneau_verif_pions.setLayout(new java.awt.GridLayout(12, 4));
         getContentPane().add(panneau_verif_pions, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 128, 768));
 
         panneau_infos_joueur.setBackground(new java.awt.Color(0, 204, 204));
@@ -289,7 +305,18 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         });
         panneau_choix_pions.add(btn_R);
 
-        getContentPane().add(panneau_choix_pions, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, 500, 530));
+        getContentPane().add(panneau_choix_pions, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, 500, 310));
+
+        panneau_text.setBackground(new java.awt.Color(0, 204, 204));
+        panneau_text.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        textemessage.setColumns(20);
+        textemessage.setRows(5);
+        message.setViewportView(textemessage);
+
+        panneau_text.add(message, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 480, 170));
+
+        getContentPane().add(panneau_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 590, 500, 190));
 
         setBounds(0, 0, 1095, 832);
     }// </editor-fold>//GEN-END:initComponents
@@ -300,6 +327,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
 
     private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
         panneau_choix_pions.setVisible(true);
+        panneau_text.setVisible(true);
         initialiserPartie();
         btn_start.setEnabled(false);
     }//GEN-LAST:event_btn_startActionPerformed
@@ -437,6 +465,8 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         }
         
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_B;
@@ -453,11 +483,14 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JScrollPane message;
     private javax.swing.JTextField nom_joueur;
     private javax.swing.JPanel panneau_choix_pions;
     private javax.swing.JPanel panneau_infos_joueur;
     private javax.swing.JPanel panneau_pions_joueur;
+    private javax.swing.JPanel panneau_text;
     private javax.swing.JPanel panneau_verif_pions;
+    private javax.swing.JTextArea textemessage;
     // End of variables declaration//GEN-END:variables
 
 }
