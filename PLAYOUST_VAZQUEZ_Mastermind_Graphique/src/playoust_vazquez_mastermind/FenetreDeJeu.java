@@ -105,48 +105,59 @@ public class FenetreDeJeu extends javax.swing.JFrame {
      */
     public void VerifComb(Pion[] CombiG, PionsGraphique[] CombiJ) {
 
-        if (CompteurCombi==3) {
-            
-            CompteurCombi=-1;
-            int[] tabVerif = new int[2];
-            tabVerif[0] = 0;
-            tabVerif[1] = 0;
+        if (CompteurCombi == 3) {
+            if (PionCourant[11][0].couleur == "") {
+                CompteurCombi = -1;
+                int[] tabVerif = new int[2];
+                tabVerif[0] = 0;
+                tabVerif[1] = 0;
 
-            boolean[] tabBool1 = new boolean[4];
-            boolean[] tabBool2 = new boolean[4];
-            for (int i = 0; i < 4; i++) {
-                tabBool1[i] = false;
-                tabBool2[i] = false;
-            }
-
-            for (int i = 0; i < 4; i++) {
-                if (CombiG[i].lireCouleur() == CombiJ[i].couleur) {
-                    tabVerif[0] += 1;
-                    tabBool1[i] = true;
-                    tabBool2[i] = true;
+                boolean[] tabBool1 = new boolean[4];
+                boolean[] tabBool2 = new boolean[4];
+                for (int i = 0; i < 4; i++) {
+                    tabBool1[i] = false;
+                    tabBool2[i] = false;
                 }
-            }
 
-            for (int i = 0; i < 4; i++) {
-                for (int j = 0; j < 4; j++) {
-                    if (CombiJ[i].couleur == CombiG[j].lireCouleur() && tabBool2[j] != true && tabBool1[i]!=true) {
-                        tabVerif[1] += 1;
+                for (int i = 0; i < 4; i++) {
+                    if (CombiG[i].lireCouleur() == CombiJ[i].couleur) {
+                        tabVerif[0] += 1;
                         tabBool1[i] = true;
-                        tabBool2[j] = true;
-                        break;
+                        tabBool2[i] = true;
                     }
                 }
-            }
-            for (int i=0;i<tabVerif[0];i++) {
-                PetitPions[CompteurLigne][i].Couleur="Blanc";
-            }
-            for (int i=tabVerif[0];i<tabVerif[0]+tabVerif[1];i++) {
-                PetitPions[CompteurLigne][i].Couleur="Rouge";
-            }
-            CompteurLigne+=1;
-            if (tabVerif[0]==4) {
-                textemessage.setText("Bravo " + player.Nom + " ! Vous avez gagné.");
-                //System.out.print("Bravo " + player.Nom + " ! Vous avez gagné.");
+
+                for (int i = 0; i < 4; i++) {
+                    for (int j = 0; j < 4; j++) {
+                        if (CombiJ[i].couleur == CombiG[j].lireCouleur() && tabBool2[j] != true && tabBool1[i] != true) {
+                            tabVerif[1] += 1;
+                            tabBool1[i] = true;
+                            tabBool2[j] = true;
+                            break;
+                        }
+                    }
+                }
+                for (int i = 0; i < tabVerif[0]; i++) {
+                    PetitPions[CompteurLigne][i].Couleur = "Blanc";
+                }
+                for (int i = tabVerif[0]; i < tabVerif[0] + tabVerif[1]; i++) {
+                    PetitPions[CompteurLigne][i].Couleur = "Rouge";
+                }
+                CompteurLigne += 1;
+                if (tabVerif[0] == 4) {
+                    textemessage.setText("Bravo " + player.Nom + " ! Vous avez gagné. Le capitaine est fier de vous !");
+                    //System.out.print("Bravo " + player.Nom + " ! Vous avez gagné.");
+                    btn_T.setEnabled(false);
+                    btn_B.setEnabled(false);
+                    btn_G.setEnabled(false);
+                    btn_M.setEnabled(false);
+                    btn_R.setEnabled(false);
+                    btn_J.setEnabled(false);
+                    btn_V.setEnabled(false);
+                    btn_O.setEnabled(false);
+                }
+            } else {
+                textemessage.setText("Mince! Vous n'avez pas réussi à déchiffrer le code du Capitaine BarbeRousse... ");
                 btn_T.setEnabled(false);
                 btn_B.setEnabled(false);
                 btn_G.setEnabled(false);
@@ -154,8 +165,9 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                 btn_R.setEnabled(false);
                 btn_J.setEnabled(false);
                 btn_V.setEnabled(false);
-                btn_O.setEnabled(false);  
+                btn_O.setEnabled(false);
             }
+            
         }
         panneau_verif_pions.repaint();
     }
@@ -329,6 +341,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         panneau_choix_pions.setVisible(true);
         panneau_text.setVisible(true);
         initialiserPartie();
+        textemessage.setText("Bon Courage ! Vous avez 12 coups pour remporter ce défi !");
         btn_start.setEnabled(false);
     }//GEN-LAST:event_btn_startActionPerformed
 
